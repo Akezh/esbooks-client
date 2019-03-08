@@ -1,0 +1,79 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "jsx": "react-native",
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "noEmit": true,
+        "strict": true,
+        "pretty": true,
+        "sourceMap": true,
+        "declaration": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@actions": [
+                "actions"
+            ],
+            "@assets": [
+                "assets"
+            ],
+            "@components": [
+                "components"
+            ],
+            "@constants": [
+                "constants"
+            ],
+            "@fonts": [
+                "assets/fonts"
+            ],
+            "@helpers": [
+                "helpers"
+            ],
+            "@hocs": [
+                "hocs"
+            ],
+            "@images": [
+                "assets/images"
+            ],
+            "@reducers": [
+                "reducers"
+            ],
+            "@router": [
+                "router"
+            ],
+            "@screens": [
+                "screens"
+            ],
+            "@services": [
+                "services"
+            ],
+            "@static": [
+                "static"
+            ],
+            "@stores": [
+                "stores"
+            ],
+            "@types": [
+                "types"
+            ],
+            "@utils": [
+                "utils"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
