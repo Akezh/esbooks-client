@@ -17,6 +17,12 @@
       "pre-push": "yarn lint"
     }
   },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/Roboto",
+      "./src/assets/fonts/ShowcardGothic"
+    ]
+  },
   "dependencies": {
     "camelcase-keys-deep": "^0.1.0",
     "decamelize-keys-deep": "^0.1.1",
