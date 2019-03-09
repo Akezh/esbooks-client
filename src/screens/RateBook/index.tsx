@@ -1,10 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import {
-  withKeyboardAvoidingView,
-  withSafeAreaView,
-  withScrollView,
-} from '@hocs';
 import { RateBookContainer } from './containers';
 
 interface IProps {
@@ -32,4 +27,4 @@ const RateBook: FunctionComponent<IProps> = (props): JSX.Element => {
   );
 };
 
-export default withSafeAreaView(withKeyboardAvoidingView(withScrollView(RateBook, 'handled')), 'white');
+export default RateBook;
