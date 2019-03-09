@@ -6,7 +6,7 @@ import {
   IMainBookCardListItem,
 } from '@types';
 import BookList from '../BookList';
-import { BotsCardListItemStyles as styles } from '../../styles';
+import { BookCardListItemStyles as styles } from '../../styles';
 
 interface IProps {
   onBookDetails: (item: IIncompliteBook) => void;

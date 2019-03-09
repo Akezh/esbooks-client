@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 import { IIncompliteBook, IMainBookList } from '@types';
 import BookListItem from './BookListItem';
-import { BotListStyles as styles } from '../../styles';
+import { BookListStyles as styles } from '../../styles';
 
-const BotList: FunctionComponent<IMainBookList> = (props): JSX.Element => {
+const BookList: FunctionComponent<IMainBookList> = (props): JSX.Element => {
   const { data, onBookDetails } = props;
 
   return (
@@ -13,7 +13,7 @@ const BotList: FunctionComponent<IMainBookList> = (props): JSX.Element => {
       data={data}
       horizontal={true}
       keyExtractor={keyExtractor}
-      renderItem={({ item }: { item: IIncompliteBook }) => renderBotListItem(item, onBookDetails)}
+      renderItem={({ item }: { item: IIncompliteBook }) => renderBookListItem(item, onBookDetails)}
       showsHorizontalScrollIndicator={false}
     />
   );
@@ -21,7 +21,7 @@ const BotList: FunctionComponent<IMainBookList> = (props): JSX.Element => {
 
 const keyExtractor = (_item: IIncompliteBook, index: number): string => index.toString();
 
-const renderBotListItem = (item: IIncompliteBook, onBookDetails: (item: IIncompliteBook) => void): JSX.Element => {
+const renderBookListItem = (item: IIncompliteBook, onBookDetails: (item: IIncompliteBook) => void): JSX.Element => {
   return (
     <BookListItem
       item={item}
@@ -30,4 +30,4 @@ const renderBotListItem = (item: IIncompliteBook, onBookDetails: (item: IIncompl
   );
 };
 
-export default BotList;
+export default BookList;

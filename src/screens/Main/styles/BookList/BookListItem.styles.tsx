@@ -18,6 +18,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  image: {
+    height: 180,
+    width: 120,
+  },
   bookInfoSection: {
     flex: 1,
     padding: 8,
