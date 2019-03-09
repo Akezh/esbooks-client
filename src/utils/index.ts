@@ -1,3 +1,13 @@
-import { formatAuthors } from './formatters';
+import {
+  formatAuthors,
+  formatNumberOfVoters,
+  getBotImage,
+  getNumberOfVoters,
+} from './formatters';
 
-export { formatAuthors };
+export {
+  formatAuthors,
+  formatNumberOfVoters,
+  getBotImage,
+  getNumberOfVoters,
+};

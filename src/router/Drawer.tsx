@@ -1,13 +1,13 @@
 import { createDrawerNavigator } from 'react-navigation';
-import { Main } from '@screens';
+import MainStack from './MainStack';
 
 const Drawer = createDrawerNavigator(
   {
-    Main: {
-      screen: Main,
+    MainStack: {
+      screen: MainStack,
     },
   }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'MainStack',
   },
 );
 
