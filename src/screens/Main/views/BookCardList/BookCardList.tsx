@@ -6,7 +6,7 @@ import {
   IMainBookCardListItem,
 } from '@types';
 import BookCardListItem from './BookCardListItem';
-import { BotsCardListStyles as styles } from '../../styles';
+import { BookCardListStyles as styles } from '../../styles';
 
 const BookCardList:
   FunctionComponent<IMainBookCardList> = (props): JSX.Element => {

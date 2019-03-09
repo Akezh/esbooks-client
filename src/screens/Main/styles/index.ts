@@ -1,21 +1,23 @@
 import {
-  BotListItemStyles,
-  BotListStyles,
-} from './BotList';
+  BookListItemStyles,
+  BookListStyles,
+} from './BookList';
 
 import {
-  BotsCardListItemStyles,
-  BotsCardListStyles,
-} from './BotsCardList';
+  BookCardListItemStyles,
+  BookCardListStyles,
+} from './BookCardList';
 
+import { styles as MainContainerStyles } from './MainContainer.styles';
 import { styles as MainViewStyles } from './MainView.styles';
 import { styles as SearchbarStyles } from './Searchbar.styles';
 
 export {
-  BotListItemStyles,
-  BotListStyles,
-  BotsCardListItemStyles,
-  BotsCardListStyles,
+  BookCardListItemStyles,
+  BookCardListStyles,
+  BookListItemStyles,
+  BookListStyles,
+  MainContainerStyles,
   MainViewStyles,
   SearchbarStyles,
 };

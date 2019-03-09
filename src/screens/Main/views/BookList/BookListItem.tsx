@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { IMainBookListItem } from '@types';
-import { formatAuthors } from '@utils';
-import { BotListItemStyles as styles } from '../../styles';
+import { formatAuthors, getBotImage } from '@utils';
+import { BookListItemStyles as styles } from '../../styles';
 
-const BotListItem:
+const BookListItem:
   FunctionComponent<IMainBookListItem> = (props): JSX.Element => {
     const { item, onBookDetails } = props;
     const { authors, image, owner, title } = item;
@@ -14,11 +14,11 @@ const BotListItem:
     return (
       <TouchableRipple
         onPress={() => onBookDetails(item)}
-        rippleColor='rgba(0, 0, 0, .14)'
+        rippleColor='#0088cc'
         style={styles.wrapper}
       >
         <View style={styles.container}>
-          <Image source={image} />
+          <Image source={getBotImage(image)} style={styles.image} />
           <View style={styles.bookInfoSection}>
             <View style={styles.titleWrapper}>
               <Text
@@ -59,4 +59,4 @@ const BotListItem:
     );
   };
 
-export default BotListItem;
+export default BookListItem;
