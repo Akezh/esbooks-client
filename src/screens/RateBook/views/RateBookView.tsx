@@ -2,6 +2,10 @@ import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 import { THEME } from '@constants';
+import {
+  withKeyboardAvoidingView,
+  withScrollView,
+} from '@hocs';
 import { RateBookViewStyles as styles } from '../styles';
 
 interface IProps {
@@ -33,4 +37,4 @@ const RateBookView: FunctionComponent<IProps> = (props): JSX.Element => {
 
 
 
-export default RateBookView;
+export default withKeyboardAvoidingView(withScrollView(RateBookView, 'handled'));
