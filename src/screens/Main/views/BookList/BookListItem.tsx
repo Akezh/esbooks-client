@@ -1,9 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
+import { THEME } from '@constants';
 import { IMainBookListItem } from '@types';
 import { formatAuthors, getBotImage } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
+
+const { colors } = THEME;
+const { primary } = colors;
 
 const BookListItem:
   FunctionComponent<IMainBookListItem> = (props): JSX.Element => {
@@ -14,7 +18,7 @@ const BookListItem:
     return (
       <TouchableRipple
         onPress={() => onBookDetails(item)}
-        rippleColor='#0088cc'
+        rippleColor={primary}
         style={styles.wrapper}
       >
         <View style={styles.container}>

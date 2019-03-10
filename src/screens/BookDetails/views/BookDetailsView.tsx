@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
 import { Divider, TagList } from '@components';
-import { COMPLITE_BOOK_DATA } from '@constants';
+import { COMPLITE_BOOK_DATA, THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import { ICompliteBook, IIncompliteBook, IRateBookData } from '@types';
 import BookDescriptionBlock from './BookDescriptionBlock';
@@ -18,6 +18,9 @@ interface IProps {
 interface IState {
   myRating: number;
 }
+
+const { colors } = THEME;
+const { primary } = colors;
 
 let DATA: ICompliteBook;
 
@@ -109,7 +112,7 @@ class BookDetailsView extends Component<IProps, IState> {
 
         <BookRatingAndTopReviewsBlock data={{ rating: rating[0] }} />
         <StatusBar
-          backgroundColor='#0088CC'
+          backgroundColor={primary}
           barStyle='light-content'
         />
       </View>
