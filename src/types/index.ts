@@ -18,6 +18,14 @@ import {
   IRateBookData,
 } from './BookDetails';
 
+import {
+  IGoogleSignInError,
+  IGoogleSignInResult,
+  IErrorSignInResponse,
+  ISuccessSignInResponse,
+  IUserInfo, 
+} from './SignIn';
+
 export {
   IBookRatingAndReviews,
   ICompliteBook,
@@ -30,4 +38,9 @@ export {
   IMainBookListItem,
   IOwner,
   IRateBookData,
+  IGoogleSignInError,
+  IGoogleSignInResult,
+  IErrorSignInResponse,
+  ISuccessSignInResponse,
+  IUserInfo, 
 };
