@@ -22,8 +22,11 @@ interface IErrorSignInResponse {
   errorMessage: string;
 }
 
+type IPermissions = string[];
+
 export { 
   IErrorSignInResponse,
+  IPermissions,
   ISuccessSignInResponse,
   IUserInfo,
 };

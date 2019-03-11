@@ -19,9 +19,13 @@ import {
 } from './BookDetails';
 
 import {
+  IFBSignInError,
+  IFBSignInResult,
+  IFBGraphRequestCallback,
   IGoogleSignInError,
   IGoogleSignInResult,
   IErrorSignInResponse,
+  IPermissions,
   ISuccessSignInResponse,
   IUserInfo, 
 } from './SignIn';
@@ -38,9 +42,13 @@ export {
   IMainBookListItem,
   IOwner,
   IRateBookData,
+  IFBSignInError,
+  IFBSignInResult,
+  IFBGraphRequestCallback,
   IGoogleSignInError,
   IGoogleSignInResult,
   IErrorSignInResponse,
+  IPermissions,
   ISuccessSignInResponse,
   IUserInfo, 
 };
