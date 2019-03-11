@@ -15,6 +15,8 @@ target 'ESBooks' do
     # Pods for testing
     pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
+    pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+
   end
 
   target 'ESBooksTests' do

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleSignin, statusCodes  } from 'react-native-google-signin';
 import { GOOGLE_WEB_CLIENT_ID, PROVIDER } from '@constants';
-import { IGoogleSignInError, IGoogleSignInResult, IUserInfo } from '@types';
+import { IFBSignInError, IFBSignInResult, IGoogleSignInError, IGoogleSignInResult, IUserInfo } from '@types';
 import { mapStateToProps, mapActionsToProps } from './SignInContainerMaps';
 import SignInView from '../views';
 
@@ -31,8 +31,10 @@ class SignInContainer extends Component<IProps>  {
   render() {
     return <SignInView
       googleSignIn={this.googleSignIn}
+      fbSignIn={this.fbSignIn}
     />;
   }
+ 
   private googleSignIn = async (error: IGoogleSignInError, result: IGoogleSignInResult) => {
     const provider = PROVIDER.Google;
     if (error) {
@@ -68,6 +70,29 @@ class SignInContainer extends Component<IProps>  {
       case IN_PROGRESS: return 'Operation (f.e. sign in) is in progress already';
       case PLAY_SERVICES_NOT_AVAILABLE: return 'Play services not available or outdated';
       default: return 'Some other error happened - ' + code;
+    }
+  }
+
+  private fbSignIn = async (error: IFBSignInError, result: IFBSignInResult) => {
+    const provider = PROVIDER.Facebook;
+    if (error) {
+      // TODO: process error
+      alert('Facebook sign in - failure');
+    } else {
+      const { id, email, name, picture } = result;
+      const { url } = picture.data;
+
+      const userInfo = {
+        email,
+        fullName: name,
+        avatar: url,
+        providerData: {
+          provider,
+          uid: id,
+        },
+      };
+
+      await this.signIn(userInfo);
     }
   }
 

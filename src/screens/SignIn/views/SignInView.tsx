@@ -1,44 +1,30 @@
-import React, { FunctionComponent } from 'react';
-import { Image, Text, View, StatusBar } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
+import React, { FunctionComponent, Fragment } from 'react';
+import { Image, Text, StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { LOGOS, SOCIAL_MEDIA_ICONS } from '@static';
+import { LOGOS } from '@static';
 import { styles } from './SignInView.styles';
-import { IGoogleSignInError, IGoogleSignInResult } from '@types';
-import { GoogleSignInButton } from './SignInButtons';
+import { IFBSignInError, IFBSignInResult, IGoogleSignInError, IGoogleSignInResult } from '@types';
+import { GoogleSignInButton, FBSignInButton } from './SignInButtons';
 
 const { logo } = LOGOS;
-const { facebook } = SOCIAL_MEDIA_ICONS;
 
 interface IProps {
   googleSignIn: (error: IGoogleSignInError, user: IGoogleSignInResult) => void;
+  fbSignIn: (error: IFBSignInError, result: IFBSignInResult) => void;
 }
 
 const SignInView: FunctionComponent<IProps> = (props): JSX.Element => {
   const {
     googleSignIn,
+    fbSignIn,
   } = props;
 
   const renderSignInButtons = () => {
     return (
-      <View style={styles.wrapperSocialMediaIcons} >
+      <Fragment>
         <GoogleSignInButton onLoginFinished={googleSignIn}/>
-
-        <TouchableRipple
-          rippleColor='rgba(0, 0, 0, .14)'
-          style={[styles.btnWrapper, styles.facebookBtn]}
-        >
-          <View style={styles.btn}>
-            <Image
-              source={facebook}
-              style={styles.btnIcon}
-            />
-            <Text style={[styles.btnText, styles.facebookBtnText]}>
-              Login with Google
-            </Text>
-          </View>
-        </TouchableRipple>
-      </View>
+        <FBSignInButton onLoginFinished={fbSignIn} />
+      </Fragment>
     );
   };
   
