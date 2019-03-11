@@ -1,12 +1,12 @@
 import BookDetails from './BookDetails';
-import Main from './Main';
+import Home from './Home';
 import MyBooks from './MyBooks';
 import RateBook from './RateBook';
 import SignIn from './SignIn';
 
 export {
   BookDetails,
-  Main,
+  Home,
   MyBooks,
   RateBook,
   SignIn,

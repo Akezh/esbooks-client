@@ -7,7 +7,7 @@ import { mapStateToProps, mapActionsToProps } from './SignInContainerMaps';
 import SignInView from '../views';
 
 interface IProps {
-  onMain: () => void;
+  onHome: () => void;
   signIn: (token: any) => void;
   isLogged: boolean;
 }
@@ -97,11 +97,11 @@ class SignInContainer extends Component<IProps>  {
   }
 
   private signIn = async (userInfo: IUserInfo) => {
-    const { signIn, onMain } = this.props;
+    const { signIn, onHome } = this.props;
     await signIn(userInfo);
     
     if (this.props.isLogged) {
-      onMain();
+      onHome();
     }
   }
 }

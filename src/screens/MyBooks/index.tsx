@@ -11,7 +11,7 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigate } = navigation;
 
   const onGoBack = () => {
-    navigate('Main');
+    navigate('Home');
   };
 
   return <MyBooksContainer onGoBack={onGoBack} />;

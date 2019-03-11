@@ -9,13 +9,13 @@ import {
   View,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
-import { Underlayer } from '@components';
 import { connect } from 'react-redux';
+import { Underlayer } from '@components';
 import { IIncompliteBook } from '@types';
-import { mapActionsToProps, mapStateToProps } from './MainContainerMaps';
-import MainView from '../views';
+import { mapActionsToProps, mapStateToProps } from './HomeContainerMaps';
+import HomeView from '../views';
 import {
-  MainContainerStyles as styles,
+  HomeContainerStyles as styles,
   SearchbarStyles,
 } from '../styles';
 
@@ -32,7 +32,7 @@ interface IState {
   text: string;
 }
 
-class MainContainer extends React.Component<IProps, IState> {
+class HomeContainer extends React.Component<IProps, IState> {
   public keyboardDidHideListener: any;
   public textInput: any;
 
@@ -64,7 +64,7 @@ class MainContainer extends React.Component<IProps, IState> {
           {this.Searchbar()}
         </View>
 
-        <MainView onBookDetails={onBookDetails} />
+        <HomeView onBookDetails={onBookDetails} />
 
         {isUnderlayerActive &&
           <Underlayer
@@ -210,4 +210,4 @@ class MainContainer extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(MainContainer);
+export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);

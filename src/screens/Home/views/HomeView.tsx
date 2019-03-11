@@ -4,7 +4,7 @@ import { CARD_DATA, THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import { IIncompliteBook } from '@types';
 import BookCardList from './BookCardList';
-import { MainViewStyles as styles } from '../styles';
+import { HomeViewStyles as styles } from '../styles';
 
 interface IProps {
   onBookDetails: (item: IIncompliteBook) => void;
@@ -13,7 +13,7 @@ interface IProps {
 const { colors } = THEME;
 const { primary } = colors;
 
-const MainView: FunctionComponent<IProps> = (props) => {
+const HomeView: FunctionComponent<IProps> = (props) => {
   const {
     onBookDetails,
   } = props;
@@ -33,4 +33,4 @@ const MainView: FunctionComponent<IProps> = (props) => {
   );
 };
 
-export default withScrollView(MainView);
+export default withScrollView(HomeView);

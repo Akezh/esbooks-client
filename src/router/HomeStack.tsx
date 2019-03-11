@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation';
-import { BookDetails, Main, RateBook } from '@screens';
+import { BookDetails, Home, RateBook } from '@screens';
 import { withSafeAreaView } from '@hocs';
 
-const MainStack = createStackNavigator(
+const HomeStack = createStackNavigator(
   {
-    Main: {
-      screen: withSafeAreaView((Main), 'white'),
+    Home: {
+      screen: withSafeAreaView((Home), 'white'),
     },
     BookDetails: {
       screen: withSafeAreaView((BookDetails), 'white'),
@@ -14,11 +14,11 @@ const MainStack = createStackNavigator(
       screen: withSafeAreaView((RateBook), 'white'),
     },
   }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Home',
     navigationOptions: {
       header: null,
     },
   },
 );
 
-export default MainStack;
+export default HomeStack;

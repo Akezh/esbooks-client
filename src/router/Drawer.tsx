@@ -1,17 +1,33 @@
+import { View } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
-import MainStack from './MainStack';
+import CustomDrawer from './CustomDrawer';
+import HomeStack from './HomeStack';
 import MyBooksStack from './MyBooksStack';
+
 
 const Drawer = createDrawerNavigator(
   {
-    MainStack: {
-      screen: MainStack,
+    HomeStack: {
+      screen: HomeStack,
+      navigationOptions: () => ({
+        drawerLabel: 'Home',
+      }),
     },
     MyBooksStack: {
       screen: MyBooksStack,
+      navigationOptions: () => ({
+        drawerLabel: 'My books',
+      }),
+    },
+    SignOut: {
+      screen: () => View,
+      navigationOptions: () => ({
+        drawerLabel: 'Sign out',
+      }),
     },
   }, {
-    initialRouteName: 'MainStack',
+    initialRouteName: 'HomeStack',
+    contentComponent: CustomDrawer,
   },
 );
 

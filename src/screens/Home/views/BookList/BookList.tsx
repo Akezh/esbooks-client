@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
-import { IIncompliteBook, IMainBookList } from '@types';
+import { IIncompliteBook, IHomeBookList } from '@types';
 import BookListItem from './BookListItem';
 import { BookListStyles as styles } from '../../styles';
 
-const BookList: FunctionComponent<IMainBookList> = (props): JSX.Element => {
+const BookList: FunctionComponent<IHomeBookList> = (props): JSX.Element => {
   const { data, onBookDetails } = props;
 
   return (

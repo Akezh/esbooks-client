@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 import {
   IIncompliteBook,
-  IMainBookCardListItem,
+  IHomeBookCardListItem,
 } from '@types';
 import BookList from '../BookList';
 import { BookCardListItemStyles as styles } from '../../styles';
@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const BookCardListItem:
-  FunctionComponent<IMainBookCardListItem & IProps> = (props): JSX.Element => {
+  FunctionComponent<IHomeBookCardListItem & IProps> = (props): JSX.Element => {
     const {
       books,
       onBookDetails,

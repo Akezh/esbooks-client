@@ -13,11 +13,11 @@ interface IProps {
 const SignIn: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
 
-  const onMain = () => {
-    navigation.navigate('Main');
+  const onHome = () => {
+    navigation.navigate('Home');
   };
 
-  return <SignInContainer onMain={onMain}/>;
+  return <SignInContainer onHome={onHome}/>;
 };
 
 export default withScrollView(SignIn);
