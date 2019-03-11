@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "150961068274",
+    "firebase_url": "https://esbooks.firebaseio.com",
+    "project_id": "esbooks",
+    "storage_bucket": "esbooks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150961068274:android:b570861761d0ba51",
+        "android_client_info": {
+          "package_name": "com.esbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150961068274-tf7ohj4or9jg7hoojti8vtihtp4vvgpa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esbooks",
+            "certificate_hash": "c5fa68e1e45a65c7b8bdd1a6f91c8cfb50d2493f"
+          }
+        },
+        {
+          "client_id": "150961068274-7hakd0kqnt6ak6drlurgkj8t2m98osrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esbooks",
+            "certificate_hash": "eb373d722f0de746610ab62afa9f2e9f28588a0f"
+          }
+        },
+        {
+          "client_id": "150961068274-092fpdc3tcf2hg5dtktrlg0n9rlo49od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRC63AQXB_NS1CEpYpm02l21kbE6DotLA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150961068274-092fpdc3tcf2hg5dtktrlg0n9rlo49od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

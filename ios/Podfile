@@ -13,6 +13,8 @@ target 'ESBooks' do
   target 'ESBooks-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   end
 
   target 'ESBooksTests' do

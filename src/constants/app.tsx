@@ -474,8 +474,15 @@ const CARD_DATA = [
   },
 ];
 
+const PROVIDER = {
+  Facebook: 'facebook',
+  Google: 'google',
+  Vkontakte: 'vkontakte',
+};
+
 export {
   CARD_DATA,
   COMPLITE_BOOK_DATA,
   TEST_BOOK_IMAGE,
+  PROVIDER,
 };

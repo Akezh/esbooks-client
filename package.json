@@ -30,6 +30,7 @@
     "moment": "^2.24.0",
     "react": "16.8.4",
     "react-native": "^0.58.6",
+    "react-native-google-signin": "^1.2.1",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-material-menu": "^0.4.2",
     "react-native-paper": "^2.12.0",
