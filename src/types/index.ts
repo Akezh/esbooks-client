@@ -7,11 +7,11 @@ import {
 } from './Book';
 
 import {
-  IMainBookCardList,
-  IMainBookCardListItem,
-  IMainBookList,
-  IMainBookListItem,
-} from './Main';
+  IHomeBookCardList,
+  IHomeBookCardListItem,
+  IHomeBookList,
+  IHomeBookListItem,
+} from './Home';
 
 import {
   IBookRatingAndReviews,
@@ -36,10 +36,10 @@ export {
   ICompliteBookRating,
   ICompliteBookRatingComponents,
   IIncompliteBook,
-  IMainBookCardList,
-  IMainBookCardListItem,
-  IMainBookList,
-  IMainBookListItem,
+  IHomeBookCardList,
+  IHomeBookCardListItem,
+  IHomeBookList,
+  IHomeBookListItem,
   IOwner,
   IRateBookData,
   IFBSignInError,

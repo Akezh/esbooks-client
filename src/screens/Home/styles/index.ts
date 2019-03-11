@@ -8,8 +8,8 @@ import {
   BookCardListStyles,
 } from './BookCardList';
 
-import { styles as MainContainerStyles } from './MainContainer.styles';
-import { styles as MainViewStyles } from './MainView.styles';
+import { styles as HomeContainerStyles } from './HomeContainer.styles';
+import { styles as HomeViewStyles } from './HomeView.styles';
 import { styles as SearchbarStyles } from './Searchbar.styles';
 
 export {
@@ -17,7 +17,7 @@ export {
   BookCardListStyles,
   BookListItemStyles,
   BookListStyles,
-  MainContainerStyles,
-  MainViewStyles,
+  HomeContainerStyles,
+  HomeViewStyles,
   SearchbarStyles,
 };

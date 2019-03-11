@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { THEME } from '@constants';
-import { IMainBookListItem } from '@types';
+import { IHomeBookListItem } from '@types';
 import { formatAuthors, getBotImage } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
 
@@ -10,7 +10,7 @@ const { colors } = THEME;
 const { primary } = colors;
 
 const BookListItem:
-  FunctionComponent<IMainBookListItem> = (props): JSX.Element => {
+  FunctionComponent<IHomeBookListItem> = (props): JSX.Element => {
     const { item, onBookDetails } = props;
     const { authors, image, owner, title } = item;
     const { fullname, photo } = owner;

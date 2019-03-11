@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 import {
   IIncompliteBook,
-  IMainBookCardList,
-  IMainBookCardListItem,
+  IHomeBookCardList,
+  IHomeBookCardListItem,
 } from '@types';
 import BookCardListItem from './BookCardListItem';
 import { BookCardListStyles as styles } from '../../styles';
 
 const BookCardList:
-  FunctionComponent<IMainBookCardList> = (props): JSX.Element => {
+  FunctionComponent<IHomeBookCardList> = (props): JSX.Element => {
     const { data, onBookDetails } = props;
 
     return (
@@ -17,14 +17,14 @@ const BookCardList:
         contentContainerStyle={styles.container}
         data={data}
         keyExtractor={keyExtractor}
-        renderItem={({ item }: { item: IMainBookCardListItem }) => renderBookCardListItem(item, onBookDetails)}
+        renderItem={({ item }: { item: IHomeBookCardListItem }) => renderBookCardListItem(item, onBookDetails)}
       />
     );
   };
 
-const keyExtractor = (_item: IMainBookCardListItem, index: number): string => index.toString();
+const keyExtractor = (_item: IHomeBookCardListItem, index: number): string => index.toString();
 
-const renderBookCardListItem = (item: IMainBookCardListItem, onBookDetails: (item: IIncompliteBook) => void): JSX.Element => {
+const renderBookCardListItem = (item: IHomeBookCardListItem, onBookDetails: (item: IIncompliteBook) => void): JSX.Element => {
   const { books, title } = item;
 
   return (

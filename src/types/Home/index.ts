@@ -1,16 +1,16 @@
 import { IIncompliteBook } from '@types';
 
-interface IMainBookList {
+interface IHomeBookList {
   data: IIncompliteBook[];
   onBookDetails: (item: IIncompliteBook) => void;
 }
 
-interface IMainBookListItem {
+interface IHomeBookListItem {
   item: IIncompliteBook;
   onBookDetails: (item: IIncompliteBook) => void;
 }
 
-interface IMainBookCardList {
+interface IHomeBookCardList {
   data: Array<{
     title: string,
     books: IIncompliteBook[],
@@ -18,14 +18,14 @@ interface IMainBookCardList {
   onBookDetails: (item: IIncompliteBook) => void;
 }
 
-interface IMainBookCardListItem {
+interface IHomeBookCardListItem {
   title: string;
   books: IIncompliteBook[];
 }
 
 export {
-  IMainBookCardList,
-  IMainBookCardListItem,
-  IMainBookList,
-  IMainBookListItem,
+  IHomeBookCardList,
+  IHomeBookCardListItem,
+  IHomeBookList,
+  IHomeBookListItem,
 };

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { withSafeAreaView } from '@hocs';
 import { IIncompliteBook } from '@types';
-import MainContainer from './containers';
+import HomeContainer from './containers';
 
-const Main: FunctionComponent<any> = (props): JSX.Element => {
+const Home: FunctionComponent<any> = (props): JSX.Element => {
   const { navigation } = props;
   const { navigate } = navigation;
 
@@ -16,8 +16,8 @@ const Main: FunctionComponent<any> = (props): JSX.Element => {
   };
 
   return (
-    <MainContainer {...props} openDrawer={openDrawer} onBookDetails={onBookDetails} />
+    <HomeContainer {...props} openDrawer={openDrawer} onBookDetails={onBookDetails} />
   );
 };
 
-export default withSafeAreaView(Main);
+export default withSafeAreaView(Home);
