@@ -16,8 +16,8 @@ interface ICompleteBook {
   owner: IOwner;
   published: Date | string;
   publisher: string;
-  reader: IReader;
   rating: ICompleteBookRating[];
+  reader: IReader;
   subtitle: string;
   title: string;
   updated: Date | string;
@@ -58,11 +58,11 @@ interface ICompleteBookRatingComponents {
 }
 
 export {
-  IMyBook,
   ICompleteBook,
   ICompleteBookRating,
   ICompleteBookRatingComponents,
   IIncompleteBook,
+  IMyBook,
   IOwner,
   IReader,
 };
