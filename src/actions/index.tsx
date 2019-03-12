@@ -1,3 +1,6 @@
+import { signIn } from './signIn';
+import { signOut } from './signOut';
+
 import {
   hideUnderlayer,
   showUnderlayer,
@@ -14,6 +17,10 @@ import {
   BOOK_DATA_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
+  SIGN_IN_REQUEST,
+  SIGN_IN_FAILURE,
+  SIGN_IN_SUCCESS,
+  SIGN_OUT,
 } from './types';
 
 export {
@@ -26,4 +33,10 @@ export {
   getBookData,
   hideUnderlayer,
   showUnderlayer,
+  SIGN_IN_REQUEST,
+  SIGN_IN_FAILURE,
+  SIGN_IN_SUCCESS,
+  SIGN_OUT,
+  signIn,
+  signOut,
 };

@@ -6,6 +6,11 @@ const { text } = colors;
 const { logo, regular } = fonts;
 
 const styles = StyleSheet.create({
+  wrapperSocialMediaIcons: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 12,
+  },
   linearGradient: {
     alignItems: 'center',
     flex: 1,

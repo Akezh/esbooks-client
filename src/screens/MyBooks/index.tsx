@@ -10,8 +10,8 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  const onGoBack = (): void => {
-    navigate('Main');
+  const onGoBack = () => {
+    navigate('Home');
   };
 
   const onAddMyBook = (): void => {
