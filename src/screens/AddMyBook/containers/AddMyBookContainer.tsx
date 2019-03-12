@@ -407,7 +407,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
           mime: image.mime,
         },
       });
-    });
+    }).catch();
   }
 
   private openPicker = (): void => {
@@ -428,7 +428,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
           mime: image.mime,
         },
       });
-    });
+    }).catch();
   }
 
   private removeAuthor = (id: number): void => {

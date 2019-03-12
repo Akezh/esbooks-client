@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   ImageSourcePropType,
   KeyboardTypeOptions,
@@ -29,7 +29,7 @@ interface IProps {
   value?: string;
 }
 
-const CustomTextInput: SFC<IProps> = (props): JSX.Element => {
+const CustomTextInput: FunctionComponent<IProps> = (props): JSX.Element => {
   return <CustomTextInputContainer {...props} customTextInputStyle={props.style} />;
 };
 

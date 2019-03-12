@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   Animated,
   Image,
@@ -53,7 +53,7 @@ interface IError {
   message?: string;
 }
 
-const CustomTextInputView: SFC<IProps> = (props): JSX.Element => {
+const CustomTextInputView: FunctionComponent<IProps> = (props): JSX.Element => {
   const {
     customTextInputStyle,
     error,
