@@ -1,18 +1,18 @@
 import React, { FunctionComponent } from 'react';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { IIncompliteBook, IRateBookData } from '@types';
+import { IIncompleteBook, IRateBookData } from '@types';
 import BookDetailsView from '../views';
 import { BookDetailsContainerStyles as styles } from '../styles';
 
 interface IProps {
-  incompliteData: IIncompliteBook;
+  incompleteData: IIncompleteBook;
   onGoBack: () => void;
   onRateBook: (item: IRateBookData, value?: number) => void;
 }
 
 const BookDetailsContainer: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { incompliteData, onGoBack, onRateBook } = props;
+  const { incompleteData, onGoBack, onRateBook } = props;
 
   return (
     <React.Fragment>
@@ -24,11 +24,11 @@ const BookDetailsContainer: FunctionComponent<IProps> = (props): JSX.Element => 
           size={24}
           style={styles.arrow_back}
         />
-        <Text style={styles.title}>Employes Share Books</Text>
+        <Text style={styles.title}>Employees Share Books</Text>
       </View>
 
       <BookDetailsView
-        incompliteData={incompliteData}
+        incompleteData={incompleteData}
         onRateBook={onRateBook}
       />
     </React.Fragment>

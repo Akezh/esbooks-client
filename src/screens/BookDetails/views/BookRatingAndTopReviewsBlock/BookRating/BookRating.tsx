@@ -3,13 +3,13 @@ import { Text, View } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import { THEME } from '@constants';
 import { OTHER } from '@static';
-import { ICompliteBookRating } from '@types';
+import { ICompleteBookRating } from '@types';
 import { formatNumberOfVoters } from '@utils';
 import BookRatingChart from './BookRatingChart';
 import { BookRatingStyles as styles } from '../../../styles';
 
 interface IProps {
-  rating: ICompliteBookRating;
+  rating: ICompleteBookRating;
 }
 
 const { colors } = THEME;

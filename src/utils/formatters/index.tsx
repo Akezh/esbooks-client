@@ -1,6 +1,6 @@
 import { TEST_BOOK_IMAGE } from '@constants';
 import { PLACEHOLDERS } from '@static';
-import { ICompliteBookRatingComponents } from '@types';
+import { ICompleteBookRatingComponents } from '@types';
 
 const { book } = PLACEHOLDERS;
 
@@ -17,7 +17,7 @@ const formatAuthors = (authors: string[]): string => {
   return result;
 };
 
-const formatNumberOfVoters = (ratingComponents: ICompliteBookRatingComponents[]): string => {
+const formatNumberOfVoters = (ratingComponents: ICompleteBookRatingComponents[]): string => {
   const numberOfVoters = getNumberOfVoters(ratingComponents).toString();
   const numberOfVotersLength = numberOfVoters.length;
 
@@ -35,7 +35,7 @@ const formatNumberOfVoters = (ratingComponents: ICompliteBookRatingComponents[])
   return formattedNumberOfVoters;
 };
 
-const getNumberOfVoters = (ratingComponents: ICompliteBookRatingComponents[]): number => {
+const getNumberOfVoters = (ratingComponents: ICompleteBookRatingComponents[]): number => {
   return ratingComponents[0].quantity
     + ratingComponents[1].quantity
     + ratingComponents[2].quantity

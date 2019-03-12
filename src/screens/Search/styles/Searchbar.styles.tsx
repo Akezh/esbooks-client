@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { THEME } from '@constants';
 
-const { colors, fonts } = THEME;
-const { inactively, primary } = colors;
-const { regular } = fonts;
+const { colors } = THEME;
+const { inactively } = colors;
 
 const styles = StyleSheet.create({
   container: {
@@ -25,23 +24,6 @@ const styles = StyleSheet.create({
   menu: {
     height: 22,
     width: 22,
-  },
-  placeholderWrapper: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    left: 72,
-    position: 'absolute',
-    top: 19,
-    zIndex: 3,
-  },
-  placeholder: {
-    color: inactively,
-    fontFamily: regular,
-    fontSize: 18,
-    zIndex: 3,
-  },
-  placeholderSpecPart: {
-    color: primary,
   },
   textInput: {
     backgroundColor: 'white',

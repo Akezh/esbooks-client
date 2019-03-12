@@ -12,7 +12,7 @@ const TagList: FunctionComponent<IProps> = (props): JSX.Element => {
 
   return (
     <FlatList
-      contentContainerStyle={styles.contentContaier}
+      contentContainerStyle={styles.contentContainer}
       data={data}
       horizontal={true}
       keyExtractor={keyExtractor}

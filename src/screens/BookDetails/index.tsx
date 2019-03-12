@@ -23,7 +23,7 @@ const BookDetails: FunctionComponent<IProps> = (props): JSX.Element => {
 
   return (
     <BookDetailsContainer
-      incompliteData={data}
+      incompleteData={data}
       onGoBack={onGoBack}
       onRateBook={onRateBook}
     />
