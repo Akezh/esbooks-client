@@ -7,6 +7,14 @@ import {
 } from './underlayerAction';
 
 import {
+  cleanError,
+  getBookData,
+} from './bookData';
+
+import {
+  BOOK_DATA_FAILURE,
+  BOOK_DATA_REQUEST,
+  BOOK_DATA_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
   SIGN_IN_REQUEST,
@@ -16,10 +24,15 @@ import {
 } from './types';
 
 export {
-  hideUnderlayer,
-  showUnderlayer,
+  BOOK_DATA_FAILURE,
+  BOOK_DATA_REQUEST,
+  BOOK_DATA_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
+  cleanError,
+  getBookData,
+  hideUnderlayer,
+  showUnderlayer,
   SIGN_IN_REQUEST,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,

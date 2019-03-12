@@ -3,6 +3,8 @@ package com.esbooks;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.reactnative.camera.RNCameraPackage;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -36,8 +38,16 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(new MainReactPackage(), new FBSDKPackage(mCallbackManager), new RNGoogleSigninPackage(),
-          new LottiePackage(), new LinearGradientPackage(), new VectorIconsPackage());
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+          new FBSDKPackage(mCallbackManager),
+          new RNGoogleSigninPackage(),
+            new RNCameraPackage(),
+            new PickerPackage(),
+            new LinearGradientPackage(),
+            new VectorIconsPackage(),
+            new LottiePackage()
+      );
     }
 
     @Override
