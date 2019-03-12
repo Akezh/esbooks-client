@@ -5,33 +5,37 @@ import MyBooksView from '../views';
 import { MyBooksContainerStyles as styles } from '../styles';
 
 interface IProps {
+  onAddMyBook: () => void;
   onGoBack: () => void;
 }
 
 const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { onGoBack } = props;
+  const { onAddMyBook, onGoBack } = props;
 
-  return <React.Fragment>
-    <View style={styles.headerContainer}>
-      <View style={styles.headerLeftPart}>
+  return (
+    <React.Fragment>
+      <View style={styles.headerContainer}>
+        <View style={styles.headerLeftPart}>
+          <Icon
+            color='#FFF'
+            name='arrow-left'
+            onPress={onGoBack}
+            size={24}
+            style={styles.icon}
+          />
+          <Text style={styles.title}>My books</Text>
+        </View>
         <Icon
           color='#FFF'
-          name='arrow-left'
-          onPress={onGoBack}
+          name='plus'
           size={24}
+          onPress={onAddMyBook}
           style={styles.icon}
         />
-        <Text style={styles.title}>My books</Text>
       </View>
-      <Icon
-        color='#FFF'
-        name='plus'
-        size={24}
-        style={styles.icon}
-      />
-    </View>
-    <MyBooksView />
-  </React.Fragment>;
+      <MyBooksView />
+    </React.Fragment>
+  );
 };
 
 export default MyBooksContainer;

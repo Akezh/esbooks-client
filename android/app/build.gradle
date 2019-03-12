@@ -103,6 +103,11 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+    }
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
     }
     splits {
         abi {
@@ -139,6 +144,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-camera')
+    implementation project(':react-native-image-crop-picker')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-vector-icons')
     implementation project(':lottie-react-native')

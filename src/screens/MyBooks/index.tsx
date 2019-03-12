@@ -10,11 +10,18 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
   const { navigate } = navigation;
 
-  const onGoBack = () => {
+  const onGoBack = (): void => {
     navigate('Main');
   };
 
-  return <MyBooksContainer onGoBack={onGoBack} />;
+  const onAddMyBook = (): void => {
+    navigate('AddMyBook');
+  };
+
+  return <MyBooksContainer
+    onAddMyBook={onAddMyBook}
+    onGoBack={onGoBack}
+  />;
 };
 
 export default MyBooks;
