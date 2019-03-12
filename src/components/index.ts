@@ -5,6 +5,7 @@ import Divider from './Divider';
 import RemovableList from './RemovableList';
 import TagList from './TagList';
 import Underlayer from './Underlayer';
+import { SignInButton } from './SignInButton';
 
 export {
   CategoryList,
@@ -14,4 +15,5 @@ export {
   RemovableList,
   TagList,
   Underlayer,
+  SignInButton,
 };

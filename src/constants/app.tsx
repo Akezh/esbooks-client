@@ -2,6 +2,7 @@ import { PLACEHOLDERS } from '@static';
 
 const TEST_BOOK_IMAGE = true;
 
+
 const CATEGORIES = [
   "Children's Books",
   'Arts & Photography',
@@ -459,9 +460,9 @@ const TAGS = [
   'Writing, Research & Publishing Guides',
 ];
 
-const { book, user } = PLACEHOLDERS;
+const { book, default_user_avatar } = PLACEHOLDERS;
 
-const COMPLITE_BOOK_DATA = [
+const COMPLETE_BOOK_DATA = [
   {
     authors: ['Admin', 'Admin2'],
     categories: ['CATEGORY 3'],
@@ -470,7 +471,7 @@ const COMPLITE_BOOK_DATA = [
     id: '1',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -504,7 +505,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -520,7 +521,7 @@ const COMPLITE_BOOK_DATA = [
     id: '2',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -567,7 +568,7 @@ const COMPLITE_BOOK_DATA = [
     id: '3',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -601,7 +602,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     subtitle: 'SUBTITLE TEST 3',
@@ -609,7 +610,7 @@ const COMPLITE_BOOK_DATA = [
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [
       {
-        photo: user,
+        photo: default_user_avatar,
         fullname: 'Some Guy',
       },
     ],
@@ -622,7 +623,7 @@ const COMPLITE_BOOK_DATA = [
     id: '4',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -656,7 +657,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     subtitle: 'SUBTITLE TEST 3',
@@ -664,7 +665,7 @@ const COMPLITE_BOOK_DATA = [
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [
       {
-        photo: user,
+        photo: default_user_avatar,
         fullname: 'Some Guy',
       },
     ],
@@ -677,7 +678,7 @@ const COMPLITE_BOOK_DATA = [
     id: '5',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Bookname4Bookname3Bookname2',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -711,7 +712,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Bookname4Bookname3Bookname2',
     },
     subtitle: 'SUBTITLE TEST 3',
@@ -719,7 +720,7 @@ const COMPLITE_BOOK_DATA = [
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [
       {
-        photo: user,
+        photo: default_user_avatar,
         fullname: 'Bookname4Bookname3Bookname2',
       },
     ],
@@ -732,7 +733,7 @@ const COMPLITE_BOOK_DATA = [
     id: '6',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -766,7 +767,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     subtitle: 'SUBTITLE TEST 3',
@@ -774,7 +775,7 @@ const COMPLITE_BOOK_DATA = [
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [
       {
-        photo: user,
+        photo: default_user_avatar,
         fullname: 'Some Guy',
       },
     ],
@@ -787,7 +788,7 @@ const COMPLITE_BOOK_DATA = [
     id: '7',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     published: '2019-03-02T18:00:00.000Z',
@@ -821,7 +822,7 @@ const COMPLITE_BOOK_DATA = [
       },
     ],
     reader: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
     subtitle: 'SUBTITLE TEST 3',
@@ -829,21 +830,21 @@ const COMPLITE_BOOK_DATA = [
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [
       {
-        photo: user,
+        photo: default_user_avatar,
         fullname: 'Some Guy',
       },
     ],
   },
 ];
 
-const INCOMPLITE_BOOK_DATA = [
+const INCOMPLETE_BOOK_DATA = [
   {
     authors: ['Admin'],
     title: 'Bookname',
     id: '1',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -853,7 +854,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '2',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -863,7 +864,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '3',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -873,7 +874,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '4',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -883,7 +884,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '5',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Bookname4Bookname3Bookname2',
     },
   },
@@ -893,7 +894,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '6',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -903,7 +904,7 @@ const INCOMPLITE_BOOK_DATA = [
     id: '7',
     image: book,
     owner: {
-      photo: user,
+      photo: default_user_avatar,
       fullname: 'Some Guy',
     },
   },
@@ -912,30 +913,37 @@ const INCOMPLITE_BOOK_DATA = [
 const CARD_DATA = [
   {
     title: 'Technology',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Computers',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Sport',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Education',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Discover',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
 ];
+
+const PROVIDER = {
+  Facebook: 'facebook',
+  Google: 'google',
+  Vkontakte: 'vkontakte',
+};
 
 export {
   CARD_DATA,
   CATEGORIES,
-  COMPLITE_BOOK_DATA,
   TAGS,
+  COMPLETE_BOOK_DATA,
   TEST_BOOK_IMAGE,
+  PROVIDER,
 };
