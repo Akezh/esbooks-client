@@ -1,8 +1,8 @@
-import { ICompliteBookRating } from '@types';
+import { ICompleteBookRating } from '@types';
 
 interface IBookRatingAndReviews {
   data: {
-    rating: ICompliteBookRating,
+    rating: ICompleteBookRating,
   };
 }
 

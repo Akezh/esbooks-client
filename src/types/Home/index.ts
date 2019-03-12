@@ -1,26 +1,26 @@
-import { IIncompliteBook } from '@types';
+import { IIncompleteBook } from '@types';
 
 interface IHomeBookList {
-  data: IIncompliteBook[];
-  onBookDetails: (item: IIncompliteBook) => void;
+  data: IIncompleteBook[];
+  onBookDetails: (item: IIncompleteBook) => void;
 }
 
 interface IHomeBookListItem {
-  item: IIncompliteBook;
-  onBookDetails: (item: IIncompliteBook) => void;
+  item: IIncompleteBook;
+  onBookDetails: (item: IIncompleteBook) => void;
 }
 
 interface IHomeBookCardList {
   data: Array<{
     title: string,
-    books: IIncompliteBook[],
+    books: IIncompleteBook[],
   }>;
-  onBookDetails: (item: IIncompliteBook) => void;
+  onBookDetails: (item: IIncompleteBook) => void;
 }
 
 interface IHomeBookCardListItem {
   title: string;
-  books: IIncompliteBook[];
+  books: IIncompleteBook[];
 }
 
 export {

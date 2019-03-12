@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 import {
-  IIncompliteBook,
+  IIncompleteBook,
   IHomeBookCardList,
   IHomeBookCardListItem,
 } from '@types';
@@ -24,7 +24,7 @@ const BookCardList:
 
 const keyExtractor = (_item: IHomeBookCardListItem, index: number): string => index.toString();
 
-const renderBookCardListItem = (item: IHomeBookCardListItem, onBookDetails: (item: IIncompliteBook) => void): JSX.Element => {
+const renderBookCardListItem = (item: IHomeBookCardListItem, onBookDetails: (item: IIncompleteBook) => void): JSX.Element => {
   const { books, title } = item;
 
   return (

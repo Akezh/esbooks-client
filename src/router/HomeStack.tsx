@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import { BookDetails, Home, RateBook } from '@screens';
+import { BookDetails, Home, RateBook, Search } from '@screens';
 import { withSafeAreaView } from '@hocs';
 
 const HomeStack = createStackNavigator(
@@ -9,6 +9,9 @@ const HomeStack = createStackNavigator(
     },
     BookDetails: {
       screen: withSafeAreaView((BookDetails), 'white'),
+    },
+    Search: {
+      screen: withSafeAreaView((Search), 'white'),
     },
     RateBook: {
       screen: withSafeAreaView((RateBook), 'white'),

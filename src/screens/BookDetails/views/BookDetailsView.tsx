@@ -3,7 +3,7 @@ import { View, StatusBar } from 'react-native';
 import { Divider, TagList } from '@components';
 import { COMPLETE_BOOK_DATA, THEME } from '@constants';
 import { withScrollView } from '@hocs';
-import { ICompliteBook, IIncompliteBook, IRateBookData } from '@types';
+import { ICompleteBook, IIncompleteBook, IRateBookData } from '@types';
 import BookDescriptionBlock from './BookDescriptionBlock';
 import BookInfoBlock from './BookInfoBlock';
 import RateBookBlock from './RateBookBlock';
@@ -11,7 +11,7 @@ import BookRatingAndTopReviewsBlock from './BookRatingAndTopReviewsBlock';
 import { BookDetailsViewStyles as styles } from '../styles';
 
 interface IProps {
-  incompliteData: IIncompliteBook;
+  incompleteData: IIncompleteBook;
   onRateBook: (item: IRateBookData, value?: number) => void;
 }
 
@@ -22,17 +22,17 @@ interface IState {
 const { colors } = THEME;
 const { primary } = colors;
 
-let DATA: ICompliteBook;
+let DATA: ICompleteBook;
 
-const setData = (incompliteData: IIncompliteBook) => {
-  DATA = COMPLETE_BOOK_DATA.filter(item => item.id === incompliteData.id)[0];
+const setData = (incompleteData: IIncompleteBook) => {
+  DATA = COMPLETE_BOOK_DATA.filter(item => item.id === incompleteData.id)[0];
 };
 
 class BookDetailsView extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    const { incompliteData } = this.props;
-    setData(incompliteData);
+    const { incompleteData } = this.props;
+    setData(incompleteData);
 
     this.state = {
       myRating: DATA.rating[0].my,
