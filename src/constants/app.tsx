@@ -928,7 +928,7 @@ const CARD_DATA = [
   },
   {
     title: 'Discover',
-    books: INCOMPLETE_BOOK_DATA
+    books: INCOMPLETE_BOOK_DATA,
   },
 ];
 
@@ -943,7 +943,7 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname',
     waiting_list: [],
@@ -960,7 +960,7 @@ const MY_BOOK_DATA = [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },
@@ -973,14 +973,14 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname 2 Bookname 1 Bookname 0',
     waiting_list: [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },
@@ -993,14 +993,14 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname3Bookname2Bookname1Bookname0Bookname-2Bookname-3',
     waiting_list: [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },
@@ -1013,14 +1013,14 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname4Bookname3Bookname2',
     waiting_list: [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },
@@ -1033,14 +1033,14 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname4Bookname3Bookname2',
     waiting_list: [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },
@@ -1053,14 +1053,14 @@ const MY_BOOK_DATA = [
     reader: {
       date: new Date(),
       fullname: 'Some Guy',
-      photo: user,
+      photo: default_user_avatar,
     },
     title: 'Bookname123456789*-*/123457890',
     waiting_list: [
       {
         date: new Date(),
         fullname: 'Some Guy',
-        photo: user,
+        photo: default_user_avatar,
       },
     ],
   },

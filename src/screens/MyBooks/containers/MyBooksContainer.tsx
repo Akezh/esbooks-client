@@ -5,16 +5,33 @@ import MyBooksView from '../views';
 import { MyBooksContainerStyles as styles } from '../styles';
 
 interface IProps {
+  onBookDetails: () => void;
   onGoBack: () => void;
 }
 
 const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { onGoBack } = props;
+  const { onBookDetails, onGoBack } = props;
 
-  const callBookReturnAlert = () => {
+  const callBookReturnAlert = (): void => {
     Alert.alert(
       '',
-      'Are you sure you want to send a request for a return book?',
+      'Are you sure you want to send a request to return this book?',
+      [
+        {
+          text: 'CONFIRM',
+        },
+        {
+          text: 'CANCEL',
+          style: 'cancel',
+        },
+      ],
+    );
+  };
+
+  const callBookRemovalWarning = (): void => {
+    Alert.alert(
+      '',
+      'Are you sure you want to remove this book?',
       [
         {
           text: 'CONFIRM',
@@ -49,7 +66,9 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
     </View>
 
     <MyBooksView
+      callBookRemovalWarning={callBookRemovalWarning}
       callBookReturnAlert={callBookReturnAlert}
+      onBookDetails={onBookDetails}
     />
   </React.Fragment>;
 };

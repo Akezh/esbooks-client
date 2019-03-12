@@ -2,63 +2,85 @@ import { StyleSheet } from 'react-native';
 import { THEME } from '@constants';
 
 const { colors, fonts } = THEME;
-const {
-  inactively,
-  text,
-} = colors;
+const { inactively, primary, text } = colors;
 const { medium, regular } = fonts;
 
 const authorIconSize = 40;
 
 const styles = StyleSheet.create({
-  bookInfoBlockWrapper: {
-    marginBottom: 24,
+  containerWrapper: {
+    borderColor: 'rgba(0,0,0,0.3)',
+    borderRadius: 4,
+    borderWidth: 0.5,
+    margin: 16,
+    marginBottom: 0,
     padding: 16,
   },
-  bookInfoBlock: {
+  container: {
     alignItems: 'flex-start',
     flexDirection: 'row',
   },
-  bookInfoSection: {
+  imageWrapper: {
+    height: 180,
+    marginTop: 4,
+    position: 'relative',
+    width: 120,
+  },
+  image: {
+    height: 180,
+    width: 120,
+  },
+  numberOfWaitingPeopleBtn: {
+    alignItems: 'center',
+    backgroundColor: primary,
+    borderColor: '#FFF',
+    borderRadius: 28,
+    borderWidth: 2,
+    height: 28,
+    justifyContent: 'center',
+    left: 8,
+    position: 'absolute',
+    top: 8,
+    width: 28,
+  },
+  numberOfWaitingPeopleBtnText: {
+    color: '#FFF',
+    fontFamily: medium,
+    fontSize: 14,
+  },
+  bookInfo: {
     alignItems: 'flex-start',
     flex: 1,
     flexWrap: 'wrap',
-    marginLeft: 16,
+    paddingLeft: 16,
   },
-  titleWrapper: {
+  bookInfoTitleWrapper: {
     alignItems: 'flex-start',
     flexDirection: 'row',
   },
-  title: {
+  bookInfoTitle: {
     color: text,
     flex: 1,
     fontFamily: medium,
     fontSize: 18,
     marginBottom: 8,
   },
-  authorInfoBlock: {
+  bookInfoAuthorInfoBlock: {
     alignItems: 'flex-start',
     flex: 1,
     flexDirection: 'row',
+    marginTop: 2,
   },
-  authorIconWrapper: {
-    alignItems: 'center',
-    borderRadius: authorIconSize,
-    elevation: 4,
-    height: authorIconSize + 1,
-    justifyContent: 'center',
-    marginRight: 12,
-    width: authorIconSize + 1,
-  },
-  authorIcon: {
+  bookInfoAuthorIcon: {
     height: authorIconSize,
     width: authorIconSize,
+    marginRight: 12,
   },
-  authorInfoTextWrapper: {
+  bookInfoAuthorWrapper: {
     flex: 1,
     flexWrap: 'wrap',
   },
-  author: {
+  bookInfoAuthor: {
     color: text,
     fontFamily: regular,
     fontSize: 14,
@@ -69,13 +91,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   readerInfoWrapper: {
-    borderRadius: 1,
-    elevation: 1,
+    alignItems: 'flex-end',
     flexDirection: 'column',
-    marginVertical: 12,
-    maxWidth: 400,
-    minWidth: 200,
-    padding: 8,
+    justifyContent: 'flex-end',
+    marginBottom: 6,
+    marginTop: 12,
   },
   readerInfo: {
     alignItems: 'center',
@@ -100,14 +120,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginRight: 6,
     textAlign: 'right',
-  },
-  menuBtn: {
-    paddingLeft: 12,
-    paddingVertical: 6,
-  },
-  menuIcon: {
-    height: 16,
-    width: 16,
   },
 });
 

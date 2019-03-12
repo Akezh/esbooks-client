@@ -1,19 +1,36 @@
 import React, { FunctionComponent } from 'react';
-import { Image } from 'react-native';
 import Menu, { MenuDivider, MenuItem } from 'react-native-material-menu';
-import { OTHER } from '@static';
-import { IReader } from '@types';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { THEME } from '@constants';
 import { BookMenuStyles as styles } from '../styles';
 import { TouchableRipple } from 'react-native-paper';
 
 interface IProps {
-  waitingList: IReader[];
+  callBookRemovalWarning: () => void;
 }
 
+const { colors } = THEME;
+const { text } = colors;
+
 const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { waitingList } = props;
+  const { callBookRemovalWarning } = props;
 
   let menu: any;
+
+  const renderGetBtn = (): JSX.Element => {
+    return (
+      <TouchableRipple
+        style={styles.menuBtn}
+        onPress={showMenu}
+      >
+        <Icon
+          color={text}
+          name='settings-outline'
+          size={22}
+        />
+      </TouchableRipple>
+    );
+  };
 
   const setMenuRef = (element: JSX.Element): void => {
     menu = element;
@@ -27,18 +44,9 @@ const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
     menu.hide();
   };
 
-  const renderGetBtn = (): JSX.Element => {
-    return (
-      <TouchableRipple
-        style={styles.menuBtn}
-        onPress={showMenu}
-      >
-        <Image
-          source={OTHER.menu}
-          style={styles.menuIcon}
-        />
-      </TouchableRipple>
-    );
+  const onRemovePress = (): void => {
+    hideMenu();
+    callBookRemovalWarning();
   };
 
   return (
@@ -57,16 +65,14 @@ const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
         </MenuItem>
         <MenuDivider />
 
-        {waitingList.length
-          ? <MenuItem
-            onPress={hideMenu}
-            style={styles.menuItem}
-            textStyle={styles.menuItemText}
-            underlayColor='#1ab3ff'
-          >
-            SEE THE QUEUE
-          </MenuItem> : undefined}
-
+        <MenuItem
+          onPress={onRemovePress}
+          style={styles.menuItem}
+          textStyle={styles.menuItemText}
+          underlayColor='#1ab3ff'
+        >
+          REMOVE
+        </MenuItem>
       </React.Fragment>
     </Menu>
   );

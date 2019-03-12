@@ -1,13 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, TouchableOpacity } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
+import { THEME } from '@constants';
 import { OTHER } from '@static';
 import { IMyBookListItem } from '@types';
 import BookMenu from '../BookMenu';
 import { MyBookListItemStyles as styles } from '../../styles';
 
 const { author } = OTHER;
+const { colors } = THEME;
+const { text } = colors;
 
 const MyBookListItem:
   FunctionComponent<IMyBookListItem> = (props): JSX.Element => {
@@ -21,36 +25,86 @@ const MyBookListItem:
       title,
       waiting_list,
     } = item;
-    const { callBookReturnAlert } = nav;
+
+    const {
+      callBookRemovalWarning,
+      callBookReturnAlert,
+      onBookDetails,
+    } = nav;
+
     const { fullname, photo } = reader;
 
     const formattedPublished = moment(date).format('DD MMMM YYYY');
-    const formattedReaderDate = reader && moment(reader.date).format('DD.MM.YYYY');
+    const formattedReaderDate = reader && moment(reader.date).format('DD MMMM YYYY');
 
+    const urlReg = /(https?:\/\/[^\s]+)/g;
+    const isImageUrl = urlReg.test(image);
     return (
-      <View style={styles.bookInfoBlockWrapper}>
-        <View style={styles.bookInfoBlock}>
-          <Image source={image} />
+      <TouchableOpacity
+        onPress={onBookDetails}
+        style={styles.containerWrapper}
+      >
+        <View style={styles.container}>
 
-          <View style={styles.bookInfoSection}>
-            <View style={styles.titleWrapper}>
-              <Text style={styles.title}>{title}</Text>
-              <BookMenu waitingList={waiting_list} />
+          <View style={styles.imageWrapper}>
+            <Image
+              style={styles.image}
+              source={isImageUrl
+                ? { uri: image }
+                : image}
+            />
+
+            {waiting_list.length
+              ? <TouchableRipple
+                style={styles.numberOfWaitingPeopleBtn}
+              >
+                <Text style={styles.numberOfWaitingPeopleBtnText}>
+                  {waiting_list.length}
+                </Text>
+              </TouchableRipple>
+              : null}
+          </View>
+
+          <View style={styles.bookInfo}>
+            <View style={styles.bookInfoTitleWrapper}>
+              <Text
+                numberOfLines={1}
+                style={styles.bookInfoTitle}
+              >
+                {title}
+              </Text>
+              <BookMenu
+                callBookRemovalWarning={callBookRemovalWarning}
+              />
             </View>
-            <View style={styles.authorInfoBlock}>
-              <View style={styles.authorIconWrapper}>
-                <Image
-                  source={author}
-                  style={styles.authorIcon}
-                />
-              </View>
+            <View style={styles.bookInfoAuthorInfoBlock}>
+              <Image
+                source={author}
+                style={styles.bookInfoAuthorIcon}
+              />
 
-              <View style={styles.authorInfoTextWrapper}>
+              <View style={styles.bookInfoAuthorWrapper}>
                 {authors.map((i, index) => (
-                  <Text key={index} style={styles.author}>{i}</Text>
+                  <Text
+                    key={index}
+                    numberOfLines={1}
+                    style={styles.bookInfoAuthor}
+                  >
+                    {i}
+                  </Text>
                 ))}
-                <Text style={styles.bookInfoText}>{publisher}</Text>
-                <Text style={styles.bookInfoText}>{formattedPublished}</Text>
+                <Text
+                  numberOfLines={1}
+                  style={styles.bookInfoText}
+                >
+                  {publisher}
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={styles.bookInfoText}
+                >
+                  {formattedPublished}
+                </Text>
               </View>
             </View>
 
@@ -58,6 +112,7 @@ const MyBookListItem:
               && <View style={styles.readerInfoWrapper}>
                 <View style={styles.readerInfo}>
                   <Image source={photo} style={styles.readerPhoto} />
+
                   <View style={styles.readerInfoTextWrapper}>
                     <Text
                       numberOfLines={1}
@@ -71,24 +126,22 @@ const MyBookListItem:
                     >
                       {fullname}'s
                     </Text>
+                    <Text style={styles.readerDate}>
+                      {formattedReaderDate}
+                    </Text>
                   </View>
 
-                  <TouchableRipple
-                    style={styles.menuBtn}
+                  <Icon
+                    color={text}
+                    name='restore'
                     onPress={callBookReturnAlert}
-                  >
-                    <Image
-                      source={OTHER.menu}
-                      style={styles.menuIcon}
-                    />
-                  </TouchableRipple>
+                    size={20}
+                  />
                 </View>
-
-                <Text style={styles.readerDate}>{formattedReaderDate}</Text>
               </View>}
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 

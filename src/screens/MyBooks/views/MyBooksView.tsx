@@ -5,18 +5,27 @@ import { withScrollView } from '@hocs';
 import MyBookList from './MyBookList';
 
 interface IProps {
+  callBookRemovalWarning: () => void;
   callBookReturnAlert: () => void;
+  onBookDetails: () => void;
 }
 
 const { colors } = THEME;
 const { primary } = colors;
 
 const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { callBookReturnAlert } = props;
+  const {
+    callBookRemovalWarning,
+    callBookReturnAlert,
+    onBookDetails,
+  } = props;
 
   const nav = {
+    callBookRemovalWarning,
     callBookReturnAlert,
+    onBookDetails,
   };
+
   return (
     <React.Fragment>
       <MyBookList
