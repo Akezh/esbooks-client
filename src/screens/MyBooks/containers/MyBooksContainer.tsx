@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MyBooksView from '../views';
 import { MyBooksContainerStyles as styles } from '../styles';
@@ -10,6 +10,22 @@ interface IProps {
 
 const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
   const { onGoBack } = props;
+
+  const callBookReturnAlert = () => {
+    Alert.alert(
+      '',
+      'Are you sure you want to send a request for a return book?',
+      [
+        {
+          text: 'CONFIRM',
+        },
+        {
+          text: 'CANCEL',
+          style: 'cancel',
+        },
+      ],
+    );
+  };
 
   return <React.Fragment>
     <View style={styles.headerContainer}>
@@ -23,6 +39,7 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
         />
         <Text style={styles.title}>My books</Text>
       </View>
+
       <Icon
         color='#FFF'
         name='plus'
@@ -30,7 +47,10 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
         style={styles.icon}
       />
     </View>
-    <MyBooksView />
+
+    <MyBooksView
+      callBookReturnAlert={callBookReturnAlert}
+    />
   </React.Fragment>;
 };
 

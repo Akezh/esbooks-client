@@ -3,7 +3,7 @@ const TEST_BOOK_IMAGE = true;
 
 const { book, user } = PLACEHOLDERS;
 
-const COMPLITE_BOOK_DATA = [
+const COMPLETE_BOOK_DATA = [
   {
     authors: ['Admin', 'Admin2'],
     categories: ['CATEGORY 3'],
@@ -378,7 +378,7 @@ const COMPLITE_BOOK_DATA = [
   },
 ];
 
-const INCOMPLITE_BOOK_DATA = [
+const INCOMPLETE_BOOK_DATA = [
   {
     authors: ['Admin'],
     title: 'Bookname',
@@ -454,28 +454,163 @@ const INCOMPLITE_BOOK_DATA = [
 const CARD_DATA = [
   {
     title: 'Technology',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Computers',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Sport',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Education',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
   },
   {
     title: 'Discover',
-    books: INCOMPLITE_BOOK_DATA,
+    books: INCOMPLETE_BOOK_DATA,
+  },
+];
+
+
+const MY_BOOK_DATA = [
+  {
+    authors: ['Admin'],
+    date: new Date(),
+    id: '1',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname',
+    waiting_list: [],
+  },
+  {
+    authors: ['AdminAdminAdmin'],
+    date: new Date(),
+    id: '2',
+    image: book,
+    publisher: 'Publisher',
+    reader: {},
+    title: 'Bookname 1 Bookname 0',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '3',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname 2 Bookname 1 Bookname 0',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '4',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname3Bookname2Bookname1Bookname0Bookname-2Bookname-3',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '5',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname4Bookname3Bookname2',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '6',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname4Bookname3Bookname2',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdmin123456789'],
+    date: new Date(),
+    id: '7',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: user,
+    },
+    title: 'Bookname123456789*-*/123457890',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: user,
+      },
+    ],
   },
 ];
 
 export {
   CARD_DATA,
-  COMPLITE_BOOK_DATA,
+  COMPLETE_BOOK_DATA,
+  MY_BOOK_DATA,
   TEST_BOOK_IMAGE,
 };

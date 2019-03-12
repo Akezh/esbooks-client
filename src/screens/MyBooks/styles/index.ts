@@ -1,4 +1,9 @@
+import { MyBookListItemStyles } from './MyBookList';
+import { styles as BookMenuStyles } from './BookMenu.styles';
 import { styles as MyBooksContainerStyles } from './MyBooksContainer.styles';
-import { styles as MyBooksViewStyles } from './MyBooksView.styles';
 
-export { MyBooksContainerStyles, MyBooksViewStyles };
+export {
+  BookMenuStyles,
+  MyBookListItemStyles,
+  MyBooksContainerStyles,
+};

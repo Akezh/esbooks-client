@@ -3,8 +3,15 @@ import {
   ICompliteBookRating,
   ICompliteBookRatingComponents,
   IIncompliteBook,
+  IMyBook,
   IOwner,
+  IReader,
 } from './Book';
+
+import {
+  IBookRatingAndReviews,
+  IRateBookData,
+} from './BookDetails';
 
 import {
   IMainBookCardList,
@@ -14,9 +21,9 @@ import {
 } from './Main';
 
 import {
-  IBookRatingAndReviews,
-  IRateBookData,
-} from './BookDetails';
+  IMyBookList,
+  IMyBookListItem,
+} from './MyBooks';
 
 export {
   IBookRatingAndReviews,
@@ -28,6 +35,10 @@ export {
   IMainBookCardListItem,
   IMainBookList,
   IMainBookListItem,
+  IMyBook,
+  IMyBookList,
+  IMyBookListItem,
   IOwner,
   IRateBookData,
+  IReader,
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StatusBar } from 'react-native';
 import { Divider, TagList } from '@components';
-import { COMPLITE_BOOK_DATA, THEME } from '@constants';
+import { COMPLETE_BOOK_DATA, THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import { ICompliteBook, IIncompliteBook, IRateBookData } from '@types';
 import BookDescriptionBlock from './BookDescriptionBlock';
@@ -25,7 +25,7 @@ const { primary } = colors;
 let DATA: ICompliteBook;
 
 const setData = (incompliteData: IIncompliteBook) => {
-  DATA = COMPLITE_BOOK_DATA.filter(item => item.id === incompliteData.id)[0];
+  DATA = COMPLETE_BOOK_DATA.filter(item => item.id === incompliteData.id)[0];
 };
 
 class BookDetailsView extends Component<IProps, IState> {

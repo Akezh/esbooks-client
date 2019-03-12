@@ -5,6 +5,7 @@ const LOGOS = {
 const OTHER = {
   author: require('@images/other/author.png'),
   star: require('@images/other/star.png'),
+  menu: require('@images/other/menu.png'),
 };
 
 const PLACEHOLDERS = {
