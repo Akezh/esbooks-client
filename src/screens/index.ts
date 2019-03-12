@@ -5,6 +5,7 @@ import MoreItems from './MoreItems';
 import MyBooks from './MyBooks';
 import RateBook from './RateBook';
 import SignIn from './SignIn';
+import Search from './Search';
 
 export {
   AddMyBook,
@@ -14,4 +15,5 @@ export {
   MyBooks,
   RateBook,
   SignIn,
+  Search,
 };

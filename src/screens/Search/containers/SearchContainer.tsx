@@ -1,45 +1,43 @@
 import React from 'react';
 import {
-  Animated,
-  Easing,
   Keyboard,
-  Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import LottieView from 'lottie-react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 import { Underlayer } from '@components';
 import { IIncompleteBook } from '@types';
-import { mapActionsToProps, mapStateToProps } from './HomeContainerMaps';
-import HomeView from '../views';
+import { mapActionsToProps, mapStateToProps } from './SearchContainerMaps';
+import SearchView from '../views';
 import {
-  HomeContainerStyles as styles,
+  SearchContainerStyles as styles,
   SearchbarStyles,
 } from '../styles';
+import { THEME } from '@constants';
 
 interface IProps {
   hideUnderlayer: () => void;
   isUnderlayerActive: boolean;
   onBookDetails: (item: IIncompleteBook) => void;
-  openDrawer: () => void;
+  onGoBack: () => void;
+  query: string;
   showUnderlayer: () => void;
-  onSearch: (query: string) => void;
 }
 
 interface IState {
-  menuIconProgress: any;
   text: string;
 }
 
-class HomeContainer extends React.Component<IProps, IState> {
+const { colors } = THEME;
+const { inactively } = colors;
+
+class SearchContainer extends React.Component<IProps, IState> {
   public keyboardDidHideListener: any;
   public textInput: any;
 
   public state = {
-    menuIconProgress: new Animated.Value(0),
-    text: '',
+    text: this.props.query,
   };
 
   public componentDidMount() {
@@ -65,7 +63,7 @@ class HomeContainer extends React.Component<IProps, IState> {
           {this.Searchbar()}
         </View>
 
-        <HomeView onBookDetails={onBookDetails} />
+        <SearchView onBookDetails={onBookDetails} />
 
         {isUnderlayerActive &&
           <Underlayer
@@ -78,18 +76,11 @@ class HomeContainer extends React.Component<IProps, IState> {
   private Searchbar = (): JSX.Element => {
     const { isUnderlayerActive } = this.props;
 
-    const {
-      menuIconProgress,
-      text,
-    } = this.state;
+    const { text } = this.state;
 
     const {
       container,
-      menu,
       menuWrapper,
-      placeholder,
-      placeholderWrapper,
-      placeholderSpecPart,
       textInput,
     } = SearchbarStyles;
 
@@ -110,42 +101,27 @@ class HomeContainer extends React.Component<IProps, IState> {
           ref={this.setTextInputRef}
           returnKeyType='search'
           style={textInput}
-          value={isUnderlayerActive ? text : ''}
+          value={text}
         />
         <View
           onStartShouldSetResponder={this.onMenuPress}
           style={menuWrapper}
         >
-          <LottieView
-            progress={menuIconProgress}
-            source={require('./menu.json')}
-            style={menu}
+          <Icon 
+            color={inactively} 
+            name='arrow-left' 
+            size={20}
           />
         </View>
-
-        {isUnderlayerActive
-          ? null
-          : <TouchableOpacity
-            activeOpacity={1}
-            onPress={this.showUnderlayer}
-            style={placeholderWrapper}
-          >
-            <Text style={placeholder}>Employees Share</Text>
-            <Text style={[placeholder, placeholderSpecPart]}> Books</Text>
-          </TouchableOpacity>}
       </View>
     );
   }
 
   private onSubmitEditing = (): void => {
     const { text } = this.state;
-    const { onSearch } = this.props;
-    
     if (text) {
-      this.hideUnderlayer();
       Keyboard.dismiss();
-      onSearch(text);    
-    }    
+    }
   }
 
   private setTextInputRef = (element: any): void => {
@@ -157,18 +133,13 @@ class HomeContainer extends React.Component<IProps, IState> {
     this.textInput.blur();
   }
 
-  private showUnderlayer = (): void => {
-    this.onFocus();
-    this.textInput.focus();
-  }
-
   private onMenuPress = (): boolean => {
-    const { openDrawer, isUnderlayerActive } = this.props;
+    const { onGoBack, isUnderlayerActive } = this.props;
 
     if (isUnderlayerActive) {
       this.hideUnderlayer();
     } else {
-      openDrawer();
+      onGoBack();
     }
 
     return true;
@@ -177,35 +148,13 @@ class HomeContainer extends React.Component<IProps, IState> {
   private onFocus = (): void => {
     const { showUnderlayer } = this.props;
 
-    this.startMenuAnimation();
     showUnderlayer();
-  }
-
-  private startMenuAnimation = (): void => {
-    const { menuIconProgress } = this.state;
-
-    Animated.timing(menuIconProgress, {
-      toValue: 0.5,
-      duration: 436,
-      easing: Easing.linear,
-    }).start();
   }
 
   private onBlur = (): void => {
     const { hideUnderlayer } = this.props;
 
-    this.endMenuAnimation();
     hideUnderlayer();
-  }
-
-  private endMenuAnimation = (): void => {
-    const { menuIconProgress } = this.state;
-
-    Animated.timing(menuIconProgress, {
-      toValue: 1,
-      duration: 436,
-      easing: Easing.linear,
-    }).start();
   }
 
   private onChangeText = (value: string): void => {
@@ -215,4 +164,4 @@ class HomeContainer extends React.Component<IProps, IState> {
   }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
+export default connect(mapStateToProps, mapActionsToProps)(SearchContainer);

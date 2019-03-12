@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Text, View } from 'react-native';
-import { ICompliteBookRating, ICompliteBookRatingComponents } from '@types';
+import { ICompleteBookRating, ICompleteBookRatingComponents } from '@types';
 import { getNumberOfVoters } from '@utils';
 import { BookRatingChartStyles as styles } from '../../../styles';
 
 interface IProps {
-  rating: ICompliteBookRating;
+  rating: ICompleteBookRating;
 }
 
 const BookRatingChart: FunctionComponent<IProps> = (props): JSX.Element => {
@@ -22,7 +22,7 @@ const BookRatingChart: FunctionComponent<IProps> = (props): JSX.Element => {
   );
 };
 
-const renderBookRatingChartLine = (ratingComponent: ICompliteBookRatingComponents[], numberComponent: number): JSX.Element => {
+const renderBookRatingChartLine = (ratingComponent: ICompleteBookRatingComponents[], numberComponent: number): JSX.Element => {
   const numberOfVoters = getNumberOfVoters(ratingComponent);
   const lineWidth = ((ratingComponent[5 - numberComponent].quantity / numberOfVoters) * 100).toString() + '%';
 

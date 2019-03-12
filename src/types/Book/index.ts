@@ -1,4 +1,4 @@
-interface IIncompliteBook {
+interface IIncompleteBook {
   authors: string[];
   id: string;
   image: any;
@@ -6,7 +6,7 @@ interface IIncompliteBook {
   title: string;
 }
 
-interface ICompliteBook {
+interface ICompleteBook {
   authors: string[];
   categories: string[];
   created: Date | string;
@@ -16,7 +16,7 @@ interface ICompliteBook {
   owner: IOwner;
   published: Date | string;
   publisher: string;
-  rating: ICompliteBookRating[];
+  rating: ICompleteBookRating[];
   reader: IOwner;
   subtitle: string;
   title: string;
@@ -29,21 +29,21 @@ interface IOwner {
   photo?: any;
 }
 
-interface ICompliteBookRating {
+interface ICompleteBookRating {
   avg: number;
-  components: ICompliteBookRatingComponents[];
+  components: ICompleteBookRatingComponents[];
   my: number;
 }
 
-interface ICompliteBookRatingComponents {
+interface ICompleteBookRatingComponents {
   ratingScore: number;
   quantity: number;
 }
 
 export {
-  ICompliteBook,
-  ICompliteBookRating,
-  ICompliteBookRatingComponents,
-  IIncompliteBook,
+  ICompleteBook,
+  ICompleteBookRating,
+  ICompleteBookRatingComponents,
+  IIncompleteBook,
   IOwner,
 };

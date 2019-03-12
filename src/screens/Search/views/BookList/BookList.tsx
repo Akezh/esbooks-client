@@ -11,10 +11,8 @@ const BookList: FunctionComponent<IHomeBookList> = (props): JSX.Element => {
     <FlatList
       contentContainerStyle={styles.contentContainer}
       data={data}
-      horizontal={true}
       keyExtractor={keyExtractor}
       renderItem={({ item }: { item: IIncompleteBook }) => renderBookListItem(item, onBookDetails)}
-      showsHorizontalScrollIndicator={false}
     />
   );
 };

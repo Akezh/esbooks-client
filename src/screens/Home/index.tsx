@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { withSafeAreaView } from '@hocs';
-import { IIncompliteBook } from '@types';
+import { IIncompleteBook } from '@types';
 import HomeContainer from './containers';
 
 const Home: FunctionComponent<any> = (props): JSX.Element => {
@@ -11,12 +11,16 @@ const Home: FunctionComponent<any> = (props): JSX.Element => {
     navigation.openDrawer();
   };
 
-  const onBookDetails = (item: IIncompliteBook) => {
+  const onBookDetails = (item: IIncompleteBook) => {
     navigate('BookDetails', { data: item });
   };
 
+  const onSearch = (query: string) => {
+    navigate('Search', { query });
+  };
+
   return (
-    <HomeContainer {...props} openDrawer={openDrawer} onBookDetails={onBookDetails} />
+    <HomeContainer {...props} openDrawer={openDrawer} onSearch ={onSearch} onBookDetails={onBookDetails} />
   );
 };
 

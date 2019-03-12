@@ -1,8 +1,8 @@
 import {
-  ICompliteBook,
-  ICompliteBookRating,
-  ICompliteBookRatingComponents,
-  IIncompliteBook,
+  ICompleteBook,
+  ICompleteBookRating,
+  ICompleteBookRatingComponents,
+  IIncompleteBook,
   IOwner,
 } from './Book';
 
@@ -32,10 +32,10 @@ import {
 
 export {
   IBookRatingAndReviews,
-  ICompliteBook,
-  ICompliteBookRating,
-  ICompliteBookRatingComponents,
-  IIncompliteBook,
+  ICompleteBook,
+  ICompleteBookRating,
+  ICompleteBookRatingComponents,
+  IIncompleteBook,
   IHomeBookCardList,
   IHomeBookCardListItem,
   IHomeBookList,

@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 import {
-  IIncompliteBook,
+  IIncompleteBook,
   IHomeBookCardListItem,
 } from '@types';
 import BookList from '../BookList';
 import { BookCardListItemStyles as styles } from '../../styles';
 
 interface IProps {
-  onBookDetails: (item: IIncompliteBook) => void;
+  onBookDetails: (item: IIncompleteBook) => void;
 }
 
 const BookCardListItem:
