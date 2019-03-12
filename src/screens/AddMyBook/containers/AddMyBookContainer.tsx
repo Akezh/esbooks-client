@@ -18,7 +18,7 @@ import { mapActionsToProps, mapStateToProps } from './AddMyBookContainerMaps';
 import AddMyBookView from '../views';
 import { AddMyBookContainerStyles as styles } from '../styles';
 import BarCodeScanner from '../views/BarCodeScanner';
-import Loading from '../views/Loading';
+import { Loading } from '@components';
 import WaysFillData from '../views/WaysFillData';
 
 interface IProps {
