@@ -10,7 +10,7 @@ const OTHER = {
 
 const PLACEHOLDERS = {
   book: require('@images/placeholders/book.png'),
-  user: require('@images/placeholders/user.png'),
+  default_user_avatar: require('@images/placeholders/user.png'),
 };
 
 const SOCIAL_MEDIA_ICONS = {

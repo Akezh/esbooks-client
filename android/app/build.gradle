@@ -103,6 +103,11 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+    }
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
     }
     splits {
         abi {
@@ -110,6 +115,16 @@ android {
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
             include "armeabi-v7a", "x86", "arm64-v8a"
+        }
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
         }
     }
     buildTypes {
@@ -139,12 +154,24 @@ android {
 }
 
 dependencies {
+    implementation (project(':react-native-camera')) {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support:exifinterface:+"
+    implementation "com.android.support:support-annotations:+"
+    implementation "com.android.support:support-v4:+"
+
+    implementation project(':react-native-image-crop-picker')
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-google-signin')
+    implementation project(':lottie-react-native')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-vector-icons')
-    implementation project(':lottie-react-native')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 
 // Run this once to be able to run the application with BUCK
@@ -153,3 +180,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
