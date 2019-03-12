@@ -10,6 +10,7 @@ import { styles } from './CustomTextInputWithDropDownText.styles';
 
 interface IProps {
   data: string[];
+  error?: { status: boolean, message?: string };
   selectItem: (value: string) => void;
   selectedValues: string[];
   srollToDropDownTextOfTI: (value: number) => void;
@@ -31,11 +32,12 @@ class CustomTextInputWithDropDownText extends Component<IProps, IState> {
 
   public render() {
     const { formattedData, value } = this.state;
-    const { style } = this.props;
+    const { error, style } = this.props;
 
     return (
       <View style={styles.container}>
         <CustomTextInput
+          error={error}
           mode='outlined'
           onBlur={this.onBlur}
           onChangeText={this.onChangeText}

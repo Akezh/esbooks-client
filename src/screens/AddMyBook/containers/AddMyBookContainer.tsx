@@ -45,6 +45,7 @@ interface IState {
   authors: Array<{
     id: number,
     fullName: string,
+    error: IError,
   }>;
   categories: string[];
   date: string;
@@ -54,6 +55,16 @@ interface IState {
   subtitle: string;
   tags: string[];
   title: string;
+
+  categoriesError: IError;
+  dateError: IError;
+  tagsError: IError;
+  titleError: IError;
+}
+
+interface IError {
+  status: boolean;
+  message?: string;
 }
 
 class AddMyBookContainer extends Component<IProps, IState>{
@@ -72,7 +83,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
       isDateTimePickerVisible: false,
       isWaysFillDataVisible: false,
 
-      authors: [{ id: 0, fullName: '' }],
+      authors: [{ id: 0, fullName: '', error: { status: false } }],
       categories: [],
       date: '',
       description: '',
@@ -81,6 +92,11 @@ class AddMyBookContainer extends Component<IProps, IState>{
       subtitle: '',
       tags: [],
       title: '',
+
+      titleError: { status: false },
+      dateError: { status: false },
+      categoriesError: { status: false },
+      tagsError: { status: false },
     };
 
     this._didFocusSubscription = navigation.addListener('didFocus', _payload =>
@@ -114,30 +130,39 @@ class AddMyBookContainer extends Component<IProps, IState>{
     }
 
     if (data) {
-      const {
-        authors,
-        categories,
-        date,
-        description,
-        image,
-        publisher,
-        subtitle,
-        tags,
-        title,
-      } = data;
-
-      this.setState(prevState => ({
-        authors: authors ? authors.map((item: string, index: number) => this.addReceivedAuthor(index, item)) : prevState.authors,
-        categories: categories ? categories : prevState.categories,
-        date: date ? date : prevState.date,
-        description: description ? description : prevState.description,
-        image: image ? image : prevState.image,
-        publisher: publisher ? publisher : prevState.publisher,
-        subtitle: subtitle ? subtitle : prevState.subtitle,
-        tags: tags ? tags : prevState.tags,
-        title: title ? title : prevState.title,
-      }));
+      this.setData(data);
     }
+  }
+
+  public setData = (data: any): void => {
+    const {
+      authors,
+      categories,
+      date,
+      description,
+      image,
+      publisher,
+      subtitle,
+      tags,
+      title,
+    } = data;
+
+    this.setState(prevState => ({
+      authors: authors ? authors.map((item: string, index: number) => ({ id: index, fullName: item, error: { status: false } })) : prevState.authors,
+      categories: categories ? categories : prevState.categories,
+      date: date ? date : prevState.date,
+      description: description ? description : prevState.description,
+      image: image ? image : prevState.image,
+      publisher: publisher ? publisher : prevState.publisher,
+      subtitle: subtitle ? subtitle : prevState.subtitle,
+      tags: tags ? tags : prevState.tags,
+      title: title ? title : prevState.title,
+
+      titleError: { status: false },
+      dateError: { status: false },
+      categoriesError: { status: false },
+      tagsError: { status: false },
+    }));
   }
 
   componentDidMount() {
@@ -186,6 +211,11 @@ class AddMyBookContainer extends Component<IProps, IState>{
       subtitle,
       tags,
       title,
+
+      categoriesError,
+      dateError,
+      tagsError,
+      titleError,
     } = this.state;
 
     return (
@@ -252,6 +282,13 @@ class AddMyBookContainer extends Component<IProps, IState>{
                 onChangePublisher={this.onChangePublisher}
                 onChangeSubtitle={this.onChangeSubtitle}
                 onChangeTitle={this.onChangeTitle}
+
+                publish={this.publish}
+
+                categoriesError={categoriesError}
+                dateError={dateError}
+                tagsError={tagsError}
+                titleError={titleError}
               />
             </ScrollView>
           </KeyboardAvoidingView>}
@@ -317,6 +354,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
   private onChangeTitle = (value: string): void => {
     this.setState({
       title: value,
+      titleError: value ? { status: false } : { status: true, message: 'Fill this field' },
     });
   }
 
@@ -363,25 +401,13 @@ class AddMyBookContainer extends Component<IProps, IState>{
     }
   }
 
-  private addReceivedAuthor = (id: number, fullName: string): void => {
-    const authors: Array<{ id: number, fullName: string }> = [];
-
-    authors.push({
-      id,
-      fullName,
-    });
-
-    this.setState({
-      authors,
-    });
-  }
-
   private addAuthor = (): void => {
     const { authors } = this.state;
     const newAuthor = [...authors];
     newAuthor.push({
       id: authors[authors.length - 1].id + 1,
       fullName: '',
+      error: { status: false },
     });
 
     this.setState({
@@ -472,6 +498,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
 
     this.setState({
       categories: newCategories,
+      categoriesError: { status: false },
     });
   }
 
@@ -483,6 +510,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
 
     this.setState({
       tags: newTags,
+      tagsError: { status: false },
     });
   }
 
@@ -527,6 +555,51 @@ class AddMyBookContainer extends Component<IProps, IState>{
       date,
       isDateTimePickerVisible: false,
     });
+  }
+
+  private publish = (): void => {
+    const { title, authors, date, categories, tags } = this.state;
+
+    if (!title) {
+      this.setState({
+        titleError: { status: true, message: 'Fill this field' },
+      });
+    }
+
+    authors.forEach(item => {
+      if (!item.fullName) {
+        const newAuthor = authors.map(i => {
+          if (i.id === item.id) {
+            i.error = { status: true, message: 'Fill this field' };
+            return i;
+          }
+          return i;
+        });
+
+        this.setState({
+          authors: newAuthor,
+        });
+      }
+    });
+
+    if (!date) {
+      this.setState({
+        dateError: { status: true, message: 'Fill this field' },
+      });
+    }
+
+    if (!categories.length) {
+      this.setState({
+        categoriesError: { status: true, message: 'Fill this field' },
+      });
+    }
+
+    if (!tags.length) {
+      this.setState({
+        tagsError: { status: true, message: 'Fill this field' },
+      });
+    }
+
   }
 }
 

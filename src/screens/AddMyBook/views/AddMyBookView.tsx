@@ -49,6 +49,18 @@ interface IProps {
   onChangePublisher: (value: string) => void;
   onChangeSubtitle: (value: string) => void;
   onChangeTitle: (value: string) => void;
+
+  publish: () => void;
+
+  categoriesError: IError;
+  dateError: IError;
+  tagsError: IError;
+  titleError: IError;
+}
+
+interface IError {
+  status: boolean;
+  message?: string;
 }
 
 const { colors } = THEME;
@@ -86,6 +98,13 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
     onChangePublisher,
     onChangeSubtitle,
     onChangeTitle,
+
+    publish,
+
+    categoriesError,
+    dateError,
+    tagsError,
+    titleError,
   } = props;
 
   const formattedDate = date && moment(date).format('DD MMMM YYYY');
@@ -170,6 +189,7 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
             <Text style={styles.title}>Title*</Text>
           </View>
           <CustomTextInput
+            error={titleError}
             mode='outlined'
             multiline={true}
             onChangeText={onChangeTitle}
@@ -195,6 +215,7 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
             return (
               <View key={id} style={styles.authorsTIWrapper}>
                 <CustomTextInput
+                  error={item.error}
                   mode='outlined'
                   onChangeText={(value) => onChangeAuthor(id, value)}
                   placeholder='Enter full name'
@@ -231,6 +252,7 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
             <Text style={styles.title}>Pub date*</Text>
           </View>
           <CustomTextInput
+            error={dateError}
             mode='outlined'
             onPress={showDateTimePicker}
             placeholder='Choose date'
@@ -261,6 +283,7 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
 
         <CustomTextInputWithDropDownText
           data={CATEGORIES}
+          error={categoriesError}
           selectItem={selectCategory}
           selectedValues={categories}
           srollToDropDownTextOfTI={srollToDropDownTextOfTI}
@@ -289,6 +312,7 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
         />
 
         <CustomTextInputWithDropDownText
+          error={tagsError}
           data={TAGS}
           selectItem={selectTag}
           selectedValues={tags}
@@ -324,7 +348,10 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
         </View>
 
         <View style={styles.publishBtnWrapper}>
-          <TouchableRipple style={styles.publishBtn}>
+          <TouchableRipple
+            onPress={publish}
+            style={styles.publishBtn}
+          >
             <Text style={styles.publishBtnText}>PUBLISH</Text>
           </TouchableRipple>
         </View>
