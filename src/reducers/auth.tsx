@@ -2,6 +2,7 @@ import {
   SIGN_IN_REQUEST,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
+  SIGN_OUT,
 } from '@actions';
 
 const initState = {
@@ -35,6 +36,14 @@ export default (state = initState, { type, payload }) => {
         error: payload.error,
         isLoading: false,
         provider: '',
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        info: {},
+        isLogged: false,
+        provider: '',
+        token: null,
       };
     default:
       return state;

@@ -1,4 +1,5 @@
 import { signIn } from './signIn';
+import { signOut } from './signOut';
 
 import {
   hideUnderlayer,
@@ -11,6 +12,7 @@ import {
   SIGN_IN_REQUEST,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
+  SIGN_OUT,
 } from './types';
 
 export {
@@ -21,5 +23,7 @@ export {
   SIGN_IN_REQUEST,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
+  SIGN_OUT,
   signIn,
+  signOut,
 };
