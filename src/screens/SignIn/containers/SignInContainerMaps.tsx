@@ -4,6 +4,7 @@ import { signIn } from '@actions';
 export const mapStateToProps = (state) => {
   return {
     isLogged: state.auth.isLogged,
+    isLoading: state.auth.isLoading,
   };
 };
 

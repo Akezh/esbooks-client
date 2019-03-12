@@ -6,6 +6,7 @@ import RemovableList from './RemovableList';
 import TagList from './TagList';
 import Underlayer from './Underlayer';
 import { SignInButton } from './SignInButton';
+import Loading from './Loading';
 
 export {
   CategoryList,
@@ -16,4 +17,5 @@ export {
   TagList,
   Underlayer,
   SignInButton,
+  Loading,
 };
