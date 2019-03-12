@@ -25,7 +25,7 @@ const GoogleSignInButton: FunctionComponent<IProps> = (props) => {
   };
 
   return (
-    <SignInButton source={SOCIAL_MEDIA_ICONS['google-plus']} onPress={onGoogleSignIn} title={TITLE} btnStyles={styles.googleBtn} textStyles={styles.googleBtnText}/>
+    <SignInButton source={SOCIAL_MEDIA_ICONS.google} onPress={onGoogleSignIn} title={TITLE} btnStyles={styles.googleBtn} textStyles={styles.googleBtnText}/>
   );
 };
 
