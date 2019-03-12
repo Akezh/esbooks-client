@@ -17,14 +17,31 @@ interface ICompleteBook {
   published: Date | string;
   publisher: string;
   rating: ICompleteBookRating[];
-  reader: IOwner;
+  reader: IReader;
   subtitle: string;
   title: string;
   updated: Date | string;
   waiting_list: IOwner[];
 }
 
+interface IMyBook {
+  authors: string[];
+  date: any;
+  id: string;
+  image: any;
+  publisher: string;
+  reader: IReader;
+  title: string;
+  waiting_list: IReader[];
+}
+
 interface IOwner {
+  fullname?: string;
+  photo?: any;
+}
+
+interface IReader {
+  date?: any;
   fullname?: string;
   photo?: any;
 }
@@ -45,5 +62,7 @@ export {
   ICompleteBookRating,
   ICompleteBookRatingComponents,
   IIncompleteBook,
+  IMyBook,
   IOwner,
+  IReader,
 };

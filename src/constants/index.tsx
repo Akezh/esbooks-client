@@ -1,5 +1,6 @@
 import {
   CARD_DATA,
+  MY_BOOK_DATA,
   CATEGORIES,
   TAGS,
   COMPLETE_BOOK_DATA,
@@ -14,6 +15,7 @@ import THEME from './theme';
 
 export {
   CARD_DATA,
+  MY_BOOK_DATA,
   CATEGORIES,
   TAGS,
   COMPLETE_BOOK_DATA,

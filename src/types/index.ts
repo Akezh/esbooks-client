@@ -3,8 +3,15 @@ import {
   ICompleteBookRating,
   ICompleteBookRatingComponents,
   IIncompleteBook,
+  IMyBook,
   IOwner,
+  IReader,
 } from './Book';
+
+import {
+  IBookRatingAndReviews,
+  IRateBookData,
+} from './BookDetails';
 
 import {
   IHomeBookCardList,
@@ -14,20 +21,20 @@ import {
 } from './Home';
 
 import {
-  IBookRatingAndReviews,
-  IRateBookData,
-} from './BookDetails';
+  IMyBookList,
+  IMyBookListItem,
+} from './MyBooks';
 
 import {
+  IErrorSignInResponse,
+  IFBGraphRequestCallback,
   IFBSignInError,
   IFBSignInResult,
-  IFBGraphRequestCallback,
   IGoogleSignInError,
   IGoogleSignInResult,
-  IErrorSignInResponse,
   IPermissions,
   ISuccessSignInResponse,
-  IUserInfo, 
+  IUserInfo,
 } from './SignIn';
 
 export {
@@ -35,20 +42,24 @@ export {
   ICompleteBook,
   ICompleteBookRating,
   ICompleteBookRatingComponents,
-  IIncompleteBook,
+  IErrorSignInResponse,
+  IFBGraphRequestCallback,
+  IFBSignInError,
+  IFBSignInResult,
+  IGoogleSignInError,
+  IGoogleSignInResult,
   IHomeBookCardList,
   IHomeBookCardListItem,
   IHomeBookList,
   IHomeBookListItem,
+  IIncompleteBook,
+  IMyBook,
+  IMyBookList,
+  IMyBookListItem,
   IOwner,
-  IRateBookData,
-  IFBSignInError,
-  IFBSignInResult,
-  IFBGraphRequestCallback,
-  IGoogleSignInError,
-  IGoogleSignInResult,
-  IErrorSignInResponse,
   IPermissions,
+  IRateBookData,
+  IReader,
   ISuccessSignInResponse,
-  IUserInfo, 
+  IUserInfo,
 };

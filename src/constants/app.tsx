@@ -2,7 +2,6 @@ import { PLACEHOLDERS } from '@static';
 
 const TEST_BOOK_IMAGE = true;
 
-
 const CATEGORIES = [
   "Children's Books",
   'Arts & Photography',
@@ -933,6 +932,140 @@ const CARD_DATA = [
   },
 ];
 
+
+const MY_BOOK_DATA = [
+  {
+    authors: ['Admin'],
+    date: new Date(),
+    id: '1',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname',
+    waiting_list: [],
+  },
+  {
+    authors: ['AdminAdminAdmin'],
+    date: new Date(),
+    id: '2',
+    image: book,
+    publisher: 'Publisher',
+    reader: {},
+    title: 'Bookname 1 Bookname 0',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '3',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname 2 Bookname 1 Bookname 0',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '4',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname3Bookname2Bookname1Bookname0Bookname-2Bookname-3',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '5',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname4Bookname3Bookname2',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '6',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname4Bookname3Bookname2',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+  {
+    authors: ['AdminAdminAdmin123456789'],
+    date: new Date(),
+    id: '7',
+    image: book,
+    publisher: 'Publisher',
+    reader: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    title: 'Bookname123456789*-*/123457890',
+    waiting_list: [
+      {
+        date: new Date(),
+        fullname: 'Some Guy',
+        photo: default_user_avatar,
+      },
+    ],
+  },
+];
+
 const PROVIDER = {
   Facebook: 'facebook',
   Google: 'google',
@@ -941,9 +1074,10 @@ const PROVIDER = {
 
 export {
   CARD_DATA,
+  COMPLETE_BOOK_DATA,
+  MY_BOOK_DATA,
   CATEGORIES,
   TAGS,
-  COMPLETE_BOOK_DATA,
   TEST_BOOK_IMAGE,
   PROVIDER,
 };
