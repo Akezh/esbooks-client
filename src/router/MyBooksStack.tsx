@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import { AddMyBook, MoreItems, MyBooks } from '@screens';
+import { AddAndChangeMyBook, MoreItems, MyBooks } from '@screens';
 import { withSafeAreaView } from '@hocs';
 
 const MyBooksStack = createStackNavigator(
@@ -7,8 +7,8 @@ const MyBooksStack = createStackNavigator(
     MyBooks: {
       screen: withSafeAreaView((MyBooks), 'white'),
     },
-    AddMyBook: {
-      screen: withSafeAreaView((AddMyBook), 'white'),
+    AddAndChangeMyBook: {
+      screen: withSafeAreaView((AddAndChangeMyBook), 'white'),
     },
     MoreItems: {
       screen: withSafeAreaView((MoreItems), 'white'),

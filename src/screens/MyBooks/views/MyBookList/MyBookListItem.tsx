@@ -30,6 +30,7 @@ const MyBookListItem:
       callBookRemovalWarning,
       callBookReturnAlert,
       onBookDetails,
+      onChangeMyBook,
     } = nav;
 
     const { fullname, photo } = reader;
@@ -74,6 +75,7 @@ const MyBookListItem:
                 {title}
               </Text>
               <BookMenu
+                onChangeMyBook={onChangeMyBook}
                 callBookRemovalWarning={callBookRemovalWarning}
               />
             </View>

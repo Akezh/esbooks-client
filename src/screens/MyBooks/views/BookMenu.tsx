@@ -7,6 +7,7 @@ import { TouchableRipple } from 'react-native-paper';
 
 interface IProps {
   callBookRemovalWarning: () => void;
+  onChangeMyBook: () => void;
 }
 
 const { colors } = THEME;
@@ -17,7 +18,7 @@ const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
 
   let menu: any;
 
-  const renderGetBtn = (): JSX.Element => {
+  const renderBookMenu = (): JSX.Element => {
     return (
       <TouchableRipple
         style={styles.menuBtn}
@@ -49,14 +50,19 @@ const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
     callBookRemovalWarning();
   };
 
+  const onChangeMyBook = (): void => {
+    hideMenu();
+    props.onChangeMyBook();
+  };
+
   return (
     <Menu
-      button={renderGetBtn()}
+      button={renderBookMenu()}
       ref={setMenuRef}
     >
       <React.Fragment>
         <MenuItem
-          onPress={hideMenu}
+          onPress={onChangeMyBook}
           style={styles.menuItem}
           textStyle={styles.menuItemText}
           underlayColor='#1ab3ff'

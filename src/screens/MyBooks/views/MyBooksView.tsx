@@ -7,7 +7,7 @@ import MyBookList from './MyBookList';
 interface IProps {
   callBookRemovalWarning: () => void;
   callBookReturnAlert: () => void;
-  onBookDetails: () => void;
+  onChangeMyBook: () => void;
 }
 
 const { colors } = THEME;
@@ -17,13 +17,13 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
   const {
     callBookRemovalWarning,
     callBookReturnAlert,
-    onBookDetails,
+    onChangeMyBook,
   } = props;
 
   const nav = {
     callBookRemovalWarning,
     callBookReturnAlert,
-    onBookDetails,
+    onChangeMyBook,
   };
 
   return (
