@@ -14,7 +14,7 @@ import {
   RemovableList,
 } from '@components';
 import { CATEGORIES, TAGS, THEME } from '@constants';
-import { AddMyBookViewStyles as styles } from '../styles';
+import { AddAndChangeMyBookViewStyles as styles } from '../styles';
 
 interface IProps {
   addAuthor: () => void;
@@ -56,6 +56,9 @@ interface IProps {
   dateError: IError;
   tagsError: IError;
   titleError: IError;
+
+  screenType: 'Add' | 'Change';
+  save: () => void;
 }
 
 interface IError {
@@ -67,7 +70,7 @@ const { colors } = THEME;
 const { placeholder, primary } = colors;
 const TEXT = '#4B5A71';
 
-const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
+const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
   const {
     addAuthor,
     onMoreItems,
@@ -105,6 +108,9 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
     dateError,
     tagsError,
     titleError,
+
+    screenType,
+    save,
   } = props;
 
   const formattedDate = date && moment(date).format('DD MMMM YYYY');
@@ -349,10 +355,14 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
 
         <View style={styles.publishBtnWrapper}>
           <TouchableRipple
-            onPress={publish}
+            onPress={screenType === 'Change'
+              ? save
+              : publish}
             style={styles.publishBtn}
           >
-            <Text style={styles.publishBtnText}>PUBLISH</Text>
+            <Text style={styles.publishBtnText}>
+              {screenType === 'Change' ? 'SAVE' : 'PUBLISH'}
+            </Text>
           </TouchableRipple>
         </View>
       </View>
@@ -365,4 +375,4 @@ const AddMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
   );
 };
 
-export default AddMyBookView;
+export default AddAndChangeMyBookView;

@@ -1,4 +1,4 @@
-import AddMyBook from './AddMyBook';
+import AddAndChangeMyBook from './AddAndChangeMyBook';
 import BookDetails from './BookDetails';
 import Home from './Home';
 import MoreItems from './MoreItems';
@@ -8,7 +8,7 @@ import SignIn from './SignIn';
 import Search from './Search';
 
 export {
-  AddMyBook,
+  AddAndChangeMyBook,
   BookDetails,
   Home,
   MoreItems,

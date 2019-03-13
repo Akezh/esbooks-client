@@ -5,12 +5,17 @@ import MyBooksView from '../views';
 import { MyBooksContainerStyles as styles } from '../styles';
 
 interface IProps {
-  onBookDetails: () => void;
+  onAddAndChangeMyBook: () => void;
+  onChangeMyBook: () => void;
   onGoBack: () => void;
 }
 
 const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { onBookDetails, onGoBack } = props;
+  const {
+    onAddAndChangeMyBook,
+    onChangeMyBook,
+    onGoBack,
+  } = props;
 
   const callBookReturnAlert = (): void => {
     Alert.alert(
@@ -60,6 +65,7 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
       <Icon
         color='#FFF'
         name='plus'
+        onPress={onAddAndChangeMyBook}
         size={24}
         style={styles.icon}
       />
@@ -68,7 +74,7 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
     <MyBooksView
       callBookRemovalWarning={callBookRemovalWarning}
       callBookReturnAlert={callBookReturnAlert}
-      onBookDetails={onBookDetails}
+      onChangeMyBook={onChangeMyBook}
     />
   </React.Fragment>;
 };

@@ -1,14 +1,17 @@
 import React, { FunctionComponent } from 'react';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import AddMyBookContainer from './containers';
+import AddAndChangeMyBookContainer from './containers';
 
 interface IProps {
   navigation: NavigationScreenProp<NavigationState>;
 }
 
-const AddMyBook: FunctionComponent<IProps> = (props): JSX.Element => {
+const AddAndChangeMyBook: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
   const { goBack, navigate } = navigation;
+  const { state } = navigation;
+  const { params } = state;
+  const { dataBookThatWeChange, screenType } = params;
 
   const onGoBack = (): void => {
     goBack();
@@ -24,12 +27,14 @@ const AddMyBook: FunctionComponent<IProps> = (props): JSX.Element => {
   };
 
   return (
-    <AddMyBookContainer
+    <AddAndChangeMyBookContainer
+      dataBookThatWeChange={dataBookThatWeChange}
       navigation={navigation}
       onGoBack={onGoBack}
       onMoreItems={onMoreItems}
+      screenType={screenType}
     />
   );
 };
 
-export default AddMyBook;
+export default AddAndChangeMyBook;

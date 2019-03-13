@@ -14,9 +14,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import ImagePicker from 'react-native-image-crop-picker';
 import { connect } from 'react-redux';
-import { mapActionsToProps, mapStateToProps } from './AddMyBookContainerMaps';
-import AddMyBookView from '../views';
-import { AddMyBookContainerStyles as styles } from '../styles';
+import { mapActionsToProps, mapStateToProps } from './AddAndChangeMyBookContainerMaps';
+import AddAndChangeMyBookView from '../views';
+import { AddAndChangeMyBookContainerStyles as styles } from '../styles';
 import BarCodeScanner from '../views/BarCodeScanner';
 import { Loading } from '@components';
 import WaysFillData from '../views/WaysFillData';
@@ -34,6 +34,9 @@ interface IProps {
     selectedItems: string[],
     setItems: (type: string, items: string[]) => void,
   ) => void;
+
+  dataBookThatWeChange: any;
+  screenType: 'Add' | 'Change';
 }
 
 interface IState {
@@ -67,7 +70,7 @@ interface IError {
   message?: string;
 }
 
-class AddMyBookContainer extends Component<IProps, IState>{
+class AddAndChangeMyBookContainer extends Component<IProps, IState>{
   public _didFocusSubscription: any;
   public _willBlurSubscription: any;
   public currentScrollPosition: number = 0;
@@ -75,7 +78,18 @@ class AddMyBookContainer extends Component<IProps, IState>{
 
   constructor(props: IProps) {
     super(props);
-    const { navigation } = props;
+    const { dataBookThatWeChange, navigation, screenType } = props;
+    const isChangeTypeScreen = screenType === 'Change' ? true : false;
+    const {
+      authors,
+      categories,
+      description,
+      image,
+      published,
+      publisher,
+      subtitle,
+      title,
+    } = dataBookThatWeChange;
 
     this.state = {
       ISBNCode: '',
@@ -83,15 +97,15 @@ class AddMyBookContainer extends Component<IProps, IState>{
       isDateTimePickerVisible: false,
       isWaysFillDataVisible: false,
 
-      authors: [{ id: 0, fullName: '', error: { status: false } }],
-      categories: [],
-      date: '',
-      description: '',
-      image: {},
-      publisher: '',
-      subtitle: '',
+      authors: isChangeTypeScreen ? authors.map((item: string, index: number) => ({ id: index, fullName: item, error: { status: false } })) : [{ id: 0, fullName: '', error: { status: false } }],
+      categories: isChangeTypeScreen ? categories : [],
+      date: isChangeTypeScreen ? published : '',
+      description: isChangeTypeScreen ? description : '',
+      image: isChangeTypeScreen ? image : {},
+      publisher: isChangeTypeScreen ? publisher : '',
+      subtitle: isChangeTypeScreen ? subtitle : '',
       tags: [],
-      title: '',
+      title: isChangeTypeScreen ? title : '',
 
       titleError: { status: false },
       dateError: { status: false },
@@ -195,6 +209,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
       isLoading,
       onGoBack,
       onMoreItems,
+      screenType,
     } = this.props;
 
     const {
@@ -230,7 +245,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
                 size={24}
                 style={styles.icon}
               />
-              <Text style={styles.title}>Add my book</Text>
+              <Text style={styles.title}>{screenType} my book</Text>
             </View>
             <Icon
               color='#FFF'
@@ -252,7 +267,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
               onScroll={this.handleScroll}
               ref={this.setRefScrollView}
             >
-              <AddMyBookView
+              <AddAndChangeMyBookView
                 addAuthor={this.addAuthor}
                 onMoreItems={onMoreItems}
                 openCamera={this.openCamera}
@@ -289,6 +304,9 @@ class AddMyBookContainer extends Component<IProps, IState>{
                 dateError={dateError}
                 tagsError={tagsError}
                 titleError={titleError}
+
+                screenType={screenType}
+                save={this.save}
               />
             </ScrollView>
           </KeyboardAvoidingView>}
@@ -557,7 +575,15 @@ class AddMyBookContainer extends Component<IProps, IState>{
     });
   }
 
+  private save = (): void => {
+    this.checkAllFields();
+  }
+
   private publish = (): void => {
+    this.checkAllFields();
+  }
+
+  private checkAllFields = () => {
     const { title, authors, date, categories, tags } = this.state;
 
     if (!title) {
@@ -599,8 +625,7 @@ class AddMyBookContainer extends Component<IProps, IState>{
         tagsError: { status: true, message: 'Fill this field' },
       });
     }
-
   }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(AddMyBookContainer);
+export default connect(mapStateToProps, mapActionsToProps)(AddAndChangeMyBookContainer);

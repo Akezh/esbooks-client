@@ -4,7 +4,6 @@ import CustomDrawer from './CustomDrawer';
 import HomeStack from './HomeStack';
 import MyBooksStack from './MyBooksStack';
 
-
 const Drawer = createDrawerNavigator(
   {
     HomeStack: {
