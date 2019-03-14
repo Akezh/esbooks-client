@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginLeft: 16,
   },
+  image: {
+    height: 180,
+    width: 120,
+  },
   title: {
     color: text,
     fontFamily: medium,

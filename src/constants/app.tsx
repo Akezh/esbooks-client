@@ -962,6 +962,16 @@ const MY_BOOK_DATA = [
         fullname: 'Some Guy',
         photo: default_user_avatar,
       },
+      {
+        date: new Date(),
+        fullname: 'Some Guy Some Guy Some Guy Some Guy',
+        photo: default_user_avatar,
+      },
+      {
+        date: new Date(),
+        fullname: 'SomeSomeSomeSome GuyGuyGuyGuy',
+        photo: default_user_avatar,
+      },
     ],
   },
   {

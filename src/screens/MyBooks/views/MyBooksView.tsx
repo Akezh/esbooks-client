@@ -2,12 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { StatusBar } from 'react-native';
 import { MY_BOOK_DATA, THEME } from '@constants';
 import { withScrollView } from '@hocs';
+import { IReader } from '@types';
 import MyBookList from './MyBookList';
 
 interface IProps {
   callBookRemovalWarning: () => void;
   callBookReturnAlert: () => void;
   onChangeMyBook: () => void;
+  onTheQueueForTheBook: (reader: IReader, waitingList: IReader[]) => void;
 }
 
 const { colors } = THEME;
@@ -18,12 +20,14 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
     callBookRemovalWarning,
     callBookReturnAlert,
     onChangeMyBook,
+    onTheQueueForTheBook,
   } = props;
 
   const nav = {
     callBookRemovalWarning,
     callBookReturnAlert,
     onChangeMyBook,
+    onTheQueueForTheBook,
   };
 
   return (

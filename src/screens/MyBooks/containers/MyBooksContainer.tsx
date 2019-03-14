@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Alert, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { IReader } from '@types';
 import MyBooksView from '../views';
 import { MyBooksContainerStyles as styles } from '../styles';
 
@@ -8,6 +9,7 @@ interface IProps {
   onAddAndChangeMyBook: () => void;
   onChangeMyBook: () => void;
   onGoBack: () => void;
+  onTheQueueForTheBook: (reader: IReader, waitingList: IReader[]) => void;
 }
 
 const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
@@ -15,6 +17,7 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
     onAddAndChangeMyBook,
     onChangeMyBook,
     onGoBack,
+    onTheQueueForTheBook,
   } = props;
 
   const callBookReturnAlert = (): void => {
@@ -75,6 +78,7 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
       callBookRemovalWarning={callBookRemovalWarning}
       callBookReturnAlert={callBookReturnAlert}
       onChangeMyBook={onChangeMyBook}
+      onTheQueueForTheBook={onTheQueueForTheBook}
     />
   </React.Fragment>;
 };

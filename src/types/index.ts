@@ -37,6 +37,11 @@ import {
   IUserInfo,
 } from './SignIn';
 
+import {
+  ITheQueueForTheBookList,
+  ITheQueueForTheBookListItem,
+} from './TheQueueForTheBook';
+
 export {
   IBookRatingAndReviews,
   ICompleteBook,
@@ -61,5 +66,7 @@ export {
   IRateBookData,
   IReader,
   ISuccessSignInResponse,
+  ITheQueueForTheBookList,
+  ITheQueueForTheBookListItem,
   IUserInfo,
 };

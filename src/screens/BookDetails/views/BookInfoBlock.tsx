@@ -3,7 +3,7 @@ import { Image, Text, View } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import moment from 'moment';
 import { CategoryList } from '@components';
-import { OTHER } from '@static';
+import { OTHER, PLACEHOLDERS } from '@static';
 import { IOwner } from '@types';
 import { BookInfoBlockStyles as styles } from '../styles';
 
@@ -21,6 +21,7 @@ interface IProps {
   };
 }
 
+const { book } = PLACEHOLDERS;
 const { author } = OTHER;
 
 const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
@@ -40,10 +41,20 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
 
   const formattedPublished = moment(published).format('DD MMMM YYYY');
 
+  const urlReg = /(https?:\/\/[^\s]+)/g;
+
+  const isBookImageUrl = urlReg.test(image);
+  const isReaderPhotoUrl = reader && urlReg.test(photo);
+
   return (
     <View style={styles.bookInfoBlockWrapper}>
       <View style={styles.bookInfoBlock}>
-        <Image source={image} />
+        <Image
+          source={isBookImageUrl
+            ? { uri: book }
+            : image}
+          style={styles.image}
+        />
 
         <View style={styles.bookInfoSection}>
           <Text style={styles.title}>{title}</Text>
@@ -65,7 +76,12 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
           <CategoryList data={categories} />
 
           <View style={styles.ownerInfo}>
-            <Image source={photo} style={styles.ownerPhoto} />
+            <Image
+              source={isReaderPhotoUrl
+                ? { uri: book }
+                : photo}
+              style={styles.ownerPhoto}
+            />
             <View style={styles.ownerInfoTextWrapper}>
               <Text
                 numberOfLines={1}

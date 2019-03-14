@@ -4,12 +4,13 @@ import { Text, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
 import { THEME } from '@constants';
-import { OTHER } from '@static';
+import { OTHER, PLACEHOLDERS } from '@static';
 import { IMyBookListItem } from '@types';
 import BookMenu from '../BookMenu';
 import { MyBookListItemStyles as styles } from '../../styles';
 
 const { author } = OTHER;
+const { default_user_avatar, book } = PLACEHOLDERS;
 const { colors } = THEME;
 const { text } = colors;
 
@@ -31,15 +32,19 @@ const MyBookListItem:
       callBookReturnAlert,
       onBookDetails,
       onChangeMyBook,
+      onTheQueueForTheBook,
     } = nav;
 
     const { fullname, photo } = reader;
 
+    const urlReg = /(https?:\/\/[^\s]+)/g;
+
     const formattedPublished = moment(date).format('DD MMMM YYYY');
+    const isBookImageUrl = urlReg.test(image);
+
+    const isReaderPhotoUrl = reader && urlReg.test(photo);
     const formattedReaderDate = reader && moment(reader.date).format('DD MMMM YYYY');
 
-    const urlReg = /(https?:\/\/[^\s]+)/g;
-    const isImageUrl = urlReg.test(image);
     return (
       <TouchableOpacity
         onPress={onBookDetails}
@@ -50,13 +55,14 @@ const MyBookListItem:
           <View style={styles.imageWrapper}>
             <Image
               style={styles.image}
-              source={isImageUrl
-                ? { uri: image }
+              source={isBookImageUrl
+                ? { uri: book }
                 : image}
             />
 
             {waiting_list.length
               ? <TouchableRipple
+                onPress={() => onTheQueueForTheBook(reader, waiting_list)}
                 style={styles.numberOfWaitingPeopleBtn}
               >
                 <Text style={styles.numberOfWaitingPeopleBtnText}>
@@ -113,7 +119,12 @@ const MyBookListItem:
             {reader.fullname
               && <View style={styles.readerInfoWrapper}>
                 <View style={styles.readerInfo}>
-                  <Image source={photo} style={styles.readerPhoto} />
+                  <Image
+                    source={isReaderPhotoUrl
+                      ? { uri: default_user_avatar }
+                      : photo}
+                    style={styles.readerPhoto}
+                  />
 
                   <View style={styles.readerInfoTextWrapper}>
                     <Text

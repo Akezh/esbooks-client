@@ -2,10 +2,12 @@ import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { THEME } from '@constants';
+import { PLACEHOLDERS } from '@static';
 import { IHomeBookListItem } from '@types';
-import { formatAuthors, getBotImage } from '@utils';
+import { formatAuthors } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
 
+const { book } = PLACEHOLDERS;
 const { colors } = THEME;
 const { primary } = colors;
 
@@ -15,6 +17,9 @@ const BookListItem:
     const { authors, image, owner, title } = item;
     const { fullname, photo } = owner;
 
+    const urlReg = /(https?:\/\/[^\s]+)/g;
+    const isBookImageUrl = urlReg.test(image);
+
     return (
       <TouchableRipple
         onPress={() => onBookDetails(item)}
@@ -22,7 +27,12 @@ const BookListItem:
         style={styles.wrapper}
       >
         <View style={styles.container}>
-          <Image source={getBotImage(image)} style={styles.image} />
+          <Image
+            source={isBookImageUrl
+              ? { uri: book }
+              : image}
+            style={styles.image}
+          />
           <View style={styles.bookInfoSection}>
             <View style={styles.titleWrapper}>
               <Text

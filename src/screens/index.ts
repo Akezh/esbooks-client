@@ -4,8 +4,9 @@ import Home from './Home';
 import MoreItems from './MoreItems';
 import MyBooks from './MyBooks';
 import RateBook from './RateBook';
-import SignIn from './SignIn';
 import Search from './Search';
+import SignIn from './SignIn';
+import TheQueueForTheBook from './TheQueueForTheBook';
 
 export {
   AddAndChangeMyBook,
@@ -14,6 +15,7 @@ export {
   MoreItems,
   MyBooks,
   RateBook,
-  SignIn,
   Search,
+  SignIn,
+  TheQueueForTheBook,
 };

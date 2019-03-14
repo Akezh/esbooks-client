@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { COMPLETE_BOOK_DATA } from '@constants';
+import { IReader } from '@types';
 import MyBooksContainer from './containers';
 
 interface IProps {
@@ -16,7 +17,7 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
   };
 
   const onAddAndChangeMyBook = (): void => {
-    navigate('AddAndChangeMyBook', { type: 'Add' });
+    navigate('AddAndChangeMyBook', { screenType: 'Add' });
   };
 
   const onChangeMyBook = (): void => {
@@ -41,13 +42,21 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
       subtitle,
       title,
     };
-    navigate('AddAndChangeMyBook', { screenType: 'Change', dataBookThatWeChange: data });
+    navigate('AddAndChangeMyBook', {
+      screenType: 'Change',
+      dataBookThatWeChange: data,
+    });
+  };
+
+  const onTheQueueForTheBook = (reader: IReader, waitingList: IReader[]): void => {
+    navigate('TheQueueForTheBook', { reader, waitingList });
   };
 
   return <MyBooksContainer
     onAddAndChangeMyBook={onAddAndChangeMyBook}
     onChangeMyBook={onChangeMyBook}
     onGoBack={onGoBack}
+    onTheQueueForTheBook={onTheQueueForTheBook}
   />;
 };
 
