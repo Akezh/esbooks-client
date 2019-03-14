@@ -2,10 +2,12 @@ import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { THEME } from '@constants';
+import { PLACEHOLDERS } from '@static';
 import { IHomeBookListItem } from '@types';
-import { formatAuthors, getBotImage } from '@utils';
+import { formatAuthors } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
 
+const { default_user_avatar, book } = PLACEHOLDERS;
 const { colors } = THEME;
 const { primary } = colors;
 
@@ -15,8 +17,18 @@ const BookListItem:
     const { authors, image, owner, title } = item;
     const { fullname, photo } = owner;
 
+    const urlReg = /(https?:\/\/[^\s]+)/g;
+
+    const isBookImageUrl = urlReg.test(image);
+    const isOwnerPhotoUrl = owner && urlReg.test(photo);
+
     const renderImage = () => {
-      return <Image source={getBotImage(image)} style={styles.image} />;
+      return <Image
+        source={isBookImageUrl
+          ? { uri: book }
+          : image}
+        style={styles.image}
+      />;
     };
 
     const renderBookInfoSection = () => {
@@ -47,12 +59,17 @@ const BookListItem:
             {renderOwnerAvatar()}
             {renderUploadBy()}
           </View>
-       </View>
+        </View>
       );
     };
 
     const renderOwnerAvatar = () => {
-      return <Image source={photo} style={styles.ownerPhoto} />;
+      return <Image
+        source={isOwnerPhotoUrl
+          ? { uri: default_user_avatar }
+          : photo}
+        style={styles.ownerPhoto}
+      />;
     };
 
     const renderUploadBy = () => {
@@ -72,7 +89,7 @@ const BookListItem:
           </Text>
         </View>
       );
-    }; 
+    };
 
     return (
       <TouchableRipple

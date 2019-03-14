@@ -1,5 +1,10 @@
 import { createStackNavigator } from 'react-navigation';
-import { AddAndChangeMyBook, MoreItems, MyBooks } from '@screens';
+import {
+  AddAndChangeMyBook,
+  MoreItems,
+  MyBooks,
+  TheQueueForTheBook,
+} from '@screens';
 import { withSafeAreaView } from '@hocs';
 
 const MyBooksStack = createStackNavigator(
@@ -12,6 +17,9 @@ const MyBooksStack = createStackNavigator(
     },
     MoreItems: {
       screen: withSafeAreaView((MoreItems), 'white'),
+    },
+    TheQueueForTheBook: {
+      screen: withSafeAreaView((TheQueueForTheBook), 'white'),
     },
   }, {
     initialRouteName: 'MyBooks',

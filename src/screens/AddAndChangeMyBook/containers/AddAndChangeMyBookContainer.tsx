@@ -80,16 +80,26 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
     super(props);
     const { dataBookThatWeChange, navigation, screenType } = props;
     const isChangeTypeScreen = screenType === 'Change' ? true : false;
-    const {
-      authors,
-      categories,
-      description,
-      image,
-      published,
-      publisher,
-      subtitle,
-      title,
-    } = dataBookThatWeChange;
+
+    let authors = [{ id: 0, fullName: '', error: { status: false } }];
+    let categories = [];
+    let date = '';
+    let description = '';
+    let image = '';
+    let publisher = '';
+    let subtitle = '';
+    let title = '';
+
+    if (isChangeTypeScreen && dataBookThatWeChange) {
+      authors = dataBookThatWeChange.authors.map((item: string, index: number) => ({ id: index, fullName: item, error: { status: false } }));
+      categories = dataBookThatWeChange.categories;
+      date = dataBookThatWeChange.published;
+      description = dataBookThatWeChange.description;
+      image = dataBookThatWeChange.image;
+      publisher = dataBookThatWeChange.publisher;
+      subtitle = dataBookThatWeChange.subtitle;
+      title = dataBookThatWeChange.title;
+    }
 
     this.state = {
       ISBNCode: '',
@@ -97,15 +107,15 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       isDateTimePickerVisible: false,
       isWaysFillDataVisible: false,
 
-      authors: isChangeTypeScreen ? authors.map((item: string, index: number) => ({ id: index, fullName: item, error: { status: false } })) : [{ id: 0, fullName: '', error: { status: false } }],
-      categories: isChangeTypeScreen ? categories : [],
-      date: isChangeTypeScreen ? published : '',
-      description: isChangeTypeScreen ? description : '',
-      image: isChangeTypeScreen ? image : {},
-      publisher: isChangeTypeScreen ? publisher : '',
-      subtitle: isChangeTypeScreen ? subtitle : '',
+      authors,
+      categories,
+      date,
+      description,
+      image,
+      publisher,
+      subtitle,
       tags: [],
-      title: isChangeTypeScreen ? title : '',
+      title,
 
       titleError: { status: false },
       dateError: { status: false },

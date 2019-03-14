@@ -43,10 +43,10 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
 
   const renderHeader = () => {
     return (
-    <View style={styles.header}>
-      {renderAvatar()}
-      {renderWelcomeUser()}
-    </View>);
+      <View style={styles.header}>
+        {renderAvatar()}
+        {renderWelcomeUser()}
+      </View>);
   };
 
   const renderAvatar = () => {
@@ -54,7 +54,9 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
       <View style={styles.avatarWrapper}>
         <Image
           resizeMethod='resize'
-          source={avatar ? { uri: avatar } : default_user_avatar }
+          source={avatar
+            ? { uri: avatar }
+            : default_user_avatar}
           style={styles.avatar}
         />
       </View>
