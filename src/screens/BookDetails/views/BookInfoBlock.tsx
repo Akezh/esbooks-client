@@ -3,25 +3,25 @@ import { Image, Text, View } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import moment from 'moment';
 import { CategoryList } from '@components';
-import { OTHER, PLACEHOLDERS } from '@static';
+import { OTHER } from '@static';
 import { IOwner } from '@types';
+import { getImage } from '@utils';
 import { BookInfoBlockStyles as styles } from '../styles';
 
 interface IProps {
   data: {
-    authors: string[];
-    categories: string[];
-    image: any;
-    owner: IOwner;
-    published: Date | string;
-    publisher: string;
-    reader: IOwner;
-    title: string;
-    waiting_list: IOwner[];
+    authors: string[],
+    categories: string[],
+    image: any,
+    owner: IOwner,
+    published: Date | string,
+    publisher: string,
+    reader: IOwner,
+    title: string,
+    waiting_list: IOwner[],
   };
 }
 
-const { book } = PLACEHOLDERS;
 const { author } = OTHER;
 
 const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
@@ -41,20 +41,10 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
 
   const formattedPublished = moment(published).format('DD MMMM YYYY');
 
-  const urlReg = /(https?:\/\/[^\s]+)/g;
-
-  const isBookImageUrl = urlReg.test(image);
-  const isReaderPhotoUrl = reader && urlReg.test(photo);
-
   return (
     <View style={styles.bookInfoBlockWrapper}>
       <View style={styles.bookInfoBlock}>
-        <Image
-          source={isBookImageUrl
-            ? { uri: book }
-            : image}
-          style={styles.image}
-        />
+        <Image source={getImage(image, 'book')} style={styles.image} />
 
         <View style={styles.bookInfoSection}>
           <Text style={styles.title}>{title}</Text>
@@ -66,7 +56,9 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
 
             <View style={styles.authorInfoTextWrapper}>
               {authors.map((item, index) => (
-                <Text key={index} style={styles.author}>{item}</Text>
+                <Text key={index} style={styles.author}>
+                  {item}
+                </Text>
               ))}
               <Text style={styles.bookInfoText}>{publisher}</Text>
               <Text style={styles.bookInfoText}>{formattedPublished}</Text>
@@ -78,17 +70,12 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
           <View style={styles.ownerInfo}>
             <View style={styles.authorIconWrapper}>
               <Image
-                source={isReaderPhotoUrl
-                  ? { uri: book }
-                  : photo}
+                source={getImage(photo, 'user')}
                 style={styles.ownerPhoto}
               />
             </View>
             <View style={styles.ownerInfoTextWrapper}>
-              <Text
-                numberOfLines={1}
-                style={styles.bookInfoText}
-              >
+              <Text numberOfLines={1} style={styles.bookInfoText}>
                 Upload By
               </Text>
               <Text
@@ -100,17 +87,20 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
             </View>
           </View>
 
-          {reader.fullname
-            ? <View>
+          {reader.fullname ? (
+            <View>
               <Text style={[styles.isBookStatus, styles.isNotBookFree]}>
                 This book is busy
               </Text>
-              <Text style={styles.waitingList}>({waiting_list.length} people waiting in line)</Text>
+              <Text style={styles.waitingList}>
+                ({waiting_list.length} people waiting in line)
+              </Text>
             </View>
-            : <Text style={[styles.isBookStatus, styles.isBookFree]}>
+          ) : (
+            <Text style={[styles.isBookStatus, styles.isBookFree]}>
               This book is free
-          </Text>}
-
+            </Text>
+          )}
         </View>
       </View>
 
@@ -119,7 +109,6 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
           <Text style={styles.btnText}>JOIN THE QUEUE</Text>
         </TouchableRipple>
       </View>
-
     </View>
   );
 };

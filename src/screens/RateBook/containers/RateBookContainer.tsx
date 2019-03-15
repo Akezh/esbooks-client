@@ -3,7 +3,7 @@ import { Image, View, Text, Alert } from 'react-native';
 import { IconButton, TouchableRipple } from 'react-native-paper';
 import { THEME } from '@constants';
 import { IRateBookData } from '@types';
-import { getBotImage } from '@utils';
+import { getImage } from '@utils';
 import { RateBookContainerStyles as styles } from '../styles';
 import { RateBookView } from '../views';
 
@@ -48,7 +48,7 @@ class RateBookContainer extends Component<IProps, IState> {
             style={styles.close}
           />
           <Image
-            source={getBotImage(image)}
+            source={getImage(image, 'book')}
             style={styles.image}
           />
           <View style={styles.headerTextWrapper}>

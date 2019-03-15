@@ -76,9 +76,9 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
   const renderDrawerItems = () => {
     return (
       <View style={styles.containerDrawerItemsStyle}>
-        <DrawerItems {...props} items={[props.items[0], props.items[1]]} />
+        <DrawerItems {...props} items={[props.items[0], props.items[1], props.items[2]]} />
         <Divider />
-        <DrawerItems {...props} items={[props.items[2]]} />
+        <DrawerItems {...props} items={[props.items[3]]} />
       </View>
     );
   };

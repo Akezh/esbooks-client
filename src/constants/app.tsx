@@ -1,7 +1,5 @@
 import { PLACEHOLDERS } from '@static';
 
-const TEST_BOOK_IMAGE = true;
-
 const CATEGORIES = [
   "Children's Books",
   'Arts & Photography',
@@ -466,7 +464,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['Admin', 'Admin2'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '1',
     image: book,
     owner: {
@@ -507,7 +506,8 @@ const COMPLETE_BOOK_DATA = [
       photo: default_user_avatar,
       fullname: 'Some Guy',
     },
-    subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    subtitle:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     title: 'Bookname',
     updated: '2019-03-02T18:00:00.000Z',
     waiting_list: [],
@@ -516,7 +516,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdminAdmin'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '2',
     image: book,
     owner: {
@@ -563,7 +564,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdminAdminAdminAdminAdmin'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '3',
     image: book,
     owner: {
@@ -618,7 +620,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdmin'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '4',
     image: book,
     owner: {
@@ -673,7 +676,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdminAdminAdminAdminAdminAdminAdminAdminAdminAdminAdmin'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '5',
     image: book,
     owner: {
@@ -728,7 +732,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdminAdmin'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '6',
     image: book,
     owner: {
@@ -783,7 +788,8 @@ const COMPLETE_BOOK_DATA = [
     authors: ['AdminAdminAdmin123456789'],
     categories: ['CATEGORY 3'],
     created: '2019-03-02T18:00:00.000Z',
-    description: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in',
     id: '7',
     image: book,
     owner: {
@@ -932,7 +938,6 @@ const CARD_DATA = [
   },
 ];
 
-
 const MY_BOOK_DATA = [
   {
     authors: ['Admin'],
@@ -1076,6 +1081,107 @@ const MY_BOOK_DATA = [
   },
 ];
 
+const BOOKS_I_READ_DATA = [
+  {
+    authors: ['Admin'],
+    date: new Date(),
+    id: '1',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname',
+  },
+  {
+    authors: ['AdminAdminAdmin'],
+    date: new Date(),
+    id: '2',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname 1 Bookname 0',
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '3',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname 2 Bookname 1 Bookname 0',
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '4',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname3Bookname2Bookname1Bookname0Bookname-2Bookname-3',
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '5',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname4Bookname3Bookname2',
+  },
+  {
+    authors: ['AdminAdminAdminAdminAdminAdmin'],
+    date: new Date(),
+    id: '6',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname4Bookname3Bookname2',
+  },
+  {
+    authors: ['AdminAdminAdmin123456789'],
+    date: new Date(),
+    id: '7',
+    image: book,
+    publisher: 'Publisher',
+    owner: {
+      date: new Date(),
+      fullname: 'Some Guy',
+      photo: default_user_avatar,
+    },
+    startDateOfReading: new Date(),
+    title: 'Bookname123456789*-*/123457890',
+  },
+];
+
 const PROVIDER = {
   Facebook: 'facebook',
   Google: 'google',
@@ -1083,11 +1189,11 @@ const PROVIDER = {
 };
 
 export {
+  BOOKS_I_READ_DATA,
   CARD_DATA,
+  CATEGORIES,
   COMPLETE_BOOK_DATA,
   MY_BOOK_DATA,
-  CATEGORIES,
-  TAGS,
-  TEST_BOOK_IMAGE,
   PROVIDER,
+  TAGS,
 };
