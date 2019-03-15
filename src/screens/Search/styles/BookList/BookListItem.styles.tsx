@@ -7,23 +7,28 @@ const { regular } = fonts;
 
 export const styles = StyleSheet.create({
   wrapper: {
-    borderBottomEndRadius: 3,
-    borderBottomStartRadius: 3,
-    elevation: 1,
-    margin: 4,
+    borderColor: 'rgba(0,0,0,0.1)',
+    borderWidth: 0.5,
+    padding: 0.5,
+    borderBottomWidth: 0,
   },
   container: {
     flex: 1,
     flexDirection: 'row',
+    padding: 16,
   },
   image: {
-    height: 120,
-    width: 95,
+    height: 100,
+    width: 70,
+  },
+  bookInfo: {
+    flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
   },
   bookInfoSection: {
     flex: 1,
-    padding: 8,
-    paddingHorizontal: 12,
   },
   titleWrapper: {
     alignItems: 'flex-start',
@@ -41,7 +46,6 @@ export const styles = StyleSheet.create({
   },
   ownerInfoSectionWrapper: {
     justifyContent: 'flex-end',
-    padding: 8,
   },
   ownerInfoSection: {
     flexDirection: 'row',

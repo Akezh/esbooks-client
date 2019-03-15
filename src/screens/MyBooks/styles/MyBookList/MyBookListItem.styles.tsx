@@ -9,7 +9,7 @@ const authorIconSize = 40;
 
 const styles = StyleSheet.create({
   containerWrapper: {
-    borderColor: 'rgba(0,0,0,0.3)',
+    borderColor: 'rgba(0,0,0,0.2)',
     borderRadius: 4,
     borderWidth: 0.5,
     margin: 16,
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   imageWrapper: {
-    height: 180,
+    height: 160,
     marginTop: 4,
     position: 'relative',
-    width: 120,
+    width: 110,
   },
   image: {
-    height: 180,
-    width: 120,
+    height: 160,
+    width: 110,
   },
   numberOfWaitingPeopleBtn: {
     alignItems: 'center',
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   },
   readerName: {
     color: text,
+    fontSize: 14,
   },
   readerDate: {
     color: inactively,

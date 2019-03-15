@@ -99,7 +99,7 @@ const BookListItem:
       >
         <View style={styles.container}>
           {renderImage()}
-          <View style={{ flexWrap: 'wrap', flex: 1, flexDirection: 'column' }}>
+          <View style={styles.bookInfo}>
             {renderBookInfoSection()}
             {renderOwnerInfoSection()}
           </View>

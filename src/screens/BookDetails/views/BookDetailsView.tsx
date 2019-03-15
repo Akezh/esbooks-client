@@ -39,7 +39,7 @@ class BookDetailsView extends Component<IProps, IState> {
     };
   }
 
-  public setMyRating = (myRating: number) => {
+  public setMyRating = (myRating: number): void => {
     if (!myRating) {
       this.setState({
         myRating: DATA.rating[0].my,

@@ -73,6 +73,7 @@ const TheQueueForTheBookListItem:
                 name='check'
                 onPress={() => boostFromWaitToRead(fullname)}
                 size={24}
+                style={styles.applyBtn}
               />}
           </View>
         </View>

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { THEME } from '@constants';
 
 const { colors, fonts } = THEME;
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     left: 72,
     position: 'absolute',
-    top: 19,
+    top: Platform.OS === 'ios' ? 25 : 19,
     zIndex: 3,
   },
   placeholder: {
