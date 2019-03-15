@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   ownerInfo: {
     alignItems: 'center',
     borderRadius: 1,
+    borderWidth: 0.5,
     elevation: 1,
     flexDirection: 'row',
     marginVertical: 12,
