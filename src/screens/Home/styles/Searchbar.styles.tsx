@@ -19,13 +19,12 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     paddingRight: 24,
     position: 'absolute',
-    top: 9,
+    top: Platform.OS === 'ios' ? 12 : 9,
     zIndex: 3,
   },
   menu: {
     height: 22,
     width: 22,
-    top: 1
   },
   placeholderWrapper: {
     alignItems: 'center',
