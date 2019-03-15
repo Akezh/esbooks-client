@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   menu: {
     height: 22,
     width: 22,
+    top: 1
   },
   placeholderWrapper: {
     alignItems: 'center',
