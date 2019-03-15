@@ -1,10 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import {
-  Image,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
+import { Image, StatusBar, Text, View } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import moment from 'moment';
@@ -18,7 +13,12 @@ import { AddAndChangeMyBookViewStyles as styles } from '../styles';
 
 interface IProps {
   addAuthor: () => void;
-  onMoreItems: (type: string, data: string[], selectedItems: string[], setItems: (type: string, items: string[]) => void) => void;
+  onMoreItems: (
+    type: string,
+    data: string[],
+    selectedItems: string[],
+    setItems: (type: string, items: string[]) => void,
+  ) => void;
   openCamera: () => void;
   openPicker: () => void;
   removeAuthor: (id: number) => void;
@@ -70,7 +70,9 @@ const { colors } = THEME;
 const { placeholder, primary } = colors;
 const TEXT = '#4B5A71';
 
-const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element => {
+const AddAndChangeMyBookView: FunctionComponent<IProps> = (
+  props,
+): JSX.Element => {
   const {
     addAuthor,
     onMoreItems,
@@ -120,16 +122,12 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
   const renderImage = (): JSX.Element => {
     return (
       <View style={styles.imageWrapper}>
-        <Image style={styles.image} source={isImageUrl ? { uri: image } : image} />
-        <TouchableRipple
-          onPress={removeImage}
-          style={styles.imageIconRemove}
-        >
-          <Icon
-            color='#FFF'
-            name='close'
-            size={24}
-          />
+        <Image
+          style={styles.image}
+          source={isImageUrl ? { uri: image } : image}
+        />
+        <TouchableRipple onPress={removeImage} style={styles.imageIconRemove}>
+          <Icon color='#FFF' name='close' size={24} />
         </TouchableRipple>
       </View>
     );
@@ -144,11 +142,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
         >
           <View style={styles.cameraBtn}>
             <Text style={styles.cameraBtnText}>From gallery</Text>
-            <Icon
-              color='rgba(75,90,113, 0.75)'
-              name='attachment'
-              size={24}
-            />
+            <Icon color='rgba(75,90,113, 0.75)' name='attachment' size={24} />
           </View>
         </TouchableRipple>
 
@@ -170,13 +164,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
   };
 
   const renderPubDateIcon = (): JSX.Element => {
-    return (
-      <Icon
-        color={placeholder}
-        name='calendar-blank'
-        size={24}
-      />
-    );
+    return <Icon color={placeholder} name='calendar-blank' size={24} />;
   };
 
   return (
@@ -207,12 +195,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
         <View style={styles.textInputContainer}>
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>Authors*</Text>
-            <Icon
-              color={TEXT}
-              name='plus'
-              onPress={addAuthor}
-              size={24}
-            />
+            <Icon color={TEXT} name='plus' onPress={addAuthor} size={24} />
           </View>
 
           {authors.map((item: any) => {
@@ -223,18 +206,20 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
                 <CustomTextInput
                   error={item.error}
                   mode='outlined'
-                  onChangeText={(value) => onChangeAuthor(id, value)}
+                  onChangeText={value => onChangeAuthor(id, value)}
                   placeholder='Enter full name'
                   style={styles.textInput}
                   value={item.fullName}
                 />
-                {id !== 0 && <Icon
-                  color={primary}
-                  name='close-circle'
-                  onPress={() => removeAuthor(id)}
-                  size={24}
-                  style={styles.removeAuthorIcon}
-                />}
+                {id !== 0 && (
+                  <Icon
+                    color={primary}
+                    name='close-circle'
+                    onPress={() => removeAuthor(id)}
+                    size={24}
+                    style={styles.removeAuthorIcon}
+                  />
+                )}
               </View>
             );
           })}
@@ -269,23 +254,24 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
 
         <View style={styles.textInputContainer}>
           <View
-            style={[styles.titleWrapper, !!categories.length
-              && styles.titleWrapperMargin]}
+            style={[
+              styles.titleWrapper,
+              !!categories.length && styles.titleWrapperMargin,
+            ]}
           >
             <Text style={styles.title}>Categories*</Text>
             <Text
               style={styles.moreBtnText}
-              onPress={() => onMoreItems('categories', CATEGORIES, categories, setItems)}
+              onPress={() =>
+                onMoreItems('categories', CATEGORIES, categories, setItems)
+              }
             >
               MORE
             </Text>
           </View>
         </View>
 
-        <RemovableList
-          data={categories}
-          removeItem={removeCategoriesItem}
-        />
+        <RemovableList data={categories} removeItem={removeCategoriesItem} />
 
         <CustomTextInputWithDropDownText
           data={CATEGORIES}
@@ -293,14 +279,15 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
           selectItem={selectCategory}
           selectedValues={categories}
           srollToDropDownTextOfTI={srollToDropDownTextOfTI}
-          style={!!categories.length
-            && styles.customTextInputWithDropDownText}
+          style={!!categories.length && styles.customTextInputWithDropDownText}
         />
 
         <View style={styles.textInputContainer}>
           <View
-            style={[styles.titleWrapper, !!tags.length
-              && styles.titleWrapperMargin]}
+            style={[
+              styles.titleWrapper,
+              !!tags.length && styles.titleWrapperMargin,
+            ]}
           >
             <Text style={styles.title}>Tags*</Text>
             <Text
@@ -312,10 +299,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
           </View>
         </View>
 
-        <RemovableList
-          data={tags}
-          removeItem={removeTagsItem}
-        />
+        <RemovableList data={tags} removeItem={removeTagsItem} />
 
         <CustomTextInputWithDropDownText
           error={tagsError}
@@ -323,8 +307,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
           selectItem={selectTag}
           selectedValues={tags}
           srollToDropDownTextOfTI={srollToDropDownTextOfTI}
-          style={!!tags.length
-            && styles.customTextInputWithDropDownText}
+          style={!!tags.length && styles.customTextInputWithDropDownText}
         />
 
         <View style={styles.textInputContainer}>
@@ -355,9 +338,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
 
         <View style={styles.publishBtnWrapper}>
           <TouchableRipple
-            onPress={screenType === 'Change'
-              ? save
-              : publish}
+            onPress={screenType === 'Change' ? save : publish}
             style={styles.publishBtn}
           >
             <Text style={styles.publishBtnText}>
@@ -367,10 +348,7 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (props): JSX.Element =
         </View>
       </View>
 
-      <StatusBar
-        backgroundColor={primary}
-        barStyle='light-content'
-      />
+      <StatusBar backgroundColor={primary} barStyle='light-content' />
     </React.Fragment>
   );
 };

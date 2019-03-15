@@ -52,35 +52,37 @@ const MyBooksContainer: FunctionComponent<IProps> = (props): JSX.Element => {
     );
   };
 
-  return <React.Fragment>
-    <View style={styles.headerContainer}>
-      <View style={styles.headerLeftPart}>
+  return (
+    <React.Fragment>
+      <View style={styles.headerContainer}>
+        <View style={styles.headerLeftPart}>
+          <Icon
+            color='#FFF'
+            name='arrow-left'
+            onPress={onGoBack}
+            size={24}
+            style={styles.icon}
+          />
+          <Text style={styles.title}>My books</Text>
+        </View>
+
         <Icon
           color='#FFF'
-          name='arrow-left'
-          onPress={onGoBack}
+          name='plus'
+          onPress={onAddAndChangeMyBook}
           size={24}
           style={styles.icon}
         />
-        <Text style={styles.title}>My books</Text>
       </View>
 
-      <Icon
-        color='#FFF'
-        name='plus'
-        onPress={onAddAndChangeMyBook}
-        size={24}
-        style={styles.icon}
+      <MyBooksView
+        callBookRemovalWarning={callBookRemovalWarning}
+        callBookReturnAlert={callBookReturnAlert}
+        onChangeMyBook={onChangeMyBook}
+        onTheQueueForTheBook={onTheQueueForTheBook}
       />
-    </View>
-
-    <MyBooksView
-      callBookRemovalWarning={callBookRemovalWarning}
-      callBookReturnAlert={callBookReturnAlert}
-      onChangeMyBook={onChangeMyBook}
-      onTheQueueForTheBook={onTheQueueForTheBook}
-    />
-  </React.Fragment>;
+    </React.Fragment>
+  );
 };
 
 export default MyBooksContainer;

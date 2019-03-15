@@ -35,6 +35,17 @@ interface IMyBook {
   waiting_list: IReader[];
 }
 
+interface IBookIRead {
+  authors: string[];
+  date: any;
+  id: string;
+  image: any;
+  owner: IOwner;
+  publisher?: string;
+  startDateOfReading: any;
+  title: string;
+}
+
 interface IOwner {
   fullname?: string;
   photo?: any;
@@ -58,6 +69,7 @@ interface ICompleteBookRatingComponents {
 }
 
 export {
+  IBookIRead,
   ICompleteBook,
   ICompleteBookRating,
   ICompleteBookRatingComponents,

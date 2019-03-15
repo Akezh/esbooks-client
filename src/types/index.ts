@@ -1,4 +1,5 @@
 import {
+  IBookIRead,
   ICompleteBook,
   ICompleteBookRating,
   ICompleteBookRatingComponents,
@@ -7,6 +8,11 @@ import {
   IOwner,
   IReader,
 } from './Book';
+
+import {
+  IBookIReadList,
+  IBookIReadListItem,
+} from './BooksIRead';
 
 import {
   IBookRatingAndReviews,
@@ -43,6 +49,9 @@ import {
 } from './TheQueueForTheBook';
 
 export {
+  IBookIRead,
+  IBookIReadList,
+  IBookIReadListItem,
   IBookRatingAndReviews,
   ICompleteBook,
   ICompleteBookRating,

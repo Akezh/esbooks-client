@@ -1,11 +1,11 @@
 import {
+  BOOKS_I_READ_DATA,
   CARD_DATA,
-  MY_BOOK_DATA,
   CATEGORIES,
-  TAGS,
   COMPLETE_BOOK_DATA,
-  TEST_BOOK_IMAGE,
+  MY_BOOK_DATA,
   PROVIDER,
+  TAGS,
 } from './app';
 
 import { GOOGLE_WEB_CLIENT_ID } from './client';
@@ -14,14 +14,14 @@ import { BASE_URL } from './server';
 import THEME from './theme';
 
 export {
-  CARD_DATA,
-  MY_BOOK_DATA,
-  CATEGORIES,
-  TAGS,
-  COMPLETE_BOOK_DATA,
-  TEST_BOOK_IMAGE,
-  PROVIDER,
-  GOOGLE_WEB_CLIENT_ID,
   BASE_URL,
+  BOOKS_I_READ_DATA,
+  CARD_DATA,
+  CATEGORIES,
+  COMPLETE_BOOK_DATA,
+  GOOGLE_WEB_CLIENT_ID,
+  MY_BOOK_DATA,
+  PROVIDER,
+  TAGS,
   THEME,
 };

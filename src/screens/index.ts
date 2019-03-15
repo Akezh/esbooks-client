@@ -1,5 +1,6 @@
 import AddAndChangeMyBook from './AddAndChangeMyBook';
 import BookDetails from './BookDetails';
+import BooksIRead from './BooksIRead';
 import Home from './Home';
 import MoreItems from './MoreItems';
 import MyBooks from './MyBooks';
@@ -11,6 +12,7 @@ import TheQueueForTheBook from './TheQueueForTheBook';
 export {
   AddAndChangeMyBook,
   BookDetails,
+  BooksIRead,
   Home,
   MoreItems,
   MyBooks,

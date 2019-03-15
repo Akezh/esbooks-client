@@ -1,13 +1,8 @@
 import {
   formatAuthors,
   formatNumberOfVoters,
-  getBotImage,
+  getImage,
   getNumberOfVoters,
 } from './formatters';
 
-export {
-  formatAuthors,
-  formatNumberOfVoters,
-  getBotImage,
-  getNumberOfVoters,
-};
+export { formatAuthors, formatNumberOfVoters, getImage, getNumberOfVoters };
