@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     zIndex: 2,
+    elevation: 8,
   },
 });
 

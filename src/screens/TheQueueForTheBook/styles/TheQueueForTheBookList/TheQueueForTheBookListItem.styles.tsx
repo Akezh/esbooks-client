@@ -5,7 +5,7 @@ const { colors, fonts } = THEME;
 const { inactively, text } = colors;
 const { regular } = fonts;
 
-const authorIconSize = 60;
+const authorIconSize = 48;
 
 const styles = StyleSheet.create({
   container: {
@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   closeBtnMargin: {
+    marginRight: 4,
+  },
+  applyBtn: {
     marginRight: 4,
   },
 });

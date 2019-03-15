@@ -1,6 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
 import { THEME } from '@constants';
-import { platform } from 'os';
 
 const { colors, fonts } = THEME;
 const { inactively, primary } = colors;

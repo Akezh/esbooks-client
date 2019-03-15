@@ -7,10 +7,13 @@ const { regular } = fonts;
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     backgroundColor: primary,
     borderRadius: 4,
+    justifyContent: 'center',
     marginRight: 8,
     marginVertical: 16,
+    maxHeight: 30,
     paddingHorizontal: 8,
     paddingVertical: 4,
   },

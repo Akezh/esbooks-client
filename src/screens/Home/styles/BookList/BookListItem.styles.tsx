@@ -11,8 +11,10 @@ export const styles = StyleSheet.create({
   wrapper: {
     borderBottomEndRadius: 3,
     borderBottomStartRadius: 3,
-    elevation: 1,
+    borderColor: 'rgba(0,0,0,0.3)',
+    borderWidth: 0.2,
     margin: 4,
+    padding: 0.5,
   },
   container: {
     flex: 1,

@@ -10,7 +10,7 @@ const {
 } = colors;
 const { medium, regular } = fonts;
 
-const authorIconSize = 40;
+const authorIconSize = 36;
 
 const styles = StyleSheet.create({
   bookInfoBlockWrapper: {
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   image: {
-    height: 180,
-    width: 120,
+    height: 148,
+    width: 104,
   },
   title: {
     color: text,
@@ -43,12 +43,13 @@ const styles = StyleSheet.create({
   },
   authorIconWrapper: {
     alignItems: 'center',
-    borderRadius: authorIconSize,
-    elevation: 4,
-    height: authorIconSize + 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.07)',
+    borderColor: 'rgba(0, 0, 0, 0.07)',
+    borderRadius: authorIconSize + 3,
+    height: authorIconSize + 3,
     justifyContent: 'center',
-    width: authorIconSize + 1,
     marginRight: 12,
+    width: authorIconSize + 3,
   },
   authorIcon: {
     height: authorIconSize,
@@ -62,26 +63,20 @@ const styles = StyleSheet.create({
   author: {
     color: text,
     fontFamily: regular,
-    fontSize: 16,
+    fontSize: 14,
   },
   bookInfoText: {
     color: inactively,
     fontFamily: regular,
-    fontSize: 14,
+    fontSize: 12,
   },
   ownerInfo: {
     alignItems: 'center',
-    borderRadius: 1,
-    borderWidth: 0.5,
-    elevation: 1,
     flexDirection: 'row',
     marginVertical: 12,
-    maxWidth: 200,
-    padding: 8,
   },
   ownerPhoto: {
     height: authorIconSize,
-    marginRight: 12,
     width: authorIconSize,
   },
   ownerInfoTextWrapper: {
@@ -91,6 +86,7 @@ const styles = StyleSheet.create({
   },
   ownerName: {
     color: text,
+    fontSize: 14,
   },
   isBookStatus: {
     fontFamily: regular,
@@ -120,9 +116,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 8,
-  },
-  askBtn: {
-    paddingHorizontal: 36,
   },
   btnText: {
     color: '#FFF',

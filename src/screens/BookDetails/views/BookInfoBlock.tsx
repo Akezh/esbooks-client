@@ -76,12 +76,14 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
           <CategoryList data={categories} />
 
           <View style={styles.ownerInfo}>
-            <Image
-              source={isReaderPhotoUrl
-                ? { uri: book }
-                : photo}
-              style={styles.ownerPhoto}
-            />
+            <View style={styles.authorIconWrapper}>
+              <Image
+                source={isReaderPhotoUrl
+                  ? { uri: book }
+                  : photo}
+                style={styles.ownerPhoto}
+              />
+            </View>
             <View style={styles.ownerInfoTextWrapper}>
               <Text
                 numberOfLines={1}
@@ -113,10 +115,8 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
       </View>
 
       <View style={styles.btnWrapper}>
-        <TouchableRipple style={[styles.btn, reader.fullname ? null : styles.askBtn]}>
-          {reader.fullname
-            ? <Text style={styles.btnText}>JOIN THE QUEUE</Text>
-            : <Text style={styles.btnText}>ASK</Text>}
+        <TouchableRipple style={styles.btn}>
+          <Text style={styles.btnText}>JOIN THE QUEUE</Text>
         </TouchableRipple>
       </View>
 
