@@ -1,11 +1,15 @@
 import { StyleSheet } from 'react-native';
+
 import { THEME } from '@constants';
+const { colors } = THEME;
+const { primary } = colors;
 
 const avatarSize = 70;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: primary
   },
   header: {
     backgroundColor: THEME.colors.primary,
