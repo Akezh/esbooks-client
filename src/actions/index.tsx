@@ -4,12 +4,16 @@ import { hideUnderlayer, showUnderlayer } from './underlayerAction';
 import { cleanError, getBookData } from './bookData';
 import { addBook } from './addBook';
 import { getMyBooksData } from './myBooks';
+import { getBooksIReadData } from './booksIRead';
 import { search } from './search';
 
 import {
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
+  BOOKS_I_READ_FAILURE,
+  BOOKS_I_READ_REQUEST,
+  BOOKS_I_READ_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
   MY_BOOKS_FAILURE,
@@ -32,6 +36,9 @@ export {
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
+  BOOKS_I_READ_FAILURE,
+  BOOKS_I_READ_REQUEST,
+  BOOKS_I_READ_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
   MY_BOOKS_FAILURE,
@@ -43,6 +50,7 @@ export {
   SIGN_OUT,
   cleanError,
   getBookData,
+  getBooksIReadData,
   getMyBooksData,
   hideUnderlayer,
   setUserInfo,
