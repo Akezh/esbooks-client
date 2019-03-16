@@ -1,9 +1,12 @@
 import { BASE_URL } from '@constants';
 
 class UserService {
+  private ME_PATH: string;
   private BOOK_PATH: string;
 
+
   constructor() {
+    this.ME_PATH = '/api/users/me/books';
     this.BOOK_PATH = '/api/users/books';
   }
 
@@ -22,7 +25,22 @@ class UserService {
       throw e;
     }
   }
-
+  
+  async getMyBooks(token: string) {
+    try {
+      const data = await fetch(BASE_URL + this.ME_PATH, {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json',
+        },
+      });
+      return data;
+    } catch (e) {
+      throw e;
+    }
+  }
+    
   async addBook(args) {
     try {
       const params = {

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { THEME } from '@constants';
 
 const { fonts } = THEME;
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     paddingVertical: 6,
-    position: 'absolute',
+    position: Platform.OS === 'ios' ? 'relative' : 'absolute',
     width: '100%',
     zIndex: 1,
   },

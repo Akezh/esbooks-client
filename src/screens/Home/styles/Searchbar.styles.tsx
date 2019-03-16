@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     paddingRight: 24,
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 12 : 9,
+    top: Platform.OS === 'ios' ? 14 : 9,
     zIndex: 3,
   },
   menu: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     left: 72,
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 25 : 19,
+    top: Platform.OS === 'ios' ? 27 : 19,
     zIndex: 3,
   },
   placeholder: {
