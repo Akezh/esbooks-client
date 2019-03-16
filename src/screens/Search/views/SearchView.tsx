@@ -8,27 +8,20 @@ import { SearchViewStyles as styles } from '../styles';
 
 interface IProps {
   onBookDetails: (item: IIncompleteBook) => void;
+  books: any;
 }
 
 const { colors } = THEME;
 const { primary } = colors;
 
-const SearchView: FunctionComponent<IProps> = (props) => {
-  const {
-    onBookDetails,
-  } = props;
+const SearchView: FunctionComponent<IProps> = props => {
+  const { onBookDetails, books } = props;
 
   return (
     <View style={styles.container}>
-      <BookList
-        data={COMPLETE_BOOK_DATA}
-        onBookDetails={onBookDetails}
-      />
+      <BookList data={books} onBookDetails={onBookDetails} />
 
-      <StatusBar
-        backgroundColor={primary}
-        barStyle='light-content'
-      />
+      <StatusBar backgroundColor={primary} barStyle='light-content' />
     </View>
   );
 };

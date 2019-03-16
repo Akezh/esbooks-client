@@ -1,3 +1,4 @@
 import { User } from './UserService';
+import { Search } from './SearchService';
 
-export { User };
+export { User, Search };
