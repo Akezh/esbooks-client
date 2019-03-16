@@ -12,14 +12,14 @@ const request = () => ({
 });
 
 const success = book => ({
-  type: ADD_MY_BOOK_FAILURE,
+  type: ADD_MY_BOOK_SUCCESS,
   payload: {
     book,
   },
 });
 
 const failure = error => ({
-  type: ADD_MY_BOOK_SUCCESS,
+  type: ADD_MY_BOOK_FAILURE,
   payload: {
     error,
   },
