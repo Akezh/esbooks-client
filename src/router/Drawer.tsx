@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
-import { BooksIRead } from '@screens';
+import { Account, BooksIRead } from '@screens';
 import CustomDrawer from './CustomDrawer';
 import HomeStack from './HomeStack';
 import MyBooksStack from './MyBooksStack';
@@ -25,13 +25,20 @@ const Drawer = createDrawerNavigator(
         drawerLabel: 'Books I read',
       }),
     },
+    Account: {
+      screen: Account,
+      navigationOptions: () => ({
+        drawerLabel: 'Account',
+      }),
+    },
     SignOut: {
       screen: () => View,
       navigationOptions: () => ({
         drawerLabel: 'Sign out',
       }),
     },
-  }, {
+  },
+  {
     initialRouteName: 'HomeStack',
     contentComponent: CustomDrawer,
   },

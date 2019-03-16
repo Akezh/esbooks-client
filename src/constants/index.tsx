@@ -1,4 +1,5 @@
 import {
+  ACCOUNT_DATA,
   BOOKS_I_READ_DATA,
   CARD_DATA,
   CATEGORIES,
@@ -14,6 +15,7 @@ import { BASE_URL } from './server';
 import THEME from './theme';
 
 export {
+  ACCOUNT_DATA,
   BASE_URL,
   BOOKS_I_READ_DATA,
   CARD_DATA,

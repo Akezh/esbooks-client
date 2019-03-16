@@ -1,4 +1,11 @@
 import { PLACEHOLDERS } from '@static';
+const { book, default_user_avatar } = PLACEHOLDERS;
+
+const ACCOUNT_DATA = {
+  fullname: 'ADMIN ADMINOVI4',
+  email: 'admin@gmail.com',
+  image: default_user_avatar,
+};
 
 const CATEGORIES = [
   "Children's Books",
@@ -456,8 +463,6 @@ const TAGS = [
   'Writing',
   'Writing, Research & Publishing Guides',
 ];
-
-const { book, default_user_avatar } = PLACEHOLDERS;
 
 const COMPLETE_BOOK_DATA = [
   {
@@ -1189,6 +1194,7 @@ const PROVIDER = {
 };
 
 export {
+  ACCOUNT_DATA,
   BOOKS_I_READ_DATA,
   CARD_DATA,
   CATEGORIES,
