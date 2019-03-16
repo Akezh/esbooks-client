@@ -3,7 +3,13 @@ import { Image, Text, StatusBar } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { LOGOS } from '@static';
 import { styles } from './SignInView.styles';
-import { IFBSignInError, IFBSignInResult, IGoogleSignInError, IGoogleSignInResult } from '@types';
+import {
+  IFBSignInError,
+  IFBSignInResult,
+  IGoogleSignInError,
+  IGoogleSignInResult,
+} from '@types';
+import { withScrollView } from '@hocs';
 import { GoogleSignInButton, FBSignInButton } from './SignInButtons';
 
 const { logo } = LOGOS;
@@ -14,20 +20,17 @@ interface IProps {
 }
 
 const SignInView: FunctionComponent<IProps> = (props): JSX.Element => {
-  const {
-    googleSignIn,
-    fbSignIn,
-  } = props;
+  const { googleSignIn, fbSignIn } = props;
 
   const renderSignInButtons = () => {
     return (
       <Fragment>
-        <GoogleSignInButton onLoginFinished={googleSignIn}/>
+        <GoogleSignInButton onLoginFinished={googleSignIn} />
         <FBSignInButton onLoginFinished={fbSignIn} />
       </Fragment>
     );
   };
-  
+
   return (
     <LinearGradient
       colors={['#444D72', '#0C1028']}
@@ -37,20 +40,13 @@ const SignInView: FunctionComponent<IProps> = (props): JSX.Element => {
       <Text style={styles.textUnderLogoText}>
         Share books with your colleagues
       </Text>
-      <Image
-        source={logo}
-        style={styles.logo}
-      />
+      <Image source={logo} style={styles.logo} />
 
+      {renderSignInButtons()}
 
-      { renderSignInButtons() }
-
-      <StatusBar
-        backgroundColor='#444D72'
-        barStyle='light-content'
-      />
+      <StatusBar backgroundColor='#444D72' barStyle='light-content' />
     </LinearGradient>
   );
 };
 
-export default SignInView;
+export default withScrollView(SignInView, 'never', '#0C1028');
