@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-import { Underlayer } from '@components';
+import { Underlayer, Loading } from '@components';
 import { IIncompleteBook } from '@types';
 import { mapActionsToProps, mapStateToProps } from './SearchContainerMaps';
 import SearchView from '../views';
@@ -23,6 +23,10 @@ interface IProps {
   onGoBack: () => void;
   query: string;
   showUnderlayer: () => void;
+  search: (query: string, token: string) => void;
+  token: string;
+  isLoading: boolean;
+  books: any;
 }
 
 interface IState {
@@ -40,11 +44,14 @@ class SearchContainer extends React.Component<IProps, IState> {
     text: this.props.query,
   };
 
-  public componentDidMount() {
+  public async componentDidMount() {
     this.keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       this.hideUnderlayer,
     );
+
+    const { search, query, token } = this.props;
+    await search(query, token);
   }
 
   public componentWillUnmount() {
@@ -55,6 +62,8 @@ class SearchContainer extends React.Component<IProps, IState> {
     const {
       isUnderlayerActive,
       onBookDetails,
+      isLoading,
+      books,
     } = this.props;
 
     return (
@@ -63,12 +72,14 @@ class SearchContainer extends React.Component<IProps, IState> {
           {this.Searchbar()}
         </View>
 
-        <SearchView onBookDetails={onBookDetails} />
+        <SearchView books={books} onBookDetails={onBookDetails} />
 
         {isUnderlayerActive &&
           <Underlayer
             onPress={this.hideUnderlayer}
           />}
+
+        {isLoading && <Loading />}
       </React.Fragment>
     );
   }
@@ -117,11 +128,14 @@ class SearchContainer extends React.Component<IProps, IState> {
     );
   }
 
-  private onSubmitEditing = (): void => {
+  private onSubmitEditing = async () => {
     const { text } = this.state;
+    const { search, token } = this.props;
     if (text) {
       Keyboard.dismiss();
     }
+
+    await search(text, token);
   }
 
   private setTextInputRef = (element: any): void => {
