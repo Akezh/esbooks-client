@@ -1,9 +1,12 @@
 interface IIncompleteBook {
   authors: string[];
   id: string;
-  image: any;
+  imageUri: string;
   owner: IOwner;
   title: string;
+  rating: {
+    avg: number,
+  };
 }
 
 interface ICompleteBook {
@@ -47,8 +50,8 @@ interface IBookIRead {
 }
 
 interface IOwner {
-  fullname?: string;
-  photo?: any;
+  fullName?: string;
+  avatar?: any;
 }
 
 interface IReader {

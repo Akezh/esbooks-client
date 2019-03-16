@@ -5,6 +5,7 @@ import { hideUnderlayer, showUnderlayer } from './underlayerAction';
 import { cleanError, getBookData } from './bookData';
 import { addBook } from './addBook';
 import { getMyBooksData } from './myBooks';
+import { search } from './search';
 
 import {
   ACCOUNT_FAILURE,
@@ -25,6 +26,9 @@ import {
   ADD_MY_BOOK_REQUEST,
   ADD_MY_BOOK_FAILURE,
   ADD_MY_BOOK_SUCCESS,
+  SEARCH_REQUEST,
+  SEARCH_FAILURE,
+  SEARCH_SUCCESS,
 } from './types';
 
 export {
@@ -55,4 +59,8 @@ export {
   ADD_MY_BOOK_FAILURE,
   ADD_MY_BOOK_SUCCESS,
   addBook,
+  SEARCH_REQUEST,
+  SEARCH_FAILURE,
+  SEARCH_SUCCESS,
+  search,
 };
