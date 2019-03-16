@@ -4,10 +4,12 @@ import { Text } from 'react-native-paper';
 import moment from 'moment';
 import { OTHER } from '@static';
 import { IBookIReadListItem } from '@types';
-import { getImage } from '@utils';
 import { BookIReadListItemStyles as styles } from '../../styles';
+import { PLACEHOLDERS } from '@static';
 
 const { author } = OTHER;
+
+const { default_user_avatar, book } = PLACEHOLDERS;
 
 const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
   props,
@@ -15,18 +17,16 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
   const { item } = props;
   const {
     authors,
-    date,
-    image,
+    publishedDate,
+    imageUri,
     publisher,
     owner,
     title,
-    startDateOfReading,
+    readAt,
   } = item;
 
-  const { fullname, photo } = owner;
-
-  const formattedPublished = moment(date).format('DD MMMM YYYY');
-  const formattedStartDateOfReading = moment(startDateOfReading).format(
+  const formattedPublished = moment(publishedDate).format('DD MMMM YYYY');
+  const formattedStartDateOfReading = moment(readAt).format(
     'DD MMMM YYYY',
   );
 
@@ -35,7 +35,7 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
       <React.Fragment>
         <View style={styles.container}>
           <View style={styles.imageWrapper}>
-            <Image style={styles.image} source={getImage(image, 'book')} />
+            <Image style={styles.image} source={imageUri ? { uri: imageUri } : book} />
           </View>
 
           <View style={styles.bookInfo}>
@@ -69,7 +69,7 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
             <View style={styles.ownerInfoWrapper}>
               <View style={styles.ownerInfo}>
                 <Image
-                  source={getImage(photo, 'user')}
+                  source={owner.avatar ? {uri: owner.avatar} : default_user_avatar}
                   style={styles.ownerPhoto}
                 />
 
@@ -81,7 +81,7 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
                     numberOfLines={1}
                     style={[styles.bookInfoText, styles.ownerName]}
                   >
-                    {fullname}
+                    {owner.fullName}
                   </Text>
                 </View>
               </View>

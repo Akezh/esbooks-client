@@ -1,31 +1,35 @@
 import camelcaseKeysDeep from 'camelcase-keys-deep';
 
-import { MY_BOOKS_FAILURE, MY_BOOKS_REQUEST, MY_BOOKS_SUCCESS } from './types';
+import {
+  BOOKS_I_READ_FAILURE,
+  BOOKS_I_READ_REQUEST,
+  BOOKS_I_READ_SUCCESS,
+} from './types';
 import { User } from '@services';
 
 const request = () => ({
-  type: MY_BOOKS_REQUEST,
+  type: BOOKS_I_READ_REQUEST,
 });
 
 const success = data => ({
-  type: MY_BOOKS_SUCCESS,
+  type: BOOKS_I_READ_SUCCESS,
   payload: {
     data: data.books,
   },
 });
 
 const failure = error => ({
-  type: MY_BOOKS_FAILURE,
+  type: BOOKS_I_READ_FAILURE,
   payload: {
     error,
   },
 });
 
-export const getMyBooksData = (token: string) => async (dispatch: any) => {
+export const getBooksIReadData = (token: string) => async (dispatch: any) => {
   dispatch(request());
 
   try {
-    const response = await User.getMyBooks(token);
+    const response = await User.getBooksIRead(token);
     const data = await response.json();
 
     dispatch(success(camelcaseKeysDeep(data)));
