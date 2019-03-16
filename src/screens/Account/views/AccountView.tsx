@@ -6,6 +6,7 @@ import { THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import { getImage } from '@utils';
 import { AccountViewStyles as styles } from '../styles';
+import { CustomTextInput } from '@components';
 
 interface IProps {
   data: {
@@ -14,15 +15,18 @@ interface IProps {
     image: any,
   };
   editMode: boolean;
-  removeImage: () => void;
+  newData: any;
+  onChangeFullname: (value: string) => void;
+  openCamera: () => void;
+  openPicker: () => void;
 }
 
 const { colors } = THEME;
 const { primary } = colors;
 
 const AccountView: FunctionComponent<IProps> = props => {
-  const { data, editMode, removeImage } = props;
-  const { fullname, email, image } = data;
+  const { editMode, newData, onChangeFullname, openCamera, openPicker } = props;
+  const { fullname, email, image } = newData;
 
   const urlReg = /(https?:\/\/[^\s]+)/g;
   const isImageUrl = urlReg.test(image);
@@ -31,15 +35,15 @@ const AccountView: FunctionComponent<IProps> = props => {
     return (
       <View style={styles.imageWrapper}>
         <Image
-          source={isImageUrl ? { uri: image } : image}
+          source={
+            isImageUrl
+              ? { uri: image }
+              : image.uri
+              ? image
+              : getImage(image, 'user')
+          }
           style={styles.image}
         />
-
-        {editMode && (
-          <TouchableRipple onPress={removeImage} style={styles.imageIconRemove}>
-            <Icon color='#FFF' name='close' size={24} />
-          </TouchableRipple>
-        )}
       </View>
     );
   };
@@ -48,6 +52,7 @@ const AccountView: FunctionComponent<IProps> = props => {
     return (
       <View style={styles.cameraBtnsWrapper}>
         <TouchableRipple
+          onPress={openPicker}
           style={[styles.cameraBtnWrapper, styles.cameraBtnWrapperMargin]}
         >
           <View style={styles.cameraBtn}>
@@ -57,6 +62,7 @@ const AccountView: FunctionComponent<IProps> = props => {
         </TouchableRipple>
 
         <TouchableRipple
+          onPress={openCamera}
           style={[styles.cameraBtnWrapper, styles.cameraBtnWrapperMargin]}
         >
           <View style={styles.cameraBtn}>
@@ -71,16 +77,20 @@ const AccountView: FunctionComponent<IProps> = props => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {!editMode && (
-          <Image source={getImage(image, 'user')} style={styles.image} />
+        {renderImage()}
+
+        {editMode && renderBtns()}
+
+        {!editMode && <Text style={styles.fullname}>{fullname}</Text>}
+        {editMode && (
+          <CustomTextInput
+            mode='outlined'
+            value={fullname}
+            style={styles.customTextInput}
+            onChangeText={onChangeFullname}
+          />
         )}
 
-        {editMode && isImageUrl && renderImage()}
-        {editMode && image.uri && renderImage()}
-
-        {editMode && !isImageUrl && !image.uri && renderBtns()}
-
-        <Text style={styles.fullname}>{fullname}</Text>
         <Text style={styles.email}>{email}</Text>
       </View>
       <StatusBar backgroundColor={primary} barStyle='light-content' />

@@ -37,6 +37,9 @@ interface IProps {
 
   dataBookThatWeChange: any;
   screenType: 'Add' | 'Change';
+  addBook: (data: any, token: string) => void;
+  token: string;
+  isAddBookLoading: boolean;
 }
 
 interface IState {
@@ -220,6 +223,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       onGoBack,
       onMoreItems,
       screenType,
+      isAddBookLoading,
     } = this.props;
 
     const {
@@ -334,7 +338,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
             setISBNCode={this.setISBNCode}
           />}
 
-        {isLoading
+        {isLoading || isAddBookLoading
           && <Loading />}
 
         <DateTimePicker
@@ -448,17 +452,15 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       width: 360,
       height: 540,
       cropping: true,
-    }).then(image => {
+    }).then((image: any) => {
+      const path = image.path.split('/');
+
       this.setState({
         image: {
-          // @ts-ignore
           uri: image.path,
-          // @ts-ignore
-          width: image.width,
-          // @ts-ignore
-          height: image.height,
-          // @ts-ignore
-          mime: image.mime,
+          type: image.mime,
+          name: path[path.length - 1],
+          size: image.size,
         },
       });
     }).catch();
@@ -469,17 +471,15 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       width: 360,
       height: 540,
       cropping: true,
-    }).then(image => {
+    }).then((image: any) => {
+      const path = image.path.split('/');
+
       this.setState({
         image: {
-          // @ts-ignore
           uri: image.path,
-          // @ts-ignore
-          width: image.width,
-          // @ts-ignore
-          height: image.height,
-          // @ts-ignore
-          mime: image.mime,
+          type: image.mime,
+          name: path[path.length - 1],
+          size: image.size,
         },
       });
     }).catch();
@@ -589,8 +589,37 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
     this.checkAllFields();
   }
 
-  private publish = (): void => {
+  private publish = async () => {
     this.checkAllFields();
+
+    const {    
+      authors,
+      categories,
+      date,
+      description,
+      image,
+      publisher,
+      subtitle,
+      tags: [],
+      title,
+    } = this.state;
+
+    const { addBook, onGoBack, token } = this.props;
+    const formatedAuthors = authors.map(el => el.fullName);
+
+    const data = new FormData();
+    data.append('title', title);
+    data.append('subtitle', subtitle);
+    data.append('description', description);
+    data.append('publisher', publisher);
+    image.uri ? data.append('image', image) : data.append('image_uri', image);
+    data.append('authors', JSON.stringify(formatedAuthors));
+    data.append('categories', JSON.stringify(categories));
+    data.append('published_date', date);
+
+    await addBook(data, token);
+
+    onGoBack();
   }
 
   private checkAllFields = () => {

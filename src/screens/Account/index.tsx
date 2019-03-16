@@ -10,7 +10,7 @@ const Account: FunctionComponent<any> = (props): JSX.Element => {
     goBack();
   };
 
-  return <AccountContainer onGoBack={onGoBack} />;
+  return <AccountContainer onGoBack={onGoBack} navigation={navigation} />;
 };
 
 export default withSafeAreaView(Account);

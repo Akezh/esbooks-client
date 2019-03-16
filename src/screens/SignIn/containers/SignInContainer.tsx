@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { GoogleSignin, statusCodes  } from 'react-native-google-signin';
 import { Loading } from '@components';
 import { GOOGLE_WEB_CLIENT_ID, PROVIDER } from '@constants';
+import { getItem } from '@utils';
 import { IFBSignInError, IFBSignInResult, IGoogleSignInError, IGoogleSignInResult, IUserInfo } from '@types';
 import { mapStateToProps, mapActionsToProps } from './SignInContainerMaps';
 import SignInView from '../views';
@@ -15,6 +16,26 @@ interface IProps {
 }
 
 class SignInContainer extends Component<IProps>  {
+  state = {
+    statusCheck: true,
+  };
+
+  async componentWillMount() {
+    this.setState({
+      statusCheck: true,
+    });
+
+    const { onHome } = this.props;
+
+    if (await getItem('token')){
+      onHome();
+    } else {
+      this.setState({
+        statusCheck: false,
+      });
+    }
+  }
+
   componentDidMount() {
     GoogleSignin.configure();
   }
@@ -32,14 +53,15 @@ class SignInContainer extends Component<IProps>  {
 
   render() {
     const { isLoading } = this.props;
-    
+    const { statusCheck } = this.state;
+
     return ( 
       <Fragment>
         <SignInView
           googleSignIn={this.googleSignIn}
           fbSignIn={this.fbSignIn}
         />
-        {isLoading  && <Loading />}
+        {isLoading || statusCheck && <Loading />}
       </Fragment>
     );
   }
