@@ -26,6 +26,7 @@ const outlinedStyles = StyleSheet.create({
     top: 18,
   },
   textInput: {
+    backgroundColor: '#FFF',
     borderColor: BORDER_COLOR,
     borderRadius: 6,
     borderWidth: 1,

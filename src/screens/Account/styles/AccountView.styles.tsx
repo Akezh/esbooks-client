@@ -11,17 +11,19 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: primary,
-    padding: 24,
-    paddingVertical: 16,
+    paddingBottom: 16,
+    paddingHorizontal: 24,
+    paddingTop: 8,
   },
   imageWrapper: {
     height: 120,
+    marginBottom: 16,
     position: 'relative',
     width: 120,
   },
   image: {
+    borderRadius: 120,
     height: 120,
-    marginBottom: 24,
     width: 120,
   },
   imageIconRemove: {
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   cameraBtnsWrapper: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginVertical: 16,
+    marginBottom: 16,
   },
   cameraBtnWrapperMargin: {
     marginRight: 12,
@@ -72,6 +74,9 @@ const styles = StyleSheet.create({
     fontFamily: regular,
     fontSize: 14,
     marginRight: 8,
+  },
+  customTextInput: {
+    marginBottom: 8,
   },
 });
 
