@@ -7,19 +7,23 @@ import {
 } from '@screens';
 import { withSafeAreaView } from '@hocs';
 
+import { THEME } from '@constants';
+const { colors } = THEME;
+const { primary } = colors;
+
 const MyBooksStack = createStackNavigator(
   {
     MyBooks: {
-      screen: withSafeAreaView((MyBooks), 'white'),
+      screen: withSafeAreaView((MyBooks), primary),
     },
     AddAndChangeMyBook: {
-      screen: withSafeAreaView((AddAndChangeMyBook), 'white'),
+      screen: withSafeAreaView((AddAndChangeMyBook), primary),
     },
     MoreItems: {
-      screen: withSafeAreaView((MoreItems), 'white'),
+      screen: withSafeAreaView((MoreItems), primary),
     },
     TheQueueForTheBook: {
-      screen: withSafeAreaView((TheQueueForTheBook), 'white'),
+      screen: withSafeAreaView((TheQueueForTheBook), primary),
     },
   }, {
     initialRouteName: 'MyBooks',

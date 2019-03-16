@@ -17,6 +17,7 @@ const withKeyboardAvoidingScrollView = (WrappedComponent: any) => (props: any): 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
 });
 
