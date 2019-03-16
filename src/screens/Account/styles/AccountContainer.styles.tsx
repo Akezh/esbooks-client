@@ -7,13 +7,9 @@ const { primary } = colors;
 const { medium } = fonts;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   headerContainer: {
     alignItems: 'center',
     backgroundColor: primary,
-    elevation: 8,
     flexDirection: 'row',
     height: Header.HEIGHT,
     width: '100%',

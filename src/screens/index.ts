@@ -1,3 +1,4 @@
+import Account from './Account';
 import AddAndChangeMyBook from './AddAndChangeMyBook';
 import BookDetails from './BookDetails';
 import BooksIRead from './BooksIRead';
@@ -10,6 +11,7 @@ import SignIn from './SignIn';
 import TheQueueForTheBook from './TheQueueForTheBook';
 
 export {
+  Account,
   AddAndChangeMyBook,
   BookDetails,
   BooksIRead,
