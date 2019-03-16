@@ -2,19 +2,32 @@ import React from 'react';
 import { Alert, BackHandler, Text, View } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ACCOUNT_DATA} from '@constants';
+import { connect } from 'react-redux';
+import { mapActionsToProps, mapStateToProps } from './AccountContainerMaps';
 import AccountView from '../views';
 import { AccountContainerStyles as styles } from '../styles';
+import { Loading } from '@components';
 
 interface IProps {
+  prevData: {
+    avatar: any;
+    email: string;
+    fullName: string;
+  };
+  provider: string;
+  token: string;
   navigation: any;
   onGoBack: () => void;
+  setUserInfo: (data: any) => void;
+  isLoading: boolean;
+  updateUserInfo: (data: any, token: string, provider: string) => void;
 }
+
 interface IState {
   newData: {
-    fullname: string;
+    avatar: any;
     email: string;
-    image: any;
+    fullName: string;
   };
   editMode: boolean;
 }
@@ -22,15 +35,15 @@ interface IState {
 class AccountContainer extends React.Component<IProps, IState> {
   public _didFocusSubscription: any;
   public _willBlurSubscription: any;
-  public data = Object.create(ACCOUNT_DATA);
+  public prevData = this.props.prevData;
 
   constructor(props: IProps) {
     super(props);
 
-    const { navigation } = props;
+    const { prevData, navigation } = props;
 
     this.state = {
-      newData: Object.create(ACCOUNT_DATA),
+      newData: prevData,
       editMode: false,
     };
 
@@ -38,8 +51,8 @@ class AccountContainer extends React.Component<IProps, IState> {
       BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressAndroid),
     );
   }
-  
-  componentDidMount() {
+
+  async componentDidMount() {
     const { navigation } = this.props;
 
     this._willBlurSubscription = navigation.addListener('willBlur', _payload =>
@@ -63,8 +76,8 @@ class AccountContainer extends React.Component<IProps, IState> {
     this._willBlurSubscription && this._willBlurSubscription.remove();
   }
 
-
   public render() {
+    const { isLoading } = this.props;
     const { editMode, newData } = this.state;
 
     return (
@@ -95,6 +108,8 @@ class AccountContainer extends React.Component<IProps, IState> {
           openCamera={this.openCamera}
           openPicker={this.openPicker}
         />
+
+        {isLoading && <Loading />}
       </React.Fragment>
     );
   }
@@ -109,7 +124,7 @@ class AccountContainer extends React.Component<IProps, IState> {
           onPress: () => {
             this.setState({
               editMode: false,
-              newData: Object.create(this.data),
+              newData: {...this.props.prevData},
             });
           },
         },
@@ -122,9 +137,9 @@ class AccountContainer extends React.Component<IProps, IState> {
   }
   
   private onChangeFullname = (value: string): void => {
-    const {newData} = this.state;
-    const customNewData = Object.create(newData);
-    customNewData.fullname = value; 
+    const { newData } = this.state;
+    const customNewData = {...newData};
+    customNewData.fullName = value; 
 
     this.setState({
       newData: customNewData,
@@ -137,10 +152,10 @@ class AccountContainer extends React.Component<IProps, IState> {
       height: 540,
       cropping: true,
     }).then(image => {
-      const {newData} = this.state;
-      const customNewData = Object.create(newData);
+      const { newData } = this.state;
+      const customNewData = {...newData};
 
-      customNewData.image = {
+      customNewData.avatar = {
         // @ts-ignore
         uri: image.path,
         // @ts-ignore
@@ -162,19 +177,17 @@ class AccountContainer extends React.Component<IProps, IState> {
       width: 360,
       height: 540,
       cropping: true,
-    }).then(image => {
-      const {newData} = this.state;
-      const customNewData = Object.create(newData);
+    }).then((image: any) => {
+      const { newData } = this.state;
+      const customNewData = {...newData};
 
-      customNewData.image = {
-        // @ts-ignore
+      const path = image.path.split('/');
+
+      customNewData.avatar = {
         uri: image.path,
-        // @ts-ignore
-        width: image.width,
-        // @ts-ignore
-        height: image.height,
-        // @ts-ignore
-        mime: image.mime,
+        type: image.mime,
+        name: path[path.length - 1],
+        size: image.size,
       };
 
       this.setState({
@@ -184,8 +197,8 @@ class AccountContainer extends React.Component<IProps, IState> {
   }
 
   private close = (): void => {
-    const {onGoBack} = this.props;
-    const {editMode} = this.state;
+    const { onGoBack } = this.props;
+    const { editMode } = this.state;
     
     if (editMode) {
       this.callAlertDiscardChanges();
@@ -194,11 +207,23 @@ class AccountContainer extends React.Component<IProps, IState> {
     }
   }
 
-  private changeMode = (): void => {
-    const {editMode, newData} = this.state;
+  private changeMode = async () => {
+    const { setUserInfo, provider, token, updateUserInfo } = this.props;
+    const { editMode, newData } = this.state;
     
     if (editMode) {
-      this.data = Object.create(newData);
+      const data = new FormData();
+      if (newData.avatar.uri) {
+        data.append('image', newData.avatar);
+        data.append('old_image_uri', this.prevData.avatar);
+      } else {
+        data.append('avatar', newData.avatar);
+      }
+
+      data.append('full_name', newData.fullName);
+
+      await updateUserInfo(data, token, provider);
+      
       this.setState(prevState => ({
         editMode: !prevState.editMode,
       }));
@@ -210,4 +235,4 @@ class AccountContainer extends React.Component<IProps, IState> {
   }
 }
 
-export default AccountContainer;
+export default connect(mapStateToProps, mapActionsToProps)(AccountContainer);

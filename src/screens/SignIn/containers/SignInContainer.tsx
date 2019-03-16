@@ -9,10 +9,11 @@ import { mapStateToProps, mapActionsToProps } from './SignInContainerMaps';
 import SignInView from '../views';
 
 interface IProps {
-  onHome: () => void;
-  signIn: (token: any) => void;
-  isLogged: boolean;
   isLoading: boolean;
+  isLogged: boolean;
+  onHome: () => void;
+  setUserInfo: (userInfo: any) => void;
+  signIn: (token: any) => void;
 }
 
 class SignInContainer extends Component<IProps>  {
@@ -25,9 +26,24 @@ class SignInContainer extends Component<IProps>  {
       statusCheck: true,
     });
 
-    const { onHome } = this.props;
+    const { onHome, setUserInfo } = this.props;
+    const tokena = await getItem('token');
+    if (tokena){
+      const avatar = await getItem('avatar');
+      const email = await getItem('email');
+      const fullName = await getItem('fullName');
+      const provider = await getItem('provider');
+      const token = await getItem('token');
 
-    if (await getItem('token')){
+      const userInfo: any = {
+        avatar,
+        email,
+        fullName,
+        provider,
+        token,
+      };
+
+      await setUserInfo(userInfo);
       onHome();
     } else {
       this.setState({

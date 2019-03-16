@@ -1,6 +1,7 @@
 import { BASE_URL } from '@constants';
 
 class UserService {
+  private UPDATE_USER_PATH: string;
   private ME_PATH: string;
   private BOOK_PATH: string;
 
@@ -8,6 +9,7 @@ class UserService {
   constructor() {
     this.ME_PATH = '/api/users/me/books';
     this.BOOK_PATH = '/api/users/books';
+    this.UPDATE_USER_PATH = '/api/users/me';
   }
 
   async signIn(args) {
@@ -21,6 +23,26 @@ class UserService {
       });
 
       return data;
+    } catch (e) {
+      throw e;
+    }
+  }
+  
+  async update(args) {
+    try {
+      const params = {
+        method: 'POST',
+        body: args.data,
+        headers: {
+          Authorization: args.token,
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+      
+      const URL = BASE_URL + this.UPDATE_USER_PATH;
+      const response = await fetch(URL, params);
+      return response;
     } catch (e) {
       throw e;
     }
@@ -52,7 +74,6 @@ class UserService {
           'Content-Type': 'multipart/form-data',
         },
       };
-      
       const URL = BASE_URL + this.BOOK_PATH + '/addBook';
       const data = await fetch(URL, params);
 
