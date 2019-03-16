@@ -1,3 +1,5 @@
+import { removeItem, saveItem, getItem } from './storage';
+
 import {
   formatAuthors,
   formatNumberOfVoters,
@@ -5,4 +7,12 @@ import {
   getNumberOfVoters,
 } from './formatters';
 
-export { formatAuthors, formatNumberOfVoters, getImage, getNumberOfVoters };
+export {
+  formatAuthors,
+  formatNumberOfVoters,
+  getImage,
+  getItem,
+  getNumberOfVoters,
+  removeItem,
+  saveItem,
+};
