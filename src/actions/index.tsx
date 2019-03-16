@@ -3,6 +3,7 @@ import { signIn } from './signIn';
 import { signOut } from './signOut';
 import { hideUnderlayer, showUnderlayer } from './underlayerAction';
 import { cleanError, getBookData } from './bookData';
+import { addBook } from './addBook';
 
 import {
   ACCOUNT_FAILURE,
@@ -17,6 +18,9 @@ import {
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
+  ADD_MY_BOOK_REQUEST,
+  ADD_MY_BOOK_FAILURE,
+  ADD_MY_BOOK_SUCCESS,
 } from './types';
 
 export {
@@ -39,4 +43,8 @@ export {
   showUnderlayer,
   signIn,
   signOut,
+  ADD_MY_BOOK_REQUEST,
+  ADD_MY_BOOK_FAILURE,
+  ADD_MY_BOOK_SUCCESS,
+  addBook,
 };
