@@ -40,12 +40,12 @@ interface IMyBook {
 
 interface IBookIRead {
   authors: string[];
-  date: any;
+  publishedDate: any;
   id: string;
-  image: any;
+  imageUri: any;
   owner: IOwner;
   publisher?: string;
-  startDateOfReading: any;
+  readAt: any;
   title: string;
 }
 

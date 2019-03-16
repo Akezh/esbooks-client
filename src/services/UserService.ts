@@ -40,6 +40,21 @@ class UserService {
       throw e;
     }
   }
+
+  async getBooksIRead(token: string) {
+    try {
+      const data = await fetch(BASE_URL + this.ME_PATH + '/read', {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json',
+        },
+      });
+      return data;
+    } catch (e) {
+      throw e;
+    }
+  }
     
   async addBook(args) {
     try {
