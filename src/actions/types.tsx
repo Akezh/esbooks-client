@@ -10,3 +10,7 @@ export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 
 export const SIGN_OUT = 'SIGN_OUT';
+
+export const ADD_MY_BOOK_REQUEST = 'ADD_MY_BOOK_REQUEST';
+export const ADD_MY_BOOK_FAILURE = 'ADD_MY_BOOK_FAILURE';
+export const ADD_MY_BOOK_SUCCESS = 'ADD_MY_BOOK_SUCCESS';
