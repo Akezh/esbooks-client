@@ -1,13 +1,14 @@
 import decamelizeKeysDeep from 'decamelize-keys-deep';
-import camelcaseKeysDeep  from 'camelcase-keys-deep';
+import camelcaseKeysDeep from 'camelcase-keys-deep';
+import { saveItem } from '@utils';
 
 import { User } from '@services';
-import { IUserInfo, ISuccessSignInResponse, IErrorSignInResponse } from '@types';
 import {
-  SIGN_IN_REQUEST,
-  SIGN_IN_FAILURE,
-  SIGN_IN_SUCCESS,
-} from './types';
+  IUserInfo,
+  ISuccessSignInResponse,
+  IErrorSignInResponse,
+} from '@types';
+import { SIGN_IN_REQUEST, SIGN_IN_FAILURE, SIGN_IN_SUCCESS } from './types';
 
 const request = (provider: string) => ({
   type: SIGN_IN_REQUEST,
@@ -37,8 +38,15 @@ export const signIn = (userInfo: IUserInfo) => async dispatch => {
   dispatch(request(provider));
 
   try {
-    const response = await User.signIn({ userInfo: decamelizeKeysDeep(userInfo) });
+    const response = await User.signIn({
+      userInfo: decamelizeKeysDeep(userInfo),
+    });
     const data = await response.json();
+
+    await saveItem('avatar', data.user.avatar);
+    await saveItem('email', data.user.email);
+    await saveItem('fullName', data.user.full_name);
+    await saveItem('token', data.token);
 
     dispatch(success(camelcaseKeysDeep(data), provider));
   } catch (e) {

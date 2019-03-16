@@ -185,7 +185,6 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (
           <CustomTextInput
             error={titleError}
             mode='outlined'
-            multiline={true}
             onChangeText={onChangeTitle}
             placeholder='Enter title'
             value={title}
@@ -231,7 +230,6 @@ const AddAndChangeMyBookView: FunctionComponent<IProps> = (
           </View>
           <CustomTextInput
             mode='outlined'
-            multiline={true}
             onChangeText={onChangePublisher}
             placeholder='Enter publisher'
             value={publisher}

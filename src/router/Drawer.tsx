@@ -1,9 +1,13 @@
 import { View } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation';
-import { BooksIRead } from '@screens';
+import { Account, BooksIRead } from '@screens';
 import CustomDrawer from './CustomDrawer';
 import HomeStack from './HomeStack';
 import MyBooksStack from './MyBooksStack';
+import { withSafeAreaView } from '@hocs';
+import { THEME } from '@constants';
+const { colors } = THEME;
+const { primary } = colors;
 
 const Drawer = createDrawerNavigator(
   {
@@ -20,9 +24,15 @@ const Drawer = createDrawerNavigator(
       }),
     },
     BooksIRead: {
-      screen: BooksIRead,
+      screen: withSafeAreaView((BooksIRead), primary),
       navigationOptions: () => ({
         drawerLabel: 'Books I read',
+      }),
+    },
+    Account: {
+      screen: Account,
+      navigationOptions: () => ({
+        drawerLabel: 'Account',
       }),
     },
     SignOut: {
@@ -31,7 +41,8 @@ const Drawer = createDrawerNavigator(
         drawerLabel: 'Sign out',
       }),
     },
-  }, {
+  },
+  {
     initialRouteName: 'HomeStack',
     contentComponent: CustomDrawer,
   },

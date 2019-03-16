@@ -21,9 +21,9 @@ interface IProps {
   isLogged: boolean;
   token: string;
   user: {
-    avatar: string;
-    email: string;
-    fullName: string;
+    avatar: string,
+    email: string,
+    fullName: string,
   };
   activeItemKey: string;
   drawerPosition: 'left' | 'right';
@@ -33,7 +33,6 @@ interface IProps {
   onItemPress: (info: DrawerItem) => void;
   renderIcon: (scene: DrawerScene) => React.ReactNode;
 }
-
 
 const { default_user_avatar } = PLACEHOLDERS;
 
@@ -46,7 +45,8 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
       <View style={styles.header}>
         {renderAvatar()}
         {renderWelcomeUser()}
-      </View>);
+      </View>
+    );
   };
 
   const renderAvatar = () => {
@@ -54,9 +54,7 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
       <View style={styles.avatarWrapper}>
         <Image
           resizeMethod='resize'
-          source={avatar
-            ? { uri: avatar }
-            : default_user_avatar}
+          source={avatar ? { uri: avatar } : default_user_avatar}
           style={styles.avatar}
         />
       </View>
@@ -76,9 +74,17 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
   const renderDrawerItems = () => {
     return (
       <View style={styles.containerDrawerItemsStyle}>
-        <DrawerItems {...props} items={[props.items[0], props.items[1], props.items[2]]} />
+        <DrawerItems
+          {...props}
+          items={[
+            props.items[0],
+            props.items[1],
+            props.items[2],
+            props.items[3],
+          ]}
+        />
         <Divider />
-        <DrawerItems {...props} items={[props.items[3]]} />
+        <DrawerItems {...props} items={[props.items[4]]} />
       </View>
     );
   };
@@ -94,4 +100,7 @@ const CustomDrawerView: FunctionComponent<IProps> = (props): JSX.Element => {
   );
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(withScrollView(CustomDrawerView));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps,
+)(withScrollView(CustomDrawerView));
