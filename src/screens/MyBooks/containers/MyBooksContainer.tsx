@@ -20,10 +20,9 @@ interface IProps {
 }
 
 class MyBooksContainer extends React.Component<IProps> {
-  componentDidMount() {
-    const { getMyBooksData, token, data } = this.props;
-    getMyBooksData(token);
-    console.warn(data);
+  async componentDidMount() {
+    const { getMyBooksData, token } = this.props;
+    await getMyBooksData(token);
   }
 
   render() {
@@ -33,7 +32,7 @@ class MyBooksContainer extends React.Component<IProps> {
       onGoBack,
       onTheQueueForTheBook,
       isLoading,
-      data
+      data,
     } = this.props;
 
     const callBookReturnAlert = (): void => {
@@ -67,6 +66,7 @@ class MyBooksContainer extends React.Component<IProps> {
         ],
       );
     };
+
 
     return (
       <React.Fragment>
@@ -105,6 +105,6 @@ class MyBooksContainer extends React.Component<IProps> {
       </React.Fragment>
     );
   }
-};
+}
 
 export default connect(mapStateToProps, mapActionsToProps)(MyBooksContainer);

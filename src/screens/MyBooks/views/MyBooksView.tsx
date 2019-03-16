@@ -22,7 +22,7 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
     callBookReturnAlert,
     onChangeMyBook,
     onTheQueueForTheBook,
-    data
+    data,
   } = props;
 
   const nav = {

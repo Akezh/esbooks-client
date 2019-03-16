@@ -26,12 +26,12 @@ class UserService {
     }
   }
   
-  async getMyBooks(args) {
+  async getMyBooks(token: string) {
     try {
       const data = await fetch(BASE_URL + this.ME_PATH, {
         method: 'GET',
         headers: {
-          Authorization: args.token,
+          Authorization: token,
           'Content-Type': 'application/json',
         },
       });

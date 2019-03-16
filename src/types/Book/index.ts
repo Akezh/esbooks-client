@@ -26,13 +26,13 @@ interface ICompleteBook {
 
 interface IMyBook {
   authors: string[];
-  date: any;
+  publishDate: any;
   id: string;
-  image: any;
+  imageUri: any;
   publisher: string;
   reader: IReader;
   title: string;
-  waiting_list: IReader[];
+  queues: IReader[];
 }
 
 interface IBookIRead {
@@ -53,8 +53,8 @@ interface IOwner {
 
 interface IReader {
   date?: any;
-  fullname?: string;
-  photo?: any;
+  fullName?: string;
+  avatar?: any;
 }
 
 interface ICompleteBookRating {
