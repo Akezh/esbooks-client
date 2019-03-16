@@ -1,15 +1,16 @@
 import { bindActionCreators } from 'redux';
-import { signIn } from '@actions';
+import { signIn, setUserInfo } from '@actions';
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = state => {
   return {
-    isLogged: state.auth.isLogged,
     isLoading: state.auth.isLoading,
+    isLogged: state.auth.isLogged,
   };
 };
 
 export const mapActionsToProps = (dispatch: any) => {
   return {
+    setUserInfo: bindActionCreators(setUserInfo, dispatch),
     signIn: bindActionCreators(signIn, dispatch),
   };
 };

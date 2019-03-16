@@ -1,13 +1,9 @@
-import { setAccountData } from './account';
-import { signIn } from './signIn';
+import { signIn, setUserInfo, updateUserInfo } from './signIn';
 import { signOut } from './signOut';
 import { hideUnderlayer, showUnderlayer } from './underlayerAction';
 import { cleanError, getBookData } from './bookData';
 
 import {
-  ACCOUNT_FAILURE,
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
@@ -20,9 +16,7 @@ import {
 } from './types';
 
 export {
-  ACCOUNT_FAILURE,
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
+  updateUserInfo,
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
@@ -35,7 +29,7 @@ export {
   cleanError,
   getBookData,
   hideUnderlayer,
-  setAccountData,
+  setUserInfo,
   showUnderlayer,
   signIn,
   signOut,

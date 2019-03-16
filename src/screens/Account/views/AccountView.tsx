@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
 import { Image, StatusBar, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,11 +9,6 @@ import { AccountViewStyles as styles } from '../styles';
 import { CustomTextInput } from '@components';
 
 interface IProps {
-  data: {
-    fullname: string,
-    email: string,
-    image: any,
-  };
   editMode: boolean;
   newData: any;
   onChangeFullname: (value: string) => void;
@@ -24,31 +19,71 @@ interface IProps {
 const { colors } = THEME;
 const { primary } = colors;
 
-const AccountView: FunctionComponent<IProps> = props => {
-  const { editMode, newData, onChangeFullname, openCamera, openPicker } = props;
-  const { fullname, email, image } = newData;
+class AccountView extends Component<IProps> {
+  render() {
+    const {
+      editMode,
+      newData,
+      onChangeFullname,
+    } = this.props;
 
-  const urlReg = /(https?:\/\/[^\s]+)/g;
-  const isImageUrl = urlReg.test(image);
+    const { fullName, email } = newData;
 
-  const renderImage = (): JSX.Element => {
+    return (
+      <View style={styles.container}>
+        <View style={styles.content}>
+          {this.renderImage()}
+
+          {editMode && this.renderBtns()}
+
+          {!editMode && <Text style={styles.fullname}>{fullName}</Text>}
+          {editMode && (
+            <CustomTextInput
+              mode='outlined'
+              value={fullName}
+              style={styles.customTextInput}
+              onChangeText={onChangeFullname}
+            />
+          )}
+
+          <Text style={styles.email}>{email}</Text>
+        </View>
+        <StatusBar backgroundColor={primary} barStyle='light-content' />
+      </View>
+    );
+  }
+
+  private renderImage = () => {
+    const { newData } = this.props;
+    const { avatar } = newData;
+
+    const urlReg = /(https?:\/\/[^\s]+)/g;
+    const isAvatarUrl = urlReg.test(avatar);
+
     return (
       <View style={styles.imageWrapper}>
         <Image
           source={
-            isImageUrl
-              ? { uri: image }
-              : image.uri
-              ? image
-              : getImage(image, 'user')
+            isAvatarUrl
+              ? { uri: avatar }
+              : avatar && typeof avatar !== 'string' && avatar.uri
+              ? { uri: avatar.uri }
+              : typeof avatar === 'string'
+              ? { uri: avatar }
+              : getImage(avatar, 'user')
           }
           style={styles.image}
         />
       </View>
     );
-  };
+  }
 
-  const renderBtns = (): JSX.Element => {
+  private renderBtns = (): JSX.Element => {
+    const {
+      openCamera,
+      openPicker,
+    } = this.props;
+
     return (
       <View style={styles.cameraBtnsWrapper}>
         <TouchableRipple
@@ -72,30 +107,7 @@ const AccountView: FunctionComponent<IProps> = props => {
         </TouchableRipple>
       </View>
     );
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        {renderImage()}
-
-        {editMode && renderBtns()}
-
-        {!editMode && <Text style={styles.fullname}>{fullname}</Text>}
-        {editMode && (
-          <CustomTextInput
-            mode='outlined'
-            value={fullname}
-            style={styles.customTextInput}
-            onChangeText={onChangeFullname}
-          />
-        )}
-
-        <Text style={styles.email}>{email}</Text>
-      </View>
-      <StatusBar backgroundColor={primary} barStyle='light-content' />
-    </View>
-  );
-};
+  }
+}
 
 export default withScrollView(AccountView);

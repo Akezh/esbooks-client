@@ -12,8 +12,8 @@ interface ISuccessSignInResponse {
   success: boolean;
   token: string;
   user: {
-    fullName: string;
-    avatar: string;
+    fullName: string,
+    avatar: string,
   };
 }
 
@@ -24,7 +24,7 @@ interface IErrorSignInResponse {
 
 type IPermissions = string[];
 
-export { 
+export {
   IErrorSignInResponse,
   IPermissions,
   ISuccessSignInResponse,
