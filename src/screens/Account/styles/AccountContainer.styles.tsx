@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Header } from 'react-navigation';
 import { THEME } from '@constants';
 
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: primary,
     flexDirection: 'row',
-    height: Header.HEIGHT,
+    height: Platform.OS === 'ios' ? Header.HEIGHT - 10 : Header.HEIGHT,
     width: '100%',
   },
   headerLeftPart: {

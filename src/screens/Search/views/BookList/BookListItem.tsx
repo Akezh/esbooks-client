@@ -1,23 +1,30 @@
 import React, { FunctionComponent } from 'react';
 import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { THEME } from '@constants';
 import { IHomeBookListItem } from '@types';
-import { getImage, formatAuthors } from '@utils';
+import { formatAuthors } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
-
+import { PLACEHOLDERS } from '@static';
+const { default_user_avatar, book } = PLACEHOLDERS;
 const { colors } = THEME;
-const { primary } = colors;
+const { primary, inactively } = colors;
 
 const BookListItem: FunctionComponent<IHomeBookListItem> = (
   props,
 ): JSX.Element => {
   const { item, onBookDetails } = props;
-  const { authors, image, owner, title } = item;
-  const { fullname, photo } = owner;
+  const { authors, imageUri, owner, title, rating } = item;
+  const { fullName, avatar } = owner;
 
   const renderImage = () => {
-    return <Image source={getImage(image, 'book')} style={styles.image} />;
+    return (
+      <Image
+        source={imageUri ? { uri: imageUri } : book}
+        style={styles.image}
+      />
+    );
   };
 
   const renderBookInfoSection = () => {
@@ -30,6 +37,10 @@ const BookListItem: FunctionComponent<IHomeBookListItem> = (
           <Text style={styles.text} numberOfLines={1}>
             {formatAuthors(authors)}
           </Text>
+          <View style={styles.ratingWrapper}>
+            <Text style={styles.rating}>{rating.avg ? rating.avg : 0}</Text>
+            <Icon name='star' color={inactively} size={12} />
+          </View>
         </View>
       </View>
     );
@@ -47,7 +58,12 @@ const BookListItem: FunctionComponent<IHomeBookListItem> = (
   };
 
   const renderOwnerAvatar = () => {
-    return <Image source={getImage(photo, 'user')} style={styles.ownerPhoto} />;
+    return (
+      <Image
+        source={avatar ? { uri: avatar } : default_user_avatar}
+        style={styles.ownerPhoto}
+      />
+    );
   };
 
   const renderUploadBy = () => {
@@ -57,7 +73,7 @@ const BookListItem: FunctionComponent<IHomeBookListItem> = (
           Upload By
         </Text>
         <Text numberOfLines={1} style={styles.owner}>
-          {fullname}
+          {fullName}
         </Text>
       </View>
     );

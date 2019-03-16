@@ -4,6 +4,10 @@ import { Account, BooksIRead } from '@screens';
 import CustomDrawer from './CustomDrawer';
 import HomeStack from './HomeStack';
 import MyBooksStack from './MyBooksStack';
+import { withSafeAreaView } from '@hocs';
+import { THEME } from '@constants';
+const { colors } = THEME;
+const { primary } = colors;
 
 const Drawer = createDrawerNavigator(
   {
@@ -20,13 +24,13 @@ const Drawer = createDrawerNavigator(
       }),
     },
     BooksIRead: {
-      screen: BooksIRead,
+      screen: withSafeAreaView((BooksIRead), primary),
       navigationOptions: () => ({
         drawerLabel: 'Books I read',
       }),
     },
     Account: {
-      screen: Account,
+      screen: withSafeAreaView((Account), primary),
       navigationOptions: () => ({
         drawerLabel: 'Account',
       }),

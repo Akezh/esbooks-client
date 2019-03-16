@@ -140,12 +140,12 @@ class HomeContainer extends React.Component<IProps, IState> {
   private onSubmitEditing = (): void => {
     const { text } = this.state;
     const { onSearch } = this.props;
-    
+
     if (text) {
       this.hideUnderlayer();
       Keyboard.dismiss();
-      onSearch(text);    
-    }    
+      onSearch(text);
+    }
   }
 
   private setTextInputRef = (element: any): void => {

@@ -37,6 +37,9 @@ interface IProps {
 
   dataBookThatWeChange: any;
   screenType: 'Add' | 'Change';
+  addBook: (data: any, token: string) => void;
+  token: string;
+  isAddBookLoading: boolean;
 }
 
 interface IState {
@@ -220,6 +223,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       onGoBack,
       onMoreItems,
       screenType,
+      isAddBookLoading,
     } = this.props;
 
     const {
@@ -334,7 +338,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
             setISBNCode={this.setISBNCode}
           />}
 
-        {isLoading
+        {isLoading || isAddBookLoading
           && <Loading />}
 
         <DateTimePicker
@@ -382,7 +386,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
   private onChangeTitle = (value: string): void => {
     this.setState({
       title: value,
-      titleError: value ? { status: false } : { status: true, message: 'Fill this field' },
+      titleError: value ? { status: false } : { status: true, message: 'This field is required' },
     });
   }
 
@@ -448,17 +452,15 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       width: 360,
       height: 540,
       cropping: true,
-    }).then(image => {
+    }).then((image: any) => {
+      const path = image.path.split('/');
+
       this.setState({
         image: {
-          // @ts-ignore
           uri: image.path,
-          // @ts-ignore
-          width: image.width,
-          // @ts-ignore
-          height: image.height,
-          // @ts-ignore
-          mime: image.mime,
+          type: image.mime,
+          name: path[path.length - 1],
+          size: image.size,
         },
       });
     }).catch();
@@ -469,17 +471,15 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       width: 360,
       height: 540,
       cropping: true,
-    }).then(image => {
+    }).then((image: any) => {
+      const path = image.path.split('/');
+
       this.setState({
         image: {
-          // @ts-ignore
           uri: image.path,
-          // @ts-ignore
-          width: image.width,
-          // @ts-ignore
-          height: image.height,
-          // @ts-ignore
-          mime: image.mime,
+          type: image.mime,
+          name: path[path.length - 1],
+          size: image.size,
         },
       });
     }).catch();
@@ -589,8 +589,37 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
     this.checkAllFields();
   }
 
-  private publish = (): void => {
+  private publish = async () => {
     this.checkAllFields();
+
+    const {    
+      authors,
+      categories,
+      date,
+      description,
+      image,
+      publisher,
+      subtitle,
+      tags: [],
+      title,
+    } = this.state;
+
+    const { addBook, onGoBack, token } = this.props;
+    const formatedAuthors = authors.map(el => el.fullName);
+
+    const data = new FormData();
+    data.append('title', title);
+    data.append('subtitle', subtitle);
+    data.append('description', description);
+    data.append('publisher', publisher);
+    image.uri ? data.append('image', image) : data.append('image_uri', image);
+    data.append('authors', JSON.stringify(formatedAuthors));
+    data.append('categories', JSON.stringify(categories));
+    data.append('published_date', date);
+
+    await addBook(data, token);
+
+    onGoBack();
   }
 
   private checkAllFields = () => {
@@ -598,7 +627,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
 
     if (!title) {
       this.setState({
-        titleError: { status: true, message: 'Fill this field' },
+        titleError: { status: true, message: 'This field is required' },
       });
     }
 
@@ -606,7 +635,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       if (!item.fullName) {
         const newAuthor = authors.map(i => {
           if (i.id === item.id) {
-            i.error = { status: true, message: 'Fill this field' };
+            i.error = { status: true, message: 'This field is required' };
             return i;
           }
           return i;
@@ -620,19 +649,19 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
 
     if (!date) {
       this.setState({
-        dateError: { status: true, message: 'Fill this field' },
+        dateError: { status: true, message: 'This field is required' },
       });
     }
 
     if (!categories.length) {
       this.setState({
-        categoriesError: { status: true, message: 'Fill this field' },
+        categoriesError: { status: true, message: 'This field is required' },
       });
     }
 
     if (!tags.length) {
       this.setState({
-        tagsError: { status: true, message: 'Fill this field' },
+        tagsError: { status: true, message: 'This field is required' },
       });
     }
   }

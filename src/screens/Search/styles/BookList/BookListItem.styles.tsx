@@ -64,4 +64,13 @@ export const styles = StyleSheet.create({
     fontFamily: regular,
     fontSize: 12,
   },
+  ratingWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rating: {
+    color: inactively,
+    fontFamily: regular,
+    fontSize: 12,
+  },
 });
