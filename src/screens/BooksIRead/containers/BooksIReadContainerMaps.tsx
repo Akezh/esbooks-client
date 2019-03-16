@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
-import { cleanError, getBooksIReadData } from '@actions';
+import { getBooksIReadData } from '@actions';
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = state => {
   return {
     data: state.booksIRead.data,
     error: state.booksIRead.error,
@@ -10,9 +10,8 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export const mapActionsToProps = (dispatch) => {
+export const mapActionsToProps = dispatch => {
   return {
-    cleanError: bindActionCreators(cleanError, dispatch),
     getBooksIReadData: bindActionCreators(getBooksIReadData, dispatch),
   };
 };

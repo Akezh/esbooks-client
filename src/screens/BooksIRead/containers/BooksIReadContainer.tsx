@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { mapActionsToProps, mapStateToProps } from './booksIReadContainerMaps';
+import { mapActionsToProps, mapStateToProps } from './BooksIReadContainerMaps';
 import { connect } from 'react-redux';
 import { Loading } from '@components';
 import BooksIReadView from '../views';
@@ -15,7 +15,7 @@ interface IProps {
   data: any;
 }
 
-class BooksIReadContainer extends React.Component<IProps> {  
+class BooksIReadContainer extends React.Component<IProps> {
   async componentDidMount() {
     const { getBooksIReadData, token } = this.props;
     await getBooksIReadData(token);
@@ -41,12 +41,13 @@ class BooksIReadContainer extends React.Component<IProps> {
 
         <BooksIReadView data={data} />
 
-        {isLoading
-          && <Loading />}
+        {isLoading && <Loading />}
       </React.Fragment>
     );
   }
 }
 
-
-export default connect(mapStateToProps, mapActionsToProps)(BooksIReadContainer);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps,
+)(BooksIReadContainer);
