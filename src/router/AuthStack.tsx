@@ -7,7 +7,8 @@ const AuthStack = createStackNavigator(
     SignIn: {
       screen: withSafeAreaView(SignIn, '#0C1028'),
     },
-  }, {
+  },
+  {
     initialRouteName: 'SignIn',
     navigationOptions: {
       header: null,

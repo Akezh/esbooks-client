@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleSignin, statusCodes  } from 'react-native-google-signin';
 import { Loading } from '@components';
@@ -72,13 +72,13 @@ class SignInContainer extends Component<IProps>  {
     const { statusCheck } = this.state;
 
     return ( 
-      <Fragment>
+      <React.Fragment>
         <SignInView
           googleSignIn={this.googleSignIn}
           fbSignIn={this.fbSignIn}
         />
         {isLoading || statusCheck && <Loading />}
-      </Fragment>
+      </React.Fragment>
     );
   }
  
