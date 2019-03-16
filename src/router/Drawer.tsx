@@ -30,7 +30,7 @@ const Drawer = createDrawerNavigator(
       }),
     },
     Account: {
-      screen: Account,
+      screen: withSafeAreaView((Account), primary),
       navigationOptions: () => ({
         drawerLabel: 'Account',
       }),

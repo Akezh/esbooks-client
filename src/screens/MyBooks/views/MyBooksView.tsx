@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { StatusBar } from 'react-native';
-import { MY_BOOK_DATA, THEME } from '@constants';
+import { THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import { IReader } from '@types';
 import MyBookList from './MyBookList';
@@ -10,6 +10,7 @@ interface IProps {
   callBookReturnAlert: () => void;
   onChangeMyBook: () => void;
   onTheQueueForTheBook: (reader: IReader, waitingList: IReader[]) => void;
+  data: any;
 }
 
 const { colors } = THEME;
@@ -21,6 +22,7 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
     callBookReturnAlert,
     onChangeMyBook,
     onTheQueueForTheBook,
+    data
   } = props;
 
   const nav = {
@@ -33,7 +35,7 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
   return (
     <React.Fragment>
       <MyBookList
-        data={MY_BOOK_DATA}
+        data={data}
         nav={nav}
       />
       <StatusBar
