@@ -29,7 +29,7 @@
     "lottie-react-native": "^2.5.11",
     "moment": "^2.24.0",
     "react": "16.8.4",
-    "react-native": "^0.59.0",
+    "react-native": "^0.58.6",
     "react-native-camera": "^1.13.1",
     "react-native-fbsdk": "^0.8.0",
     "react-native-google-signin": "^1.2.1",
