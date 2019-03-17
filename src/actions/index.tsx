@@ -1,23 +1,28 @@
-import { setAccountData } from './account';
-import { signIn } from './signIn';
+import { signIn, setUserInfo, updateUserInfo } from './signIn';
 import { signOut } from './signOut';
 import { hideUnderlayer, showUnderlayer } from './underlayerAction';
 import { cleanError, getBookData } from './bookData';
 import { addBook } from './addBook';
+import { getMyBooksData } from './myBooks';
+import { getBooksIReadData } from './booksIRead';
 import { search } from './search';
 import { getBookDetails } from './bookDetails';
+import { removeQueue } from './theQueueForTheBook';
 
 import {
-  ACCOUNT_FAILURE,
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
+  BOOKS_I_READ_FAILURE,
+  BOOKS_I_READ_REQUEST,
+  BOOKS_I_READ_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
-  SIGN_IN_FAILURE,
+  MY_BOOKS_FAILURE,
+  MY_BOOKS_REQUEST,
+  MY_BOOKS_SUCCESS,
   SIGN_IN_REQUEST,
+  SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
   ADD_MY_BOOK_REQUEST,
@@ -29,25 +34,34 @@ import {
   BOOK_DETAILS_FAILURE,
   BOOK_DETAILS_REQUEST,
   BOOK_DETAILS_SUCCESS,
+  REMOVE_QUEUE_FAILURE,
+  REMOVE_QUEUE_REQUEST,
+  REMOVE_QUEUE_SUCCESS,
 } from './types';
 
 export {
-  ACCOUNT_FAILURE,
-  ACCOUNT_REQUEST,
-  ACCOUNT_SUCCESS,
+  updateUserInfo,
   BOOK_DATA_FAILURE,
   BOOK_DATA_REQUEST,
   BOOK_DATA_SUCCESS,
+  BOOKS_I_READ_FAILURE,
+  BOOKS_I_READ_REQUEST,
+  BOOKS_I_READ_SUCCESS,
   HIDE_UNDERLAYER,
   SHOW_UNDERLAYER,
+  MY_BOOKS_FAILURE,
+  MY_BOOKS_REQUEST,
+  MY_BOOKS_SUCCESS,
   SIGN_IN_FAILURE,
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
   cleanError,
   getBookData,
+  getBooksIReadData,
+  getMyBooksData,
   hideUnderlayer,
-  setAccountData,
+  setUserInfo,
   showUnderlayer,
   signIn,
   signOut,
@@ -63,4 +77,8 @@ export {
   BOOK_DETAILS_REQUEST,
   BOOK_DETAILS_SUCCESS,
   getBookDetails,
+  REMOVE_QUEUE_FAILURE,
+  REMOVE_QUEUE_REQUEST,
+  REMOVE_QUEUE_SUCCESS,
+  removeQueue,
 };

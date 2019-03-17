@@ -9,16 +9,28 @@ import { IMyBookListItem } from '@types';
 import { getImage } from '@utils';
 import BookMenu from '../BookMenu';
 import { MyBookListItemStyles as styles } from '../../styles';
+import { PLACEHOLDERS } from '@static';
 
 const { author } = OTHER;
 const { colors } = THEME;
 const { text } = colors;
 
+const { default_user_avatar } = PLACEHOLDERS;
+
 const MyBookListItem: FunctionComponent<IMyBookListItem> = (
   props,
 ): JSX.Element => {
   const { item, nav } = props;
-  const { authors, date, image, publisher, reader, title, waiting_list } = item;
+  const {
+    id,
+    authors,
+    publishDate,
+    imageUri,
+    publisher,
+    reader,
+    title,
+    queues,
+  } = item;
 
   const {
     callBookRemovalWarning,
@@ -28,9 +40,7 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
     onTheQueueForTheBook,
   } = nav;
 
-  const { fullname, photo } = reader;
-
-  const formattedPublished = moment(date).format('DD MMMM YYYY');
+  const formattedPublished = moment(publishDate).format('DD MMMM YYYY');
   const formattedReaderDate =
     reader && moment(reader.date).format('DD MMMM YYYY');
 
@@ -38,15 +48,15 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
     <TouchableOpacity onPress={onBookDetails} style={styles.containerWrapper}>
       <View style={styles.container}>
         <View style={styles.imageWrapper}>
-          <Image style={styles.image} source={getImage(image, 'book')} />
+          <Image style={styles.image} source={getImage(imageUri, 'book')} />
 
-          {waiting_list.length ? (
+          {queues.length ? (
             <TouchableRipple
-              onPress={() => onTheQueueForTheBook(reader, waiting_list)}
+              onPress={() => onTheQueueForTheBook(id, reader, queues)}
               style={styles.numberOfWaitingPeopleBtn}
             >
               <Text style={styles.numberOfWaitingPeopleBtnText}>
-                {waiting_list.length}
+                {queues.length}
               </Text>
             </TouchableRipple>
           ) : null}
@@ -84,11 +94,13 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
             </View>
           </View>
 
-          {reader.fullname && (
+          {reader && (
             <View style={styles.readerInfoWrapper}>
               <View style={styles.readerInfo}>
                 <Image
-                  source={getImage(photo, 'user')}
+                  source={
+                    reader.avatar ? { uri: reader.avatar } : default_user_avatar
+                  }
                   style={styles.readerPhoto}
                 />
 
@@ -100,7 +112,7 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
                     numberOfLines={1}
                     style={[styles.bookInfoText, styles.readerName]}
                   >
-                    {fullname}'s
+                    {reader.fullName}'s
                   </Text>
                   <Text style={styles.readerDate}>{formattedReaderDate}</Text>
                 </View>

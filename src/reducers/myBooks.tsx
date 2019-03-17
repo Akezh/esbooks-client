@@ -1,4 +1,8 @@
-import { ACCOUNT_FAILURE, ACCOUNT_REQUEST, ACCOUNT_SUCCESS } from '@actions';
+import {
+  MY_BOOKS_FAILURE,
+  MY_BOOKS_REQUEST,
+  MY_BOOKS_SUCCESS,
+} from '@actions';
 
 const initState = {
   data: {},
@@ -8,18 +12,18 @@ const initState = {
 
 export default (state = initState, { type, payload }) => {
   switch (type) {
-    case ACCOUNT_REQUEST:
+    case MY_BOOKS_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case ACCOUNT_SUCCESS:
+    case MY_BOOKS_SUCCESS:
       return {
         ...state,
         data: payload.data,
         isLoading: false,
       };
-    case ACCOUNT_FAILURE:
+    case MY_BOOKS_FAILURE:
       return {
         ...state,
         error: payload.error,

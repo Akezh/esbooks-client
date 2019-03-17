@@ -386,7 +386,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
   private onChangeTitle = (value: string): void => {
     this.setState({
       title: value,
-      titleError: value ? { status: false } : { status: true, message: 'Fill this field' },
+      titleError: value ? { status: false } : { status: true, message: 'This field is required' },
     });
   }
 
@@ -627,7 +627,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
 
     if (!title) {
       this.setState({
-        titleError: { status: true, message: 'Fill this field' },
+        titleError: { status: true, message: 'This field is required' },
       });
     }
 
@@ -635,7 +635,7 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
       if (!item.fullName) {
         const newAuthor = authors.map(i => {
           if (i.id === item.id) {
-            i.error = { status: true, message: 'Fill this field' };
+            i.error = { status: true, message: 'This field is required' };
             return i;
           }
           return i;
@@ -649,19 +649,19 @@ class AddAndChangeMyBookContainer extends Component<IProps, IState>{
 
     if (!date) {
       this.setState({
-        dateError: { status: true, message: 'Fill this field' },
+        dateError: { status: true, message: 'This field is required' },
       });
     }
 
     if (!categories.length) {
       this.setState({
-        categoriesError: { status: true, message: 'Fill this field' },
+        categoriesError: { status: true, message: 'This field is required' },
       });
     }
 
     if (!tags.length) {
       this.setState({
-        tagsError: { status: true, message: 'Fill this field' },
+        tagsError: { status: true, message: 'This field is required' },
       });
     }
   }

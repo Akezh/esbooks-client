@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
 import Menu, { MenuDivider, MenuItem } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { THEME } from '@constants';
@@ -13,16 +13,44 @@ interface IProps {
 const { colors } = THEME;
 const { text } = colors;
 
-const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
-  const { callBookRemovalWarning } = props;
+class BookMenu extends Component<IProps> {
+  private menu: any;
 
-  let menu: any;
+  public render() {
+    return (
+        <Menu
+          button={this.renderBookMenu()}
+          ref={this.setMenuRef}
+        >
+          <React.Fragment>
+            <MenuItem
+              onPress={this.onChangeMyBook}
+              style={styles.menuItem}
+              textStyle={styles.menuItemText}
+              underlayColor='#1ab3ff'
+            >
+              CHANGE
+            </MenuItem>
+            <MenuDivider />
 
-  const renderBookMenu = (): JSX.Element => {
+            <MenuItem
+              onPress={this.onRemovePress}
+              style={styles.menuItem}
+              textStyle={styles.menuItemText}
+              underlayColor='#1ab3ff'
+            >
+              REMOVE
+            </MenuItem>
+          </React.Fragment>
+        </Menu>
+    );
+  }
+
+  private renderBookMenu = (): JSX.Element => {
     return (
       <TouchableRipple
         style={styles.menuBtn}
-        onPress={showMenu}
+        onPress={this.showMenu}
       >
         <Icon
           color={text}
@@ -31,57 +59,31 @@ const BookMenu: FunctionComponent<IProps> = (props): JSX.Element => {
         />
       </TouchableRipple>
     );
-  };
+  }
 
-  const setMenuRef = (element: JSX.Element): void => {
-    menu = element;
-  };
+  private setMenuRef = (element: JSX.Element): void => {
+    this.menu = element;
+  }
 
-  const showMenu = (): void => {
-    menu.show();
-  };
+  private showMenu = (): void => {
+    this.menu.show();
+  }
 
-  const hideMenu = (): void => {
-    menu.hide();
-  };
+  private hideMenu = (): void => {
+    this.menu.hide();
+  }
 
-  const onRemovePress = (): void => {
-    hideMenu();
+  private onRemovePress = (): void => {
+    const { callBookRemovalWarning } = this.props;
+
+    this.hideMenu();
     callBookRemovalWarning();
-  };
+  }
 
-  const onChangeMyBook = (): void => {
-    hideMenu();
-    props.onChangeMyBook();
-  };
-
-  return (
-    <Menu
-      button={renderBookMenu()}
-      ref={setMenuRef}
-    >
-      <React.Fragment>
-        <MenuItem
-          onPress={onChangeMyBook}
-          style={styles.menuItem}
-          textStyle={styles.menuItemText}
-          underlayColor='#1ab3ff'
-        >
-          CHANGE
-        </MenuItem>
-        <MenuDivider />
-
-        <MenuItem
-          onPress={onRemovePress}
-          style={styles.menuItem}
-          textStyle={styles.menuItemText}
-          underlayColor='#1ab3ff'
-        >
-          REMOVE
-        </MenuItem>
-      </React.Fragment>
-    </Menu>
-  );
-};
+  private onChangeMyBook = (): void => {
+    this.hideMenu();
+    this.props.onChangeMyBook();
+  }
+}
 
 export default BookMenu;

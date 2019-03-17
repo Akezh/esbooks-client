@@ -1,9 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import {
-  NavigationScreenProp,
-  NavigationState,
-} from 'react-navigation';
-import { withScrollView } from '@hocs';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import SignInContainer from './containers';
 
 interface IProps {
@@ -17,7 +13,7 @@ const SignIn: FunctionComponent<IProps> = (props): JSX.Element => {
     navigation.navigate('Home');
   };
 
-  return <SignInContainer onHome={onHome}/>;
+  return <SignInContainer onHome={onHome} />;
 };
 
-export default withScrollView(SignIn);
+export default SignIn;

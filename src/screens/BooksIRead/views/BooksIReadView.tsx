@@ -1,16 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import { StatusBar } from 'react-native';
-import { BOOKS_I_READ_DATA, THEME } from '@constants';
+import { THEME } from '@constants';
 import { withScrollView } from '@hocs';
 import BookIReadList from './BookIReadList';
+
+interface IProps {
+  data: any;
+}
 
 const { colors } = THEME;
 const { primary } = colors;
 
-const BooksIReadView: FunctionComponent = (): JSX.Element => {
+const BooksIReadView: FunctionComponent<IProps> = (props): JSX.Element => {
+  const { data } = props;
+
   return (
     <React.Fragment>
-      <BookIReadList data={BOOKS_I_READ_DATA} nav={null} />
+      <BookIReadList data={data} nav={null} />
       <StatusBar backgroundColor={primary} barStyle='light-content' />
     </React.Fragment>
   );
