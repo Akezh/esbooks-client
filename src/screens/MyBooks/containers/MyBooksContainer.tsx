@@ -12,7 +12,11 @@ interface IProps {
   onAddAndChangeMyBook: () => void;
   onChangeMyBook: () => void;
   onGoBack: () => void;
-  onTheQueueForTheBook: (reader: IReader, waitingList: IReader[]) => void;
+  onTheQueueForTheBook: (
+    id: string,
+    reader: IReader,
+    waitingList: IReader[],
+  ) => void;
   isLoading: boolean;
   getMyBooksData: (token: string) => void;
   token: string;
@@ -34,39 +38,6 @@ class MyBooksContainer extends React.Component<IProps> {
       isLoading,
       data,
     } = this.props;
-
-    const callBookReturnAlert = (): void => {
-      Alert.alert(
-        '',
-        'Are you sure you want to send a request to return this book?',
-        [
-          {
-            text: 'CONFIRM',
-          },
-          {
-            text: 'CANCEL',
-            style: 'cancel',
-          },
-        ],
-      );
-    };
-
-    const callBookRemovalWarning = (): void => {
-      Alert.alert(
-        '',
-        'Are you sure you want to remove this book?',
-        [
-          {
-            text: 'CONFIRM',
-          },
-          {
-            text: 'CANCEL',
-            style: 'cancel',
-          },
-        ],
-      );
-    };
-
 
     return (
       <React.Fragment>
@@ -93,18 +64,47 @@ class MyBooksContainer extends React.Component<IProps> {
 
         <MyBooksView
           data={data}
-          callBookRemovalWarning={callBookRemovalWarning}
-          callBookReturnAlert={callBookReturnAlert}
+          callBookRemovalWarning={this.callBookRemovalWarning}
+          callBookReturnAlert={this.callBookReturnAlert}
           onChangeMyBook={onChangeMyBook}
           onTheQueueForTheBook={onTheQueueForTheBook}
         />
 
-        {isLoading
-          && <Loading />}
-
+        {isLoading && <Loading />}
       </React.Fragment>
     );
   }
+
+  private callBookReturnAlert = (): void => {
+    Alert.alert(
+      '',
+      'Are you sure you want to send a request to return this book?',
+      [
+        {
+          text: 'CONFIRM',
+        },
+        {
+          text: 'CANCEL',
+          style: 'cancel',
+        },
+      ],
+    );
+  }
+
+  private callBookRemovalWarning = (): void => {
+    Alert.alert('', 'Are you sure you want to remove this book?', [
+      {
+        text: 'CONFIRM',
+      },
+      {
+        text: 'CANCEL',
+        style: 'cancel',
+      },
+    ]);
+  }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(MyBooksContainer);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps,
+)(MyBooksContainer);

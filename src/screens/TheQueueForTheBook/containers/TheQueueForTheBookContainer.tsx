@@ -1,59 +1,42 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
 import { Alert, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
 import { IReader } from '@types';
+import { mapActionsToProps, mapStateToProps } from './TheQueueForTheBookContainerMaps';
 import TheQueueForTheBookView from '../views';
 import { TheQueueForTheBookContainerStyles as styles } from '../styles';
 
 interface IProps {
+  bookId: string;
   onGoBack: () => void;
+  queues: any;
   reader: IReader;
+  removeQueue: (userId: string, bookId: string, token: string) => void;
   waitingList: IReader[];
+  token: string;
 }
 
-const TheQueueForTheBookContainer:
-  FunctionComponent<IProps> = (props): JSX.Element => {
-    const {
-      onGoBack,
-      reader,
-      waitingList,
-    } = props;
+class TheQueueForTheBookContainer extends Component<IProps> {
+  state = {
+    waitingList: this.props.waitingList,
+  };
 
-    const removePersonFromWaitingList = (fullname: string): void => {
-      Alert.alert(
-        '',
-        `Are you sure you want to remove ${fullname} from the queue?`,
-        [
-          {
-            text: 'CONFIRM',
-          },
-          {
-            text: 'CANCEL',
-            style: 'cancel',
-          },
-        ],
-      );
-    };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.queues !== this.props.queues) {
+      this.setState({
+        waitingList: nextProps.queues,
+      });
+    }
+  }
 
-    const boostFromWaitToRead = (fullname: string): void => {
-      Alert.alert(
-        '',
-        `Are you sure you want to let ${fullname} read this book?`,
-        [
-          {
-            text: 'CONFIRM',
-          },
-          {
-            text: 'CANCEL',
-            style: 'cancel',
-          },
-        ],
-      );
-    };
+  render() {
+    const { onGoBack, reader } = this.props;
+    const { waitingList } = this.state;
 
     const nav = {
-      boostFromWaitToRead,
-      removePersonFromWaitingList,
+      boostFromWaitToRead: this.boostFromWaitToRead,
+      removePersonFromWaitingList: this.removePersonFromWaitingList,
     };
 
     return (
@@ -67,7 +50,7 @@ const TheQueueForTheBookContainer:
               size={24}
               style={styles.icon}
             />
-            <Text style={styles.title}>My books</Text>
+            <Text style={styles.title}>The queue for the book</Text>
           </View>
         </View>
         <TheQueueForTheBookView
@@ -77,6 +60,49 @@ const TheQueueForTheBookContainer:
         />
       </React.Fragment>
     );
-  };
+  }
 
-export default TheQueueForTheBookContainer;
+  private removePersonFromWaitingList = async (
+    userId: string,
+    fullName: string,
+  ) => {
+
+    const { removeQueue, bookId, token } = this.props;
+
+    Alert.alert(
+      '',
+      `Are you sure you want to remove ${fullName} from the queue?`,
+      [
+        {
+          text: 'CONFIRM',
+          onPress: async () => { await removeQueue(userId, bookId, token); },
+        },
+        {
+          text: 'CANCEL',
+          style: 'cancel',
+        },
+      ],
+    );
+  }
+
+  private boostFromWaitToRead = (id: string, fullName: string): void => {
+    Alert.alert(
+      '',
+      `Are you sure you want to let ${fullName} read this book?`,
+      [
+        {
+          text: 'CONFIRM',
+        },
+        {
+          text: 'CANCEL',
+          style: 'cancel',
+        },
+      ],
+    );
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps,
+)(TheQueueForTheBookContainer);

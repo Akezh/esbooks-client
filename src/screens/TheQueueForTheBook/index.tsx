@@ -8,16 +8,17 @@ interface IProps {
 
 const TheQueueForTheBook: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
-  const { goBack, state } = navigation;
+  const { replace, state } = navigation;
   const { params } = state;
-  const { reader, waitingList } = params;
+  const { bookId, reader, waitingList } = params;
 
   const onGoBack = (): void => {
-    goBack();
+    replace('MyBooks');
   };
 
   return (
     <TheQueueForTheBookContainer
+      bookId={bookId}
       onGoBack={onGoBack}
       reader={reader}
       waitingList={waitingList}

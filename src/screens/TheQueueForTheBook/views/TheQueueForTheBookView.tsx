@@ -14,23 +14,17 @@ interface IProps {
 const { colors } = THEME;
 const { primary } = colors;
 
-const TheQueueForTheBookView:
-  FunctionComponent<IProps> = (props): JSX.Element => {
-    const { nav, reader, waitingList } = props;
+const TheQueueForTheBookView: FunctionComponent<IProps> = (
+  props,
+): JSX.Element => {
+  const { nav, reader, waitingList } = props;
 
-    return (
-      <React.Fragment>
-        <TheQueueForTheBookList
-          data={waitingList}
-          nav={nav}
-          reader={reader}
-        />
-        <StatusBar
-          backgroundColor={primary}
-          barStyle='light-content'
-        />
-      </React.Fragment>
-    );
-  };
+  return (
+    <React.Fragment>
+      <TheQueueForTheBookList data={waitingList} nav={nav} reader={reader} />
+      <StatusBar backgroundColor={primary} barStyle='light-content' />
+    </React.Fragment>
+  );
+};
 
 export default withScrollView(TheQueueForTheBookView);

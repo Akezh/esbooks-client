@@ -11,27 +11,28 @@ import { THEME } from '@constants';
 const { colors } = THEME;
 const { error, accent } = colors;
 
-const TheQueueForTheBookListItem: FunctionComponent<ITheQueueForTheBookListItem> = (
+const TheQueueForTheBookListItem: FunctionComponent<any> = (
   props,
 ): JSX.Element => {
   const { index, item, nav, reader } = props;
-  const { fullname, photo, date } = item;
+  const { fullName, avatar, id } = item;
   const { boostFromWaitToRead, removePersonFromWaitingList } = nav;
 
-  const formattedWaitingPersonDate = moment(date).format('DD MMMM YYYY');
+  // const formattedWaitingPersonDate =
+  //   item && item.readAt && moment(createdAt).format('DD MMMM YYYY');
 
   return (
     <View style={styles.container}>
       <Text style={styles.index}>{index})</Text>
       <View style={styles.section}>
         <View style={styles.infoWaitingPersonWrapper}>
-          <Image source={getImage(photo, 'user')} style={styles.readerPhoto} />
+          <Image source={getImage(avatar, 'user')} style={styles.readerPhoto} />
 
           <View style={styles.infoWaitingPerson}>
             <Text numberOfLines={1} style={styles.fullname}>
-              {fullname}
+              {fullName}
             </Text>
-            <Text style={styles.date}>{formattedWaitingPersonDate}</Text>
+            {/* <Text style={styles.date}>{formattedWaitingPersonDate}</Text> */}
           </View>
         </View>
 
@@ -39,19 +40,19 @@ const TheQueueForTheBookListItem: FunctionComponent<ITheQueueForTheBookListItem>
           <Icon
             name='close'
             color={error}
-            onPress={() => removePersonFromWaitingList(fullname)}
+            onPress={() => removePersonFromWaitingList(id, fullName)}
             size={24}
             style={[
               styles.closeBtn,
-              reader.fullname ? styles.closeBtnMargin : undefined,
+              reader && reader.fullName ? styles.closeBtnMargin : null,
             ]}
           />
 
-          {!reader.fullname && (
+          {!reader && (
             <Icon
               color={accent}
               name='check'
-              onPress={() => boostFromWaitToRead(fullname)}
+              onPress={() => boostFromWaitToRead(id, fullName)}
               size={24}
               style={styles.applyBtn}
             />
