@@ -3,6 +3,7 @@ import auth from './auth';
 import bookData from './bookData';
 import booksIRead from './booksIRead';
 import myBooks from './myBooks';
+import rateBook from './rateBook';
 import search from './search';
 import theQueueForTheBook from './theQueueForTheBook';
 import underlayerReducer from './underlayerReducer';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   bookData,
   booksIRead,
   myBooks,
+  rateBook,
   search,
   theQueueForTheBook,
   underlayer: underlayerReducer,
