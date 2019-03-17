@@ -21,7 +21,16 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
   props,
 ): JSX.Element => {
   const { item, nav } = props;
-  const { authors, publishDate, imageUri, publisher, reader, title, queues } = item;
+  const {
+    id,
+    authors,
+    publishDate,
+    imageUri,
+    publisher,
+    reader,
+    title,
+    queues,
+  } = item;
 
   const {
     callBookRemovalWarning,
@@ -43,7 +52,7 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
 
           {queues.length ? (
             <TouchableRipple
-              onPress={() => onTheQueueForTheBook(reader, queues)}
+              onPress={() => onTheQueueForTheBook(id, reader, queues)}
               style={styles.numberOfWaitingPeopleBtn}
             >
               <Text style={styles.numberOfWaitingPeopleBtnText}>
@@ -89,23 +98,24 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
             <View style={styles.readerInfoWrapper}>
               <View style={styles.readerInfo}>
                 <Image
-                  source={reader.avatar ? { uri: reader.avatar } : default_user_avatar }
+                  source={
+                    reader.avatar ? { uri: reader.avatar } : default_user_avatar
+                  }
                   style={styles.readerPhoto}
                 />
 
-                  <View style={styles.readerInfoTextWrapper}>
-                    <Text numberOfLines={1} style={styles.bookInfoText}>
-                      The book is at
-                    </Text>
-                    <Text
-                      numberOfLines={1}
-                      style={[styles.bookInfoText, styles.readerName]}
-                    >
-                      {reader.fullName}'s
-                    </Text>
-                    <Text style={styles.readerDate}>{formattedReaderDate}</Text>
-                  </View>
-              
+                <View style={styles.readerInfoTextWrapper}>
+                  <Text numberOfLines={1} style={styles.bookInfoText}>
+                    The book is at
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={[styles.bookInfoText, styles.readerName]}
+                  >
+                    {reader.fullName}'s
+                  </Text>
+                  <Text style={styles.readerDate}>{formattedReaderDate}</Text>
+                </View>
 
                 <Icon
                   color={text}

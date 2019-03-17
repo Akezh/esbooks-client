@@ -97,6 +97,21 @@ class UserService {
       throw e;
     }
   }
+
+  async removeUserFromQueue(userId: string, bookId: string, token: string) {
+    try {
+      const data = await fetch(BASE_URL + `/api/users/${userId}/books/${bookId}/queue`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json',
+        },
+      });
+      return data;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
 
 export const User = new UserService();

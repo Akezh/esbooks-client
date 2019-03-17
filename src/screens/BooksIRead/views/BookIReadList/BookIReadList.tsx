@@ -8,7 +8,6 @@ const BookIReadList: FunctionComponent<IBookIReadList> = (
 ): JSX.Element => {
   const { data, nav } = props;
 
-  console.log('data', data);
   return (
     <FlatList
       data={data}

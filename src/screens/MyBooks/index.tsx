@@ -48,16 +48,22 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
     });
   };
 
-  const onTheQueueForTheBook = (reader: IReader, waitingList: IReader[]): void => {
-    navigate('TheQueueForTheBook', { reader, waitingList });
+  const onTheQueueForTheBook = (
+    id: string,
+    reader: IReader,
+    waitingList: IReader[],
+  ): void => {
+    navigate('TheQueueForTheBook', { bookId: id, reader, waitingList });
   };
 
-  return <MyBooksContainer
-    onAddAndChangeMyBook={onAddAndChangeMyBook}
-    onChangeMyBook={onChangeMyBook}
-    onGoBack={onGoBack}
-    onTheQueueForTheBook={onTheQueueForTheBook}
-  />;
+  return (
+    <MyBooksContainer
+      onAddAndChangeMyBook={onAddAndChangeMyBook}
+      onChangeMyBook={onChangeMyBook}
+      onGoBack={onGoBack}
+      onTheQueueForTheBook={onTheQueueForTheBook}
+    />
+  );
 };
 
 export default MyBooks;
