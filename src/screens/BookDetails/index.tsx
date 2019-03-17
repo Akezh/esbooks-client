@@ -11,7 +11,7 @@ const BookDetails: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
   const { goBack, navigate, state } = navigation;
   const { params } = state;
-  const { data } = params;
+  const { bookId } = params;
 
   const onGoBack = (): void => {
     goBack();
@@ -23,11 +23,11 @@ const BookDetails: FunctionComponent<IProps> = (props): JSX.Element => {
 
   return (
     <BookDetailsContainer
-      incompleteData={data}
+      bookId={bookId}
       onGoBack={onGoBack}
       onRateBook={onRateBook}
     />
   );
 };
 
-export default BookDetails; 
+export default BookDetails;

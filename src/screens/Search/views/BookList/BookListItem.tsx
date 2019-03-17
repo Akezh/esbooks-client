@@ -3,7 +3,6 @@ import { Image, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { THEME } from '@constants';
-import { IHomeBookListItem } from '@types';
 import { formatAuthors } from '@utils';
 import { BookListItemStyles as styles } from '../../styles';
 import { PLACEHOLDERS } from '@static';
@@ -11,7 +10,7 @@ const { default_user_avatar, book } = PLACEHOLDERS;
 const { colors } = THEME;
 const { primary, inactively } = colors;
 
-const BookListItem: FunctionComponent<IHomeBookListItem> = (
+const BookListItem: FunctionComponent<any> = (
   props,
 ): JSX.Element => {
   const { item, onBookDetails } = props;
@@ -81,7 +80,7 @@ const BookListItem: FunctionComponent<IHomeBookListItem> = (
 
   return (
     <TouchableRipple
-      onPress={() => onBookDetails(item)}
+      onPress={() => onBookDetails(item.id)}
       rippleColor={primary}
       style={styles.wrapper}
     >

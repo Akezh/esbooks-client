@@ -6,6 +6,7 @@ import { addBook } from './addBook';
 import { getMyBooksData } from './myBooks';
 import { getBooksIReadData } from './booksIRead';
 import { search } from './search';
+import { getBookDetails } from './bookDetails';
 import { removeQueue } from './theQueueForTheBook';
 import { rateBook } from './rateBook';
 
@@ -31,6 +32,9 @@ import {
   SEARCH_REQUEST,
   SEARCH_FAILURE,
   SEARCH_SUCCESS,
+  BOOK_DETAILS_FAILURE,
+  BOOK_DETAILS_REQUEST,
+  BOOK_DETAILS_SUCCESS,
   REMOVE_QUEUE_FAILURE,
   REMOVE_QUEUE_REQUEST,
   REMOVE_QUEUE_SUCCESS,
@@ -73,6 +77,10 @@ export {
   SEARCH_FAILURE,
   SEARCH_SUCCESS,
   search,
+  BOOK_DETAILS_FAILURE,
+  BOOK_DETAILS_REQUEST,
+  BOOK_DETAILS_SUCCESS,
+  getBookDetails,
   REMOVE_QUEUE_FAILURE,
   REMOVE_QUEUE_REQUEST,
   REMOVE_QUEUE_SUCCESS,

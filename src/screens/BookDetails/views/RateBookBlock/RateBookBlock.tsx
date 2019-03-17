@@ -8,7 +8,7 @@ import { IRateBookData } from '@types';
 import { RateBookBlockStyles as styles } from '../../styles';
 
 interface IProps {
-  data: IRateBookData;
+  data: any;
   onRateBook: (item: IRateBookData, value?: number) => void;
 }
 
