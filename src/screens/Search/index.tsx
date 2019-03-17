@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { withSafeAreaView } from '@hocs';
-import { IIncompleteBook } from '@types';
 import SearchContainer from './containers';
 
 const Search: FunctionComponent<any> = (props): JSX.Element => {
@@ -13,15 +12,15 @@ const Search: FunctionComponent<any> = (props): JSX.Element => {
     goBack();
   };
 
-  const onBookDetails = (item: IIncompleteBook) => {
-    navigate('BookDetails', { data: item });
+  const onBookDetails = (bookId: any) => {
+    navigate('BookDetails', { bookId });
   };
 
   return (
-    <SearchContainer 
-      onBookDetails={onBookDetails} 
-      onGoBack={onGoBack} 
-      query={query} 
+    <SearchContainer
+      onBookDetails={onBookDetails}
+      onGoBack={onGoBack}
+      query={query}
     />
   );
 };

@@ -37,16 +37,14 @@ const formatNumberOfVoters = (
   return formattedNumberOfVoters;
 };
 
-const getNumberOfVoters = (
-  ratingComponents: ICompleteBookRatingComponents[],
-): number => {
-  return (
-    ratingComponents[0].quantity +
-    ratingComponents[1].quantity +
-    ratingComponents[2].quantity +
-    ratingComponents[3].quantity +
-    ratingComponents[4].quantity
-  );
+const getNumberOfVoters = (ratingComponents: any): number => {
+  let result = 0;
+
+  for (let i = 0; i < ratingComponents.length; i++) {
+    result += parseInt(ratingComponents[i].count, 10);
+  }
+
+  return result;
 };
 
 const getImage = (image: any, type: 'book' | 'user'): any => {
