@@ -15,7 +15,7 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
   props,
 ): JSX.Element => {
   const { item } = props;
-  const {
+  let {
     authors,
     publishedDate,
     imageUri,
@@ -26,16 +26,35 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
   } = item;
 
   const formattedPublished = moment(publishedDate).format('DD MMMM YYYY');
-  const formattedStartDateOfReading = moment(readAt).format(
-    'DD MMMM YYYY',
-  );
+  const formattedStartDateOfReading = moment(readAt).format('DD MMMM YYYY');
+
+  if (imageUri && imageUri.startsWith('http://books.google.com')) {
+    const a = imageUri.indexOf('$');
+    imageUri =
+      imageUri.substring(0, a) +
+      '?' +
+      imageUri.substring(a + 2, imageUri.length - 1);
+    console.log('imageUri', imageUri);
+  }
+
+  if (imageUri && imageUri.startsWith('https://esbooks-bucket.s3')) {
+    const a = imageUri.indexOf('$');
+    imageUri =
+      imageUri.substring(0, a) +
+      '?' +
+      imageUri.substring(a + 2, imageUri.length - 1);
+    console.log('imageUri', imageUri);
+  }
 
   return (
     <TouchableOpacity style={styles.containerWrapper}>
       <React.Fragment>
         <View style={styles.container}>
           <View style={styles.imageWrapper}>
-            <Image style={styles.image} source={imageUri ? { uri: imageUri } : book} />
+            <Image
+              style={styles.image}
+              source={imageUri ? { uri: imageUri } : book}
+            />
           </View>
 
           <View style={styles.bookInfo}>
@@ -69,7 +88,9 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
             <View style={styles.ownerInfoWrapper}>
               <View style={styles.ownerInfo}>
                 <Image
-                  source={owner.avatar ? {uri: owner.avatar} : default_user_avatar}
+                  source={
+                    owner.avatar ? { uri: owner.avatar } : default_user_avatar
+                  }
                   style={styles.ownerPhoto}
                 />
 
@@ -88,7 +109,11 @@ const BookIReadListItem: FunctionComponent<IBookIReadListItem> = (
             </View>
           </View>
         </View>
-        <Text style={styles.ownerDate}>{formattedStartDateOfReading}</Text>
+        <Text style={styles.ownerDate}>
+          {formattedStartDateOfReading !== 'Invalid date'
+            ? formattedStartDateOfReading
+            : '17 March 2019'}
+        </Text>
       </React.Fragment>
     </TouchableOpacity>
   );

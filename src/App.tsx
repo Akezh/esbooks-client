@@ -5,6 +5,8 @@ import { THEME } from '@constants';
 import { AppRouter } from '@router';
 import store from '@stores';
 
+console.disableYellowBox = true;
+
 const App: FunctionComponent = (): JSX.Element => {
   return (
     <Provider store={store}>

@@ -8,16 +8,21 @@ interface IProps {
 
 const AddAndChangeMyBook: FunctionComponent<IProps> = (props): JSX.Element => {
   const { navigation } = props;
-  const { goBack, navigate } = navigation;
+  const { replace, navigate } = navigation;
   const { state } = navigation;
   const { params } = state;
   const { dataBookThatWeChange, screenType } = params;
 
   const onGoBack = (): void => {
-    goBack();
+    replace('MyBooks');
   };
 
-  const onMoreItems = (type: string, data: string[], selectedItems: string[], setItems: (type: string, items: string[]) => void): void => {
+  const onMoreItems = (
+    type: string,
+    data: string[],
+    selectedItems: string[],
+    setItems: (type: string, items: string[]) => void,
+  ): void => {
     navigate('MoreItems', {
       data,
       selectedItems,

@@ -20,6 +20,10 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
     navigate('AddAndChangeMyBook', { screenType: 'Add' });
   };
 
+  const onBookDetails = (bookId: any) => {
+    navigate('BookDetails', { bookId });
+  };
+
   const onChangeMyBook = (): void => {
     const {
       authors,
@@ -62,6 +66,7 @@ const MyBooks: FunctionComponent<IProps> = (props): JSX.Element => {
       onChangeMyBook={onChangeMyBook}
       onGoBack={onGoBack}
       onTheQueueForTheBook={onTheQueueForTheBook}
+      onBookDetails={onBookDetails}
     />
   );
 };

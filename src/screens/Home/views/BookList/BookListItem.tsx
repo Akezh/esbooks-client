@@ -18,7 +18,7 @@ const BookListItem: FunctionComponent<IHomeBookListItem> = (
 
   return (
     <TouchableRipple
-      onPress={() => onBookDetails(item)}
+      // onPress={() => onBookDetails(item)}
       rippleColor={primary}
       style={styles.wrapper}
     >

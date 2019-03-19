@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Image, View, Text, Alert } from 'react-native';
 import { IconButton, TouchableRipple } from 'react-native-paper';
+import { connect } from 'react-redux';
 import { THEME } from '@constants';
 import { IRateBookData } from '@types';
 import { getImage } from '@utils';
+import { mapActionsToProps, mapStateToProps } from './RateBookContainerMaps';
 import { RateBookContainerStyles as styles } from '../styles';
 import { RateBookView } from '../views';
 
@@ -11,6 +13,12 @@ interface IProps {
   data: IRateBookData;
   onGoBack: (rating: number) => void;
   rating: number;
+  rateBook: (
+    bookId: string,
+    myRating: string,
+    token: string,
+  ) => void;
+  token: string;
 }
 
 interface IState {
@@ -62,7 +70,7 @@ class RateBookContainer extends Component<IProps, IState> {
           </View>
           <TouchableRipple
             rippleColor='rgba(0, 0, 0, .14)'
-            onPress={() => onGoBack(rating)}
+            onPress={this.onPostPress}
             style={styles.postBtn}
             disabled={!isActivePostBtn}
           >
@@ -82,6 +90,14 @@ class RateBookContainer extends Component<IProps, IState> {
         />
       </React.Fragment>
     );
+  }
+
+  private onPostPress = async () => {
+    const { rateBook, token, data } = this.props;
+    const { id } = data;
+    const { rating } = this.state;
+
+    await rateBook(id, rating.toString(), token);
   }
 
   private callAlert = (): void => {
@@ -108,4 +124,7 @@ class RateBookContainer extends Component<IProps, IState> {
   }
 }
 
-export default RateBookContainer;
+export default connect(
+  mapStateToProps,
+  mapActionsToProps,
+)(RateBookContainer);

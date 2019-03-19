@@ -10,14 +10,21 @@ const { default_user_avatar, book } = PLACEHOLDERS;
 const { colors } = THEME;
 const { primary, inactively } = colors;
 
-const BookListItem: FunctionComponent<any> = (
-  props,
-): JSX.Element => {
+const BookListItem: FunctionComponent<any> = (props): JSX.Element => {
   const { item, onBookDetails } = props;
-  const { authors, imageUri, owner, title, rating } = item;
+  let { authors, imageUri, owner, title, rating } = item;
   const { fullName, avatar } = owner;
 
   const renderImage = () => {
+    if (imageUri && imageUri.startsWith('http://books.google.com')) {
+      const a = imageUri.indexOf('$');
+      imageUri =
+        imageUri.substring(0, a) +
+        '?' +
+        imageUri.substring(a + 2, imageUri.length - 1);
+      console.log('imageUri', imageUri);
+    }
+
     return (
       <Image
         source={imageUri ? { uri: imageUri } : book}
