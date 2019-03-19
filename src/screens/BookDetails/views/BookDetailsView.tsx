@@ -24,7 +24,7 @@ const { primary } = colors;
 
 class BookDetailsView extends Component<IProps, IState> {
   state = {
-    myRating: this.props.incompleteData.rating && this.props.incompleteData.rating[0].my,
+    myRating: this.props.incompleteData.rating.length && this.props.incompleteData.rating[0].my,
   };
 
   public setMyRating = (myRating: number): void => {
@@ -32,13 +32,15 @@ class BookDetailsView extends Component<IProps, IState> {
 
     if (!myRating) {
       this.setState({
-        myRating: incompleteData.rating[0].my,
+        myRating: incompleteData.rating.length && incompleteData.rating[0].my,
       });
     } else {
       this.setState({
         myRating,
       });
-      incompleteData.rating[0].my = myRating;
+      if (incompleteData.rating.length) {
+        incompleteData.rating[0].my = myRating;
+      }
     }
     this.forceUpdate();
   }
@@ -52,7 +54,7 @@ class BookDetailsView extends Component<IProps, IState> {
       categories,
       description,
       id,
-      image_uri,
+      imageUri,
       owner,
       published_date,
       publisher,
@@ -69,7 +71,7 @@ class BookDetailsView extends Component<IProps, IState> {
           data={{
             authors,
             categories,
-            image_uri,
+            imageUri,
             owner,
             published_date,
             publisher,
@@ -80,14 +82,20 @@ class BookDetailsView extends Component<IProps, IState> {
         />
         <Divider />
 
-        <TagList data={categories} />
-        <Divider />
+        {categories.length && 
+          <React.Fragment>
+            <TagList data={categories} />
+            <Divider />
+          </React.Fragment>}
 
-        <BookDescriptionBlock
-          subtitle={subtitle}
-          description={description}
-        />
-        <Divider />
+        {subtitle && description && 
+          <React.Fragment>
+            <BookDescriptionBlock
+              subtitle={subtitle}
+              description={description}
+            />
+            <Divider />
+          </React.Fragment>}
 
         <RateBookBlock
           data={{
@@ -100,7 +108,7 @@ class BookDetailsView extends Component<IProps, IState> {
         />
         <Divider />
 
-       <BookRatingAndTopReviewsBlock data={{ rating: rating ? rating[0] : [] }} />
+       <BookRatingAndTopReviewsBlock data={{ rating: rating && rating.length ? rating[0] : [] }} />
         <StatusBar
           backgroundColor={primary}
           barStyle='light-content'

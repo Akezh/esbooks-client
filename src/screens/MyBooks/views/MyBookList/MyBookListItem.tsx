@@ -21,7 +21,7 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
   props,
 ): JSX.Element => {
   const { item, nav } = props;
-  const {
+  let {
     id,
     authors,
     publishDate,
@@ -44,8 +44,29 @@ const MyBookListItem: FunctionComponent<IMyBookListItem> = (
   const formattedReaderDate =
     reader && moment(reader.date).format('DD MMMM YYYY');
 
+  if (imageUri && imageUri.startsWith('http://books.google.com')) {
+    const a = imageUri.indexOf('$');
+    imageUri =
+      imageUri.substring(0, a) +
+      '?' +
+      imageUri.substring(a + 2, imageUri.length - 1);
+    console.log('imageUri', imageUri);
+  }
+
+  if (imageUri && imageUri.startsWith('https://esbooks-bucket.s3')) {
+    const a = imageUri.indexOf('$');
+    imageUri =
+      imageUri.substring(0, a) +
+      '?' +
+      imageUri.substring(a + 2, imageUri.length - 1);
+    console.log('imageUri', imageUri);
+  }
+
   return (
-    <TouchableOpacity onPress={onBookDetails} style={styles.containerWrapper}>
+    <TouchableOpacity
+      onPress={() => onBookDetails(id)}
+      style={styles.containerWrapper}
+    >
       <View style={styles.container}>
         <View style={styles.imageWrapper}>
           <Image style={styles.image} source={getImage(imageUri, 'book')} />

@@ -13,7 +13,12 @@ interface IProps {
   data: IRateBookData;
   onGoBack: (rating: number) => void;
   rating: number;
-  rateBook: () => void;
+  rateBook: (
+    bookId: string,
+    myRating: string,
+    token: string,
+  ) => void;
+  token: string;
 }
 
 interface IState {
@@ -65,7 +70,7 @@ class RateBookContainer extends Component<IProps, IState> {
           </View>
           <TouchableRipple
             rippleColor='rgba(0, 0, 0, .14)'
-            onPress={() => this.onPostPress(rating)}
+            onPress={this.onPostPress}
             style={styles.postBtn}
             disabled={!isActivePostBtn}
           >
@@ -87,10 +92,12 @@ class RateBookContainer extends Component<IProps, IState> {
     );
   }
 
-  private onPostPress = async (rating: number) => {
-    const { rateBook } = this.props;
+  private onPostPress = async () => {
+    const { rateBook, token, data } = this.props;
+    const { id } = data;
+    const { rating } = this.state;
 
-    await rateBook();
+    await rateBook(id, rating.toString(), token);
   }
 
   private callAlert = (): void => {

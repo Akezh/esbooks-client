@@ -5,7 +5,7 @@ import {
   RATE_BOOK_SUCCESS,
   RATE_BOOK_FAILURE,
 } from './types';
-import { User } from '@services';
+import { Book } from '@services';
 
 const request = () => ({
   type: RATE_BOOK_REQUEST,
@@ -25,13 +25,17 @@ const failure = error => ({
   },
 });
 
-export const rateBook = () => async (dispatch: any) => {
+export const rateBook = (
+  bookId: string,
+  myRating: string,
+  token: string,
+) => async (dispatch: any) => {
   dispatch(request());
 
   try {
-    // const response = await User.addBook({ book: data, token });
-    // const book = response.json();
-    // dispatch(success(camelcaseKeysDeep(book)));
+    const response = await Book.setBookRating({ bookId, myRating, token });
+    const book = response.json();
+    dispatch(success(camelcaseKeysDeep(book)));
   } catch (e) {
     dispatch(failure(e));
   }

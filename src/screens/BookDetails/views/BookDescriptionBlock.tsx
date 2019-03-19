@@ -27,14 +27,14 @@ class BookDescriptionBlock extends Component<IProps, IState> {
       <View style={styles.block}>
 
         <View style={styles.container}>
-          <Text style={styles.subtitle}>{subtitle}</Text>
-          <Text
+          {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+          {description &&<Text
             numberOfLines={showFullText ? undefined : 4}
             style={styles.description}
             onPress={this.showMore}
           >
             {description}
-          </Text>
+          </Text>}
         </View>
       </View >
     );

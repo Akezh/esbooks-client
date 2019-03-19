@@ -23,6 +23,7 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
     onChangeMyBook,
     onTheQueueForTheBook,
     data,
+    onBookDetails,
   } = props;
 
   const nav = {
@@ -30,18 +31,13 @@ const MyBooksView: FunctionComponent<IProps> = (props): JSX.Element => {
     callBookReturnAlert,
     onChangeMyBook,
     onTheQueueForTheBook,
+    onBookDetails,
   };
 
   return (
     <React.Fragment>
-      <MyBookList
-        data={data}
-        nav={nav}
-      />
-      <StatusBar
-        backgroundColor={primary}
-        barStyle='light-content'
-      />
+      <MyBookList data={data} nav={nav} />
+      <StatusBar backgroundColor={primary} barStyle='light-content' />
     </React.Fragment>
   );
 };

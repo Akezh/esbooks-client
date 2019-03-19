@@ -25,10 +25,10 @@ const { author } = OTHER;
 
 const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
   const { data } = props;
-  const {
+  let {
     authors,
     categories,
-    image_uri,
+    imageUri,
     owner,
     published_date,
     publisher,
@@ -38,13 +38,23 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
   } = data;
   const { avatar, fullName } = owner;
 
+  console.log('imageUriimageUriimageUri', imageUri);
   const formattedPublished = moment(published_date).format('DD MMMM YYYY');
+
+  if (imageUri && imageUri.startsWith('http://books.google.com')) {
+    const a = imageUri.indexOf('$');
+    imageUri =
+      imageUri.substring(0, a) +
+      '?' +
+      imageUri.substring(a + 2, imageUri.length - 1);
+    console.log('imageUri BookInfoBlock', imageUri);
+  }
 
   return (
     <View style={styles.bookInfoBlockWrapper}>
       <View style={styles.bookInfoBlock}>
         <Image
-          source={image_uri ? { uri: image_uri } : book}
+          source={imageUri ? { uri: imageUri } : book}
           style={styles.image}
         />
 
@@ -67,7 +77,7 @@ const BookInfoBlock: FunctionComponent<IProps> = (props): JSX.Element => {
             </View>
           </View>
 
-          <CategoryList data={categories} />
+          {categories.length && <CategoryList data={categories} />}
 
           <View style={styles.ownerInfo}>
             <View style={styles.authorIconWrapper}>

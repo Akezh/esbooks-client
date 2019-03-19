@@ -37,6 +37,7 @@ class MyBooksContainer extends React.Component<IProps> {
       onTheQueueForTheBook,
       isLoading,
       data,
+      onBookDetails,
     } = this.props;
 
     return (
@@ -68,6 +69,7 @@ class MyBooksContainer extends React.Component<IProps> {
           callBookReturnAlert={this.callBookReturnAlert}
           onChangeMyBook={onChangeMyBook}
           onTheQueueForTheBook={onTheQueueForTheBook}
+          onBookDetails={onBookDetails}
         />
 
         {isLoading && <Loading />}

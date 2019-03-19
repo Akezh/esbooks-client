@@ -17,7 +17,7 @@ const THEME = {
     ...DefaultTheme.fonts,
     bold: 'Roboto-Bold',
     light: 'Roboto-Light',
-    logo: 'Roboto-Light',
+    logo: 'ShowcardGothic-Regular',
     medium: 'Roboto-Medium',
     regular: 'Roboto-Regular',
     thin: 'Roboto-Thin',
